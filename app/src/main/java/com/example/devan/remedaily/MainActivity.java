@@ -25,15 +25,16 @@ public class MainActivity extends AppCompatActivity {
 
     private static String TAG = MainActivity.class.getSimpleName();
 
-    ListView drawerListView;
-    RelativeLayout drawerPane;
+    ListView drawerNavigationListView;
+    RelativeLayout drawerPaneView;
     private ActionBarDrawerToggle drawerToggle;
-    private DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayoutView;
 
     ArrayList<NavigationItem> navigationItems = new ArrayList<NavigationItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -41,25 +42,25 @@ public class MainActivity extends AppCompatActivity {
         navigationItems.add(new NavigationItem("Preferences", "Change your preferences", R.drawable.ic_settings));
         navigationItems.add(new NavigationItem("About", "Get to know about us", R.drawable.ic_info));
 
-        // DrawerLayout
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        // DrawerLayout - this is the layout of the whole screen
+        drawerLayoutView = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-        // Populate the Navigtion Drawer with options
-        drawerPane = (RelativeLayout) findViewById(R.id.drawerPane);
+        // Populate the Navigation Drawer with options
+        drawerPaneView = (RelativeLayout) findViewById(R.id.drawerPane);
 
-        drawerListView = (ListView) findViewById(R.id.navList);
+        drawerNavigationListView = (ListView) findViewById(R.id.drawerPaneNavigationList);
         DrawerListAdapter drawerListAdapter = new DrawerListAdapter(this, navigationItems);
-        drawerListView.setAdapter(drawerListAdapter);
+        drawerNavigationListView.setAdapter(drawerListAdapter);
 
         // Drawer Item click listeners
-        drawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        drawerNavigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItemFromDrawer(position);
             }
         });
 
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayoutView, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayoutView.setDrawerListener(drawerToggle);
 
 //        // Called when invalidateOptionsMenu() is invoked
 //        public boolean onPrepareOptionsMenu(Menu menu) {
@@ -115,18 +116,18 @@ public class MainActivity extends AppCompatActivity {
      * is selected.
      * */
     private void selectItemFromDrawer(int position) {
-        Fragment fragment = new PreferencesFragment();
+        Fragment fragmentView = new PreferencesFragment();
 
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.mainContent, fragment)
+                .replace(R.id.mainContent, fragmentView)
                 .commit();
 
-        drawerListView.setItemChecked(position, true);
+        drawerNavigationListView.setItemChecked(position, true);
         setTitle(navigationItems.get(position).title);
 
         // Close the drawer
-        drawerLayout.closeDrawer(drawerPane);
+        drawerLayoutView.closeDrawer(drawerPaneView);
     }
 
     // This class is used to represent drawer menu items
