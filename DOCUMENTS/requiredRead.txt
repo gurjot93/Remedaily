@@ -1,0 +1,3 @@
+Please use this folder to put the wireframes, ClickStreams, Documents etc. We need for developement and testing.
+
+thanks.
