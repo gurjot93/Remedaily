@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Remedaily</string>
+    <string name="app_name">UserDetails</string>
+    <string name="fname">First Name:</string>
+    <string name="lname">Last Name:</string>
+    <string name="age">Age:</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="gender">Gender:</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>
