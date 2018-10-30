@@ -8,27 +8,27 @@ Daily Medication Reminder Application.
 
 **Splash Screen**
 
-[img](DOCUMENTS/splash-screen.png)
+![splash-screen](DOCUMENTS/splash-screen.png)
 
 **Home Screen**
 
-[img](DOCUMENTS/home-screen.png)
+![home-screen](DOCUMENTS/home-screen.png)
 
 **Menu Drawer**
 
-[img](DOCUMENTS/menu-expanded.png)
+![menu-expanded](DOCUMENTS/menu-expanded.png)
 
 **My Medication Screen**
 
-[img](DOCUMENTS/my-medication.png)
+![my-medication](DOCUMENTS/my-medication.png)
 
 **Calendar Screen**
 
-[img](DOCUMENTS/calendar.png)
+![calendar](DOCUMENTS/calendar.png)
 
 **Settings Screen**
 
-[img](DOCUMENTS/settings.png)
+![settings](DOCUMENTS/settings.png)
 
 ### Click Stream
 
