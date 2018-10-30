@@ -24,11 +24,11 @@ Daily Medication Reminder Application.
 
 **Calendar Screen**
 
-![calendar](DOCUMENTS/calendar.png)
+![calendar](DOCUMENTS/Calendar.png)
 
 **Settings Screen**
 
-![settings](DOCUMENTS/settings.png)
+![settings](DOCUMENTS/Settings.png)
 
 ### Click Stream
 
