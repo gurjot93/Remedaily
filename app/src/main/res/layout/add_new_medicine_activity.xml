@@ -4,15 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:weightSum="5"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
+        <EditText
+            android:id = "@+id/newMedicineNameField"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems = "10"
+            android:inputType="textPersonName"
+            android:hint="fill new medicine name"/>
+
+        <Switch
+            android:id="@+id/sameScheduleToAllDaysSwitch"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Switch" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
+            android:weightSum="7"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/monday"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mo"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/tuesday"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tu"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/wednesday"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="We"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/thursday"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Th"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/friday"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Fr"
+                android:textSize="25sp" />
+            <Button
+                android:id="@+id/saturday"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sa"
+                android:textSize="25sp" />
+
+            <Button
+                android:id="@+id/sunday"
+                android:background="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Su"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

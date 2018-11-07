@@ -1,7 +1,6 @@
 package com.example.devan.remedaily;
 
 import android.content.Intent;
-import android.sax.StartElementListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -14,8 +13,8 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(3000);
-                    Intent intent = new  Intent(getApplicationContext(),MainActivity.class);
+                    sleep(50);
+                    Intent intent = new  Intent(getApplicationContext(),AddNewMedicineActivity.class);
                     startActivity(intent);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
