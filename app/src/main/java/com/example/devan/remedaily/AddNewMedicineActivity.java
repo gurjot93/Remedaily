@@ -1,6 +1,7 @@
 package com.example.devan.remedaily;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
@@ -13,15 +14,18 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class AddNewMedicineActivity extends AppCompatActivity {
 
-    private TimePickerFragment timePickerFragment;
-    private List<SelectedTime> selectedTimes = new ArrayList<>();
-    private Button[] weekDayButtons = new Button[7];
+    public static Button[] weekDayButtons = new Button[7];
 
-    private final String[] weekDaysArr = {"Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"};
+    private final String[] weekDaysArr = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+                                          "Saturday", "Sunday"};
+
+
+    private HashMap<String, String> buttonIdStrToWeekDaymap = new HashMap<>();
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -34,18 +38,29 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             int weekDayId = getResources().getIdentifier(weekDaysArr[weekDayIndex], "id",
                     getApplicationContext().getPackageName());
 
+            buttonIdStrToWeekDaymap.put(Integer.toString(weekDayId), weekDaysArr[weekDayIndex]);
+
             final Button currentButton = findViewById(weekDayId);
             weekDayButtons[weekDayIndex] = currentButton;
-            final int initialColor = ((ColorDrawable) currentButton.getBackground().mutate()).getColor();
+            //final int initialColor = ((ColorDrawable) currentButton.getBackground().mutate()).getColor();
             currentButton.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
-                            currentButton.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
+                            Thread thread = new Thread(){
+                                @Override
+                                public void run() {
+                                    Intent intent = new  Intent(getApplicationContext(),WeekDayScheduleActivity.class);
+                                    intent.putExtra("weekDay", buttonIdStrToWeekDaymap.get(Integer.toString(currentButton.getId())));
+                                    startActivity(intent);
+                                }
+                            };
+                            thread.start();
+//                            currentButton.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
                             return false;
                         case MotionEvent.ACTION_UP:
-                            currentButton.setBackgroundColor(initialColor);
+//                            currentButton.setBackgroundColor(initialColor);
                             return false;
                     }
                     return false;
@@ -59,26 +74,25 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    // Disable Week days buttons, as all will have the same schedule
+                    // Discard possibly existing schedules, as we are going to fill all the same
+                    // for every wek day:
+
+                    // Disable Week days buttons, as all will have the same schedule:
                     for (Button weekDayButton : weekDayButtons) {
                         weekDayButton.setEnabled(false);
                     }
                 }
                 else {
+                    // Discard possibly existing schedules, as we are going to fill different times
+                    // for different week days
+
                     //Enable Week days buttons, as each one will have it's own schedule
                     for (Button weekDayButton : weekDayButtons) {
                         weekDayButton.setEnabled(true);
                     }
-
                 }
             }
         });
 
-    }
-
-    public void showTimePickerDialog() {
-        timePickerFragment = new TimePickerFragment();
-        timePickerFragment.setSelectedTimes(selectedTimes);
-        timePickerFragment.show(getSupportFragmentManager(), "time picker");
     }
 }

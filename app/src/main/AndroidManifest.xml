@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddNewMedicineActivity"></activity>
+        <activity android:name=".WeekDayScheduleActivity"></activity>
     </application>
 
 </manifest>
