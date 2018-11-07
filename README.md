@@ -8,7 +8,7 @@ Daily Medication Reminder Application.
 
 ## Design
 
-### Screenshots
+### Mockups
 
 **Splash Screen**
 
