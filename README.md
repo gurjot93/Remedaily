@@ -2,6 +2,10 @@
 
 Daily Medication Reminder Application.
 
+## Git Workflow
+
+[Git Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+
 ## Design
 
 ### Screenshots
