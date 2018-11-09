@@ -1,11 +1,10 @@
 package com.example.devan.remedaily;
 
-public class SelectedTime {
+public class TimeEntry {
     private int hourOfDay;
     private int minute;
-    String weekDay;
 
-    public SelectedTime(int hourOfDay, int minute) {
+    public TimeEntry(int hourOfDay, int minute) {
         this.hourOfDay = hourOfDay;
         this.minute = minute;
     }
