@@ -111,11 +111,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        timePickerFragment = new TimePickerFragment();
-                        timePickerFragment.setSelectedTimes(currentDay.getTimeEntriesList());
-                        timePickerFragment.setTimeListAdapter(timeListAdapter);
-                        timePickerFragment.setSaveButton(saveButton);
-                        timePickerFragment.show(getSupportFragmentManager(), "time picker");
+                        setTimePickerFragment(-1);
                         return false;
                     case MotionEvent.ACTION_UP:
                         return false;
@@ -176,8 +172,18 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private void setListViewAdapter(WeekDay currentDay) {
         timeListAdapter = new TimeListAdapter(AddNewMedicineActivity.this,
                 R.layout.schedule_entry, currentDay.getTimeEntriesList());
+        timeListAdapter.setAddNewMedicineActivityObj(this);
 
         ListView timeEntriesListView = findViewById(R.id.timeEntriesListView);
         timeEntriesListView.setAdapter(timeListAdapter);
+    }
+
+    public void setTimePickerFragment(final int position) {
+        timePickerFragment = new TimePickerFragment();
+        timePickerFragment.setPosition(position);
+        timePickerFragment.setSelectedTimes(currentDay.getTimeEntriesList());
+        timePickerFragment.setTimeListAdapter(timeListAdapter);
+        timePickerFragment.setSaveButton(saveButton);
+        timePickerFragment.show(getSupportFragmentManager(), "time picker");
     }
 }

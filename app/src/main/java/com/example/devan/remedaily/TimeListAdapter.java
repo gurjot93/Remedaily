@@ -5,22 +5,29 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
 
     private ArrayList<TimeEntry> timeEntriesList;
+    private AddNewMedicineActivity addNewMedicineActivityObj;
 
     public TimeListAdapter(Context context, int resource, ArrayList<TimeEntry> timeEntries) {
         super(context, resource, timeEntries);
         this.timeEntriesList = timeEntries;
+    }
+
+    public void setAddNewMedicineActivityObj(AddNewMedicineActivity addNewMedicineActivityObj) {
+        this.addNewMedicineActivityObj = addNewMedicineActivityObj;
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -28,7 +35,6 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
-        final int finalPosition = position;
 
         if(view == null) {
             LayoutInflater inflater = (LayoutInflater) getContext()
@@ -36,20 +42,31 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
             view = inflater.inflate(R.layout.schedule_entry, null);
 
             ImageButton removeTimeButton = view.findViewById(R.id.removeTimeButton);
-            removeTimeButton.setOnTouchListener(new View.OnTouchListener() {
+            // source : https://jmsliu.com/2444/click-button-in-listview-and-get-item-position.html
+            removeTimeButton.setOnClickListener(new AdapterView.OnClickListener() {
                 @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    switch (event.getAction()) {
-                        case MotionEvent.ACTION_DOWN:
-                            if(null != timeEntriesList.get(finalPosition)) {
-                                timeEntriesList.remove(finalPosition);
-                                TimeListAdapter.this.notifyDataSetChanged();
-                            }
-                            return false;
-                        case MotionEvent.ACTION_UP:
-                            return false;
+                public void onClick(View view) {
+                    View parentRow = (View) view.getParent();
+                    ListView listView = (ListView) parentRow.getParent();
+                    final int finalPosition = listView.getPositionForView(parentRow);
+                    if(null != timeEntriesList.get(finalPosition)) {
+                        timeEntriesList.remove(finalPosition);
+                        Collections.sort(timeEntriesList);
+                        TimeListAdapter.this.notifyDataSetChanged();
                     }
-                    return false;
+
+                }
+            });
+
+            ImageButton editTimeButton = view.findViewById(R.id.editTimeButton);
+            editTimeButton.setOnClickListener(new AdapterView.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    View parentRow = (View) view.getParent();
+                    ListView listView = (ListView) parentRow.getParent();
+                    final int finalPosition = listView.getPositionForView(parentRow);
+                    addNewMedicineActivityObj.setTimePickerFragment(finalPosition);
+
                 }
             });
         }
@@ -58,7 +75,8 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
 
         if(null != timeEntry) {
             TextView time = view.findViewById(R.id.timeTextView);
-            time.setText(timeEntry.getHour() + ":" + timeEntry.getMinute());
+            time.setText(String.format("%02d",timeEntry.getHour()) + ":" +
+                    String.format("%02d",timeEntry.getMinute()));
         }
         return view;
     }

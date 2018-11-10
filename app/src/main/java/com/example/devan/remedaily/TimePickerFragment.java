@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 public class TimePickerFragment extends DialogFragment {
@@ -20,6 +21,7 @@ public class TimePickerFragment extends DialogFragment {
     private Button saveButton;
     private TimeListAdapter timeListAdapter;
     ArrayList<TimeEntry> selectedTimes;
+    int position;
 
     public void setSelectedTimes(ArrayList<TimeEntry> selectedTimes) {
         this.selectedTimes = selectedTimes;
@@ -31,6 +33,10 @@ public class TimePickerFragment extends DialogFragment {
 
     public void setSaveButton(Button saveButton) {
         this.saveButton = saveButton;
+    }
+
+    public void setPosition(final int position) {
+        this.position = position;
     }
 
     @Override
@@ -49,13 +55,19 @@ public class TimePickerFragment extends DialogFragment {
             new TimePickerDialog.OnTimeSetListener() {
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     selectedTime = new TimeEntry(hourOfDay, minute);
-                    selectedTimes.add(selectedTime);
+                    if(position >= 0) {
+                        selectedTimes.set(position, selectedTime);
+                    }
+                    else {
+                        selectedTimes.add(selectedTime);
+                    }
                     saveButton.setEnabled(true);
 
                     Toast.makeText(getActivity(), "selected time is "
                                     + hourOfDay +
                                     " : " + minute
                             , Toast.LENGTH_SHORT).show();
+                    Collections.sort(selectedTimes);
                     timeListAdapter.notifyDataSetChanged();
 
                 }
