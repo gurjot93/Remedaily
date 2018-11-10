@@ -8,7 +8,9 @@
     <string name="gender">Gender:</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+
     <string name="GoToUserDetailsBtn">User Details</string>
     <string name="MainActivityLabel">Main Activity</string>
     <string name="UserDetailsActivityLabel">User Details</string>
+
 </resources>

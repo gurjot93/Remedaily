@@ -12,142 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c1bb840-dc6a-4525-ac89-72db81a3fa30" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__android_arch_core_common_1_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__android_arch_lifecycle_common_1_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_collections_28_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_solver_1_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_customview_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_loader_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_print_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_support_annotations_28_0_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/DOCUMENTS/requiredRead.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/Remedaily/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/androidTest/java/com/example/devan/remedaily/ExampleInstrumentedTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/java/com/example/devan/remedaily/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/java/com/example/devan/remedaily/SplashScreen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/drawable/splashscreen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/layout/activity_splash_screen.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/app/src/test/java/com/example/devan/remedaily/ExampleUnitTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Remedaily-master/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/UserDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/buttonshape.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/font/merriweather_sans_bold_italic.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/font_certs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/preloaded_fonts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_runtime_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_viewmodel_1_1_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_animated_vector_drawable_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_appcompat_v7_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_asynclayoutinflater_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_coordinatorlayout_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_cursoradapter_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_customview_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_documentfile_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_drawerlayout_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_interpolator_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_loader_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_localbroadcastmanager_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_print_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_slidingpanelayout_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_swiperefreshlayout_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_versionedparcelable_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_viewpager_28_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
@@ -176,7 +40,7 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="119">
               <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -185,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_user_details.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity_user_details.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_details.xml">
           <provider editor-type-id="android-designer2">
             <state />
@@ -201,7 +65,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -215,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDetails.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserDetails.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/UserDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-685">
               <caret column="36" selection-start-column="36" selection-end-column="36" />
             </state>
           </provider>
@@ -251,8 +115,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+            <state relative-caret-position="2958">
+              <caret line="174" selection-start-line="174" selection-end-line="174" />
             </state>
           </provider>
         </entry>
@@ -2276,13 +2140,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/UserDetails.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_user_details.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
       </list>
     </option>
   </component>
@@ -2479,6 +2343,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -2581,34 +2446,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/SplashScreen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2622,10 +2463,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/UserDetails.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="36" />
+        <state relative-caret-position="119">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -2634,8 +2482,18 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+        <state relative-caret-position="2958">
+          <caret line="174" selection-start-line="174" selection-end-line="174" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2646,6 +2504,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/devan/remedaily/UserDetails.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-685">
+          <caret column="36" selection-start-column="36" selection-end-column="36" />
         </state>
       </provider>
     </entry>
