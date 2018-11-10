@@ -2,9 +2,11 @@ package com.example.devan.remedaily;
 
 import android.annotation.SuppressLint;
 import android.graphics.Typeface;
+import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,6 +48,10 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
         // hide soft key keyboard
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        //create back button
+        // source : https://www.youtube.com/watch?v=s3pheMAmaPI
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         // source : https://android--code.blogspot.com/2015/08/android-switch-button-listener.html
@@ -155,6 +162,18 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void enableButtons(boolean doEnable) {

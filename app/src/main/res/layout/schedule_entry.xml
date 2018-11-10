@@ -36,5 +36,6 @@
         android:ems="10"
         android:text="04:21"
         android:textAlignment="center"
+        android:textColor="@color/colorButtonText"
         android:textSize="24sp" />
 </RelativeLayout>

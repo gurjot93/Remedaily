@@ -4,5 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlack">#000000</color>
-    <color name="colorBlue">#e5d73d</color>
+    <color name="colorYellowish">#e5d73d</color>
+    <color name="colorHasTimeEntries">#2fd634</color>
+    <color name="colorMainFrameBackground">#ede3e3</color>
+    <color name="colorDayButtonUnpressed">#e5e5e5</color>
+    <color name="colorDayButtonPressed">#adadad</color>
+    <color name="colorButtonText">#727272</color>
+
 </resources>
