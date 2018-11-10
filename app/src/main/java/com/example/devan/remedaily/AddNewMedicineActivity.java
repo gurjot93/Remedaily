@@ -186,4 +186,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         timePickerFragment.setSaveButton(saveButton);
         timePickerFragment.show(getSupportFragmentManager(), "time picker");
     }
+
+    public boolean allDaysAreEmpty() {
+        for(WeekDay weekDay: buttonIdStrToWeekDayMap.values()) {
+            if(weekDay.getTimeEntriesList().size() > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
+

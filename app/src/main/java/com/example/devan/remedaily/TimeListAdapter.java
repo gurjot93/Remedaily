@@ -51,6 +51,9 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
                     final int finalPosition = listView.getPositionForView(parentRow);
                     if(null != timeEntriesList.get(finalPosition)) {
                         timeEntriesList.remove(finalPosition);
+                        if(addNewMedicineActivityObj.allDaysAreEmpty()) {
+                            addNewMedicineActivityObj.saveButton.setEnabled(false);
+                        }
                         Collections.sort(timeEntriesList);
                         TimeListAdapter.this.notifyDataSetChanged();
                     }
