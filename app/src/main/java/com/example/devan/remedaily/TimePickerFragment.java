@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -18,9 +19,9 @@ public class TimePickerFragment extends DialogFragment {
     private TimeEntry selectedTime;
     private Button saveButton;
     private TimeListAdapter timeListAdapter;
-    List<TimeEntry> selectedTimes;
+    ArrayList<TimeEntry> selectedTimes;
 
-    public void setSelectedTimes(List<TimeEntry> selectedTimes) {
+    public void setSelectedTimes(ArrayList<TimeEntry> selectedTimes) {
         this.selectedTimes = selectedTimes;
     }
 

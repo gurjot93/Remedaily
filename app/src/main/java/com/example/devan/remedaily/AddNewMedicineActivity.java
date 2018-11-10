@@ -140,7 +140,10 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             }
                         }
 
-                        // here come stuff to be done on save - how do we save data?
+                        String mediceneName = findViewById(R.id.newMedicineNameField).toString();
+
+
+                        // here come stuff to be done on save - how do we save schedule and name?
 
                         return false;
                     case MotionEvent.ACTION_UP:
