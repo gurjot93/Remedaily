@@ -51,6 +51,10 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
                     final int finalPosition = listView.getPositionForView(parentRow);
                     if(null != timeEntriesList.get(finalPosition)) {
                         timeEntriesList.remove(finalPosition);
+                        if(timeEntriesList.size() == 0) {
+                            addNewMedicineActivityObj.currentButton.setTextColor(
+                                    addNewMedicineActivityObj.getResources().getColor(R.color.colorBlack));
+                        }
                         if(addNewMedicineActivityObj.allDaysAreEmpty()) {
                             addNewMedicineActivityObj.saveButton.setEnabled(false);
                         }

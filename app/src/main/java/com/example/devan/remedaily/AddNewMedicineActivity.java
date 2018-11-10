@@ -1,6 +1,8 @@
 package com.example.devan.remedaily;
 
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -27,6 +29,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     WeekDay currentDay;
     Button saveButton;
+    Button currentButton;
 
     private TimePickerFragment timePickerFragment;
 
@@ -59,6 +62,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                     clearCurrentSchedule();
                     // Disable Week days buttons, as all will have the same schedule:
                     enableButtons(false);
+
                     setListViewAdapter(currentDay);
                 }
                 else {
@@ -89,6 +93,8 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                 public boolean onTouch(View v, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
+                            setCurrentButtonSelected(currentButton);
+                            AddNewMedicineActivity.this.currentButton = currentButton;
                             // Add Time button should be active only when week mode selected
                             // or specific day selected
                             findViewById(R.id.addTimeButton).setEnabled(true);
@@ -154,7 +160,9 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private void enableButtons(boolean doEnable) {
         for (Button weekDayButton : weekDayButtons) {
             weekDayButton.setEnabled(doEnable);
+            weekDayButton.setTextColor(getResources().getColor(R.color.colorBlack));
         }
+        setCurrentButtonSelected(null);
         saveButton.setEnabled(false); // enabled in TimePickerFragment ont first time stemp creation
     }
 
@@ -181,11 +189,27 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     public void setTimePickerFragment(final int position) {
         timePickerFragment = new TimePickerFragment();
         timePickerFragment.setPosition(position);
-        timePickerFragment.setSelectedTimes(currentDay.getTimeEntriesList());
-        timePickerFragment.setTimeListAdapter(timeListAdapter);
-        timePickerFragment.setSaveButton(saveButton);
+        timePickerFragment.setAddNewMedicineActivityObj(this);
         timePickerFragment.show(getSupportFragmentManager(), "time picker");
     }
+
+    public Button getCurrentButton() {
+        return this.currentButton;
+    }
+
+    public Button getSaveButton() {
+        return this.saveButton;
+    }
+
+    public WeekDay getCurrentDay() {
+        return this.currentDay;
+    }
+
+    public TimeListAdapter getTimeListAdapter() {
+        return this.timeListAdapter;
+    }
+
+
 
     public boolean allDaysAreEmpty() {
         for(WeekDay weekDay: buttonIdStrToWeekDayMap.values()) {
@@ -194,6 +218,16 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    private void setCurrentButtonSelected(Button currentButton) {
+        for (Button weekDayButton : weekDayButtons) {
+            if (weekDayButton == currentButton) {
+                weekDayButton.setBackgroundResource(R.drawable.day_button_selected_round_corns);
+            } else {
+                weekDayButton.setBackgroundResource(R.drawable.day_button_unselected_round_corns);
+            }
+        }
     }
 }
 

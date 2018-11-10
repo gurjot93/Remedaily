@@ -9,25 +9,32 @@
         android:id="@+id/editTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/removeTimeButton"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/removeTimeButton"
+        android:layout_marginEnd="68dp"
+        android:background="@drawable/day_button_unselected_round_corns"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <ImageButton
         android:id="@+id/removeTimeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="66dp"
+        android:background="@drawable/day_button_unselected_round_corns"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <TextView
         android:id="@+id/timeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="51dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="83dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="45dp"
-        android:ems="10" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/list_item_time_rounded_corners"
+        android:ems="10"
+        android:text="04:21"
+        android:textAlignment="center"
+        android:textSize="24sp" />
 </RelativeLayout>

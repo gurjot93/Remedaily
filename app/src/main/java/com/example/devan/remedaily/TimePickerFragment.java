@@ -12,31 +12,20 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.List;
 
 public class TimePickerFragment extends DialogFragment {
     // source : http://www.zoftino.com/android-timepicker-example
 
     private TimeEntry selectedTime;
-    private Button saveButton;
-    private TimeListAdapter timeListAdapter;
-    ArrayList<TimeEntry> selectedTimes;
     int position;
-
-    public void setSelectedTimes(ArrayList<TimeEntry> selectedTimes) {
-        this.selectedTimes = selectedTimes;
-    }
-
-    public void setTimeListAdapter(TimeListAdapter timeListAdapter) {
-        this.timeListAdapter = timeListAdapter;
-    }
-
-    public void setSaveButton(Button saveButton) {
-        this.saveButton = saveButton;
-    }
+    AddNewMedicineActivity addNewMedicineActivityObj;
 
     public void setPosition(final int position) {
         this.position = position;
+    }
+
+    public void setAddNewMedicineActivityObj(AddNewMedicineActivity addNewMedicineActivityObj) {
+        this.addNewMedicineActivityObj = addNewMedicineActivityObj;
     }
 
     @Override
@@ -55,23 +44,27 @@ public class TimePickerFragment extends DialogFragment {
             new TimePickerDialog.OnTimeSetListener() {
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     selectedTime = new TimeEntry(hourOfDay, minute);
+                    for(TimeEntry timeEntry : addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList()) {
+                        if(selectedTime.compareTo(timeEntry) == 0) {
+                            Toast.makeText(getActivity(), "Not added - attempt to add existing time" +
+                                    String.format("%02d",hourOfDay) + ":" +
+                                            String.format("%02d",minute)
+                                    , Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
                     if(position >= 0) {
-                        selectedTimes.set(position, selectedTime);
+                        addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList().set(position, selectedTime);
                     }
                     else {
-                        selectedTimes.add(selectedTime);
+                        addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList().add(selectedTime);
                     }
-                    saveButton.setEnabled(true);
+                    addNewMedicineActivityObj.getSaveButton().setEnabled(true);
+                    addNewMedicineActivityObj.getCurrentButton().setTextColor(
+                            addNewMedicineActivityObj.getResources().getColor(R.color.colorBlue));
 
-                    Toast.makeText(getActivity(), "selected time is "
-                                    + hourOfDay +
-                                    " : " + minute
-                            , Toast.LENGTH_SHORT).show();
-                    Collections.sort(selectedTimes);
-                    timeListAdapter.notifyDataSetChanged();
-
+                    Collections.sort(addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList());
+                    addNewMedicineActivityObj.getTimeListAdapter().notifyDataSetChanged();
                 }
             };
-
-
 }
