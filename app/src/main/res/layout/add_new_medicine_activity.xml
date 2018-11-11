@@ -33,7 +33,7 @@
                     android:hint="medicine name"
                     android:inputType="text"
                     android:textColor="@android:color/black"
-                    android:textColorHint="@color/colorButtonText"
+                    android:textColorHint="@color/colorBlack"
                     android:textSize="20sp"
                     android:textStyle="italic" />
 
@@ -48,7 +48,7 @@
                     android:hint="medicine dosage"
                     android:inputType="text"
                     android:textColor="@android:color/black"
-                    android:textColorHint="@color/colorButtonText"
+                    android:textColorHint="@color/colorBlack"
                     android:textSize="20sp"
                     android:textStyle="italic" />
 
@@ -63,7 +63,7 @@
                     android:background="@drawable/day_button_unselected_round_corns"
                     android:text="Weekly"
                     android:textAlignment="center"
-                    android:textColor="@color/colorButtonText"
+                    android:textColor="@color/colorBlack"
                     android:textSize="24sp"/>
 
                 <RelativeLayout
@@ -88,8 +88,9 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/day_button_unselected_round_corns"
                                     style="?android:attr/borderlessButtonStyle"
+                                    android:layout_margin="1px"
                                     android:text="Mo"
-                                    android:textColor="@color/colorButtonText"
+                                    android:textColor="@color/colorBlack"
                                     android:textSize="25sp" />
 
                                 <Button
@@ -99,8 +100,9 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/day_button_unselected_round_corns"
                                     style="?android:attr/borderlessButtonStyle"
+                                    android:layout_margin="1px"
                                     android:text="Tu"
-                                    android:textColor="@color/colorButtonText"
+                                    android:textColor="@color/colorBlack"
                                     android:textSize="25sp" />
 
                                 <Button
@@ -110,8 +112,9 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/day_button_unselected_round_corns"
                                     style="?android:attr/borderlessButtonStyle"
+                                    android:layout_margin="1px"
                                     android:text="We"
-                                    android:textColor="@color/colorButtonText"
+                                    android:textColor="@color/colorBlack"
                                     android:textSize="25sp" />
 
                                 <Button
@@ -121,8 +124,9 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/day_button_unselected_round_corns"
                                     style="?android:attr/borderlessButtonStyle"
+                                    android:layout_margin="1px"
                                     android:text="Th"
-                                    android:textColor="@color/colorButtonText"
+                                    android:textColor="@color/colorBlack"
                                     android:textSize="25sp" />
 
                                 <Button
@@ -132,8 +136,9 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/day_button_unselected_round_corns"
                                     style="?android:attr/borderlessButtonStyle"
+                                    android:layout_margin="1px"
                                     android:text="Fr"
-                                    android:textColor="@color/colorButtonText"
+                                    android:textColor="@color/colorBlack"
                                     android:textSize="25sp" />
 
                                 <Button
@@ -143,8 +148,9 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/day_button_unselected_round_corns"
                                     style="?android:attr/borderlessButtonStyle"
+                                    android:layout_margin="1px"
                                     android:text="Sa"
-                                    android:textColor="@color/colorButtonText"
+                                    android:textColor="@color/colorBlack"
                                     android:textSize="25sp" />
 
                                 <Button
@@ -154,8 +160,9 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/day_button_unselected_round_corns"
                                     style="?android:attr/borderlessButtonStyle"
+                                    android:layout_margin="1px"
                                     android:text="Su"
-                                    android:textColor="@color/colorButtonText"
+                                    android:textColor="@color/colorBlack"
                                     android:textSize="25sp" />
                         </LinearLayout>
 

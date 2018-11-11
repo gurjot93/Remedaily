@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.format.DateFormat;
+import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -58,8 +59,12 @@ public class TimePickerFragment extends DialogFragment {
                         addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList().add(selectedTime);
                     }
                     addNewMedicineActivityObj.getSaveButton().setEnabled(true);
-                    addNewMedicineActivityObj.getCurrentButton().setTextColor(
-                            addNewMedicineActivityObj.getResources().getColor(R.color.colorHasTimeEntries));
+                    addNewMedicineActivityObj.getSaveButton().setTextColor(getResources().getColor(R.color.colorBlack));
+                    Button currentButton = addNewMedicineActivityObj.getCurrentButton();
+                    if(null != currentButton) {
+                        currentButton.setTextColor(
+                                addNewMedicineActivityObj.getResources().getColor(R.color.colorHasTimeEntries));
+                    }
 
                     Collections.sort(addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList());
                     addNewMedicineActivityObj.getTimeListAdapter().notifyDataSetChanged();

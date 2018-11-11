@@ -30,9 +30,9 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     private HashMap<String, WeekDay> buttonIdStrToWeekDayMap = new HashMap<>();
 
-    WeekDay currentDay;
-    Button saveButton;
-    Button currentButton;
+    private WeekDay currentDay;
+    private Button saveButton;
+    private Button currentButton;
 
     private TimePickerFragment timePickerFragment;
 
@@ -63,19 +63,23 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                 if(isChecked) {
                     // Add Time button should be active only when week mode selected
                     // or specific day selected
-                    findViewById(R.id.addTimeButton).setEnabled(true);
+                    Button addTimeBtn = (Button)findViewById(R.id.addTimeButton);
+                    addTimeBtn.setEnabled(true);
+                    addTimeBtn.setTextColor(getResources().getColor(R.color.colorBlack));
                     // Discard possibly existing schedules, as we are going to fill all the same
                     // for every wek day:
                     clearCurrentSchedule();
                     // Disable Week days buttons, as all will have the same schedule:
                     enableButtons(false);
-
+                    AddNewMedicineActivity.this.currentButton = null;
                     setListViewAdapter(currentDay);
                 }
                 else {
                     // Add Time button should be active only when week mode selected
                     // or specific day selected
-                    findViewById(R.id.addTimeButton).setEnabled(false);
+                    Button addTimeBtn = (Button)findViewById(R.id.addTimeButton);
+                    addTimeBtn.setEnabled(false);
+                    addTimeBtn.setTextColor(getResources().getColor(R.color.colorButtonText));
                     // Discard possibly existing schedules, as we are going to fill different times
                     // for different week days
                     clearCurrentSchedule();
@@ -104,7 +108,9 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             AddNewMedicineActivity.this.currentButton = currentButton;
                             // Add Time button should be active only when week mode selected
                             // or specific day selected
-                            findViewById(R.id.addTimeButton).setEnabled(true);
+                            Button addTimeBtn = (Button)findViewById(R.id.addTimeButton);
+                            addTimeBtn.setEnabled(true);
+                            addTimeBtn.setTextColor(getResources().getColor(R.color.colorBlack));
                             int buttonId = currentButton.getId();
                             currentDay = buttonIdStrToWeekDayMap.get(Integer.toString(buttonId));
                             setListViewAdapter(currentDay);
@@ -119,6 +125,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
 
         Button addTimeButton = findViewById(R.id.addTimeButton);
+        addTimeButton.setEnabled(false);
         addTimeButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -179,10 +186,16 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private void enableButtons(boolean doEnable) {
         for (Button weekDayButton : weekDayButtons) {
             weekDayButton.setEnabled(doEnable);
-            weekDayButton.setTextColor(getResources().getColor(R.color.colorBlack));
+            if(doEnable) {
+                weekDayButton.setTextColor(getResources().getColor(R.color.colorBlack));
+            }
+            else {
+                weekDayButton.setTextColor(getResources().getColor(R.color.colorButtonText));
+            }
         }
         setCurrentButtonSelected(null);
         saveButton.setEnabled(false); // enabled in TimePickerFragment ont first time stemp creation
+        saveButton.setTextColor(getResources().getColor(R.color.colorButtonText));
     }
 
     private void clearCurrentSchedule() {

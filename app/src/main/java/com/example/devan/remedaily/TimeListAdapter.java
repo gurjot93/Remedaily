@@ -51,12 +51,15 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
                     final int finalPosition = listView.getPositionForView(parentRow);
                     if(null != timeEntriesList.get(finalPosition)) {
                         timeEntriesList.remove(finalPosition);
-                        if(timeEntriesList.size() == 0) {
-                            addNewMedicineActivityObj.currentButton.setTextColor(
+                        if((0 == timeEntriesList.size()) &&
+                                (null != addNewMedicineActivityObj.getCurrentButton())) {
+                            addNewMedicineActivityObj.getCurrentButton().setTextColor(
                                     addNewMedicineActivityObj.getResources().getColor(R.color.colorBlack));
                         }
                         if(addNewMedicineActivityObj.allDaysAreEmpty()) {
-                            addNewMedicineActivityObj.saveButton.setEnabled(false);
+                            addNewMedicineActivityObj.getSaveButton().setEnabled(false);
+                            addNewMedicineActivityObj.getSaveButton().setTextColor(
+                                    addNewMedicineActivityObj.getResources().getColor(R.color.colorButtonText));
                         }
                         Collections.sort(timeEntriesList);
                         TimeListAdapter.this.notifyDataSetChanged();
