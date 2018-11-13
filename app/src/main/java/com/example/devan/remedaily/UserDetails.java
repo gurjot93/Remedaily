@@ -11,7 +11,7 @@ public class UserDetails extends AppCompatActivity {
 
     public EditText firstNameTv,lastNameTv,ageTv;
     public Button saveBtn;
-    public TextView FirstNameError,LastNameError,AgeError;
+    public TextView firstNameError,lastNameError,ageError;
     public String firstName,lastName,age;
 
     @Override
@@ -23,9 +23,9 @@ public class UserDetails extends AppCompatActivity {
         lastNameTv=findViewById(R.id.editTextLastName);
         ageTv=findViewById(R.id.editTextAge);
         saveBtn=findViewById(R.id.saveBtn);
-        FirstNameError=findViewById(R.id.firstNameValidateLbl);
-        LastNameError=findViewById(R.id.lastNameValidateLbl);
-        AgeError=findViewById(R.id.ageValidateLbl);
+        firstNameError=findViewById(R.id.firstNameValidateLbl);
+        lastNameError=findViewById(R.id.lastNameValidateLbl);
+        ageError=findViewById(R.id.ageValidateLbl);
 
         //A method to validate the user input
 
@@ -42,46 +42,46 @@ public class UserDetails extends AppCompatActivity {
 
         firstName=firstNameTv.getText().toString();
         if(firstName.matches("")) {
-            FirstNameError.setText("\u274C"+"First name is required"+"\u274C");
-            FirstNameError.setVisibility(View.VISIBLE);
+            firstNameError.setText("\u274C"+"First name is required"+"\u274C");
+            firstNameError.setVisibility(View.VISIBLE);
         }
         else {
             if (firstName.matches("[a-zA-Z]*")) {
-                FirstNameError.setVisibility(View.INVISIBLE);
+                firstNameError.setVisibility(View.INVISIBLE);
             }
             else {
-                FirstNameError.setText("\u274C"+"Please enter a valid first name!!!"+"\u274C");
-                FirstNameError.setVisibility(View.VISIBLE);
+                firstNameError.setText("\u274C"+"Please enter a valid first name!!!"+"\u274C");
+                firstNameError.setVisibility(View.VISIBLE);
             }
         }
 
         lastName=lastNameTv.getText().toString();
         if(lastName.matches("")) {
-            LastNameError.setText("\u274C"+"Last name is required"+"\u274C");
-            LastNameError.setVisibility(View.VISIBLE);
+            lastNameError.setText("\u274C"+"Last name is required"+"\u274C");
+            lastNameError.setVisibility(View.VISIBLE);
         }
         else {
             if (lastName.matches("[a-zA-Z]*")) {
-                LastNameError.setVisibility(View.INVISIBLE);
+                lastNameError.setVisibility(View.INVISIBLE);
             }
             else {
-                LastNameError.setText("\u274C"+"Please enter a valid last name!!!"+"\u274C");
-                LastNameError.setVisibility(View.VISIBLE);
+                lastNameError.setText("\u274C"+"Please enter a valid last name!!!"+"\u274C");
+                lastNameError.setVisibility(View.VISIBLE);
             }
         }
 
         age=ageTv.getText().toString();
         if(age.matches("")) {
-            AgeError.setText("\u274C"+"Age is required"+"\u274C");
-            AgeError.setVisibility(View.VISIBLE);
+            ageError.setText("\u274C"+"Age is required"+"\u274C");
+            ageError.setVisibility(View.VISIBLE);
         }
         else {
             if (age.matches("[1-9][0-9]{0,2}")) {
-                AgeError.setVisibility(View.INVISIBLE);
+                ageError.setVisibility(View.INVISIBLE);
             }
             else {
-                AgeError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
-                AgeError.setVisibility(View.VISIBLE);
+                ageError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
+                ageError.setVisibility(View.VISIBLE);
             }
         }
     }

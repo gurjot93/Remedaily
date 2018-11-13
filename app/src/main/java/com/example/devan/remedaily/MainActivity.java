@@ -9,16 +9,16 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public Button UserDetailsBtn;
+    public Button userDetailsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UserDetailsBtn=findViewById(R.id.UserDetailsBtn);
+        userDetailsBtn=findViewById(R.id.userDetailsBtn);
 
-        UserDetailsBtn.setOnClickListener(new View.OnClickListener() {
+        userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,UserDetails.class);
