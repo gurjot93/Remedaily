@@ -1,20 +1,23 @@
 package com.example.devan.remedaily;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.devan.remedaily.db.AppDatabase;
 import com.example.devan.remedaily.db.utils.DatabaseInitializer;
 import com.example.devan.remedaily.db.Med;
 
 import java.util.List;
-import java.util.Locale;
-
 public class MainActivity extends AppCompatActivity {
     private AppDatabase mDb;
     private TextView txtView;
+    public Button userDetailsBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         populateDb();
         fetchData();
 
+        userDetailsBtn=findViewById(R.id.userDetailsBtn);
+
+        userDetailsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,UserDetails.class);
+                startActivity(intent);
+            }
+        });
     }
     private void populateDb() {
         DatabaseInitializer.populateSync(mDb);
@@ -40,3 +52,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
