@@ -12,7 +12,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/removeTimeButton"
         android:layout_marginEnd="68dp"
-        android:background="@drawable/day_button_unselected_round_corns"
+        android:background="@drawable/button_round_corners"
         app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <ImageButton
@@ -22,7 +22,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="66dp"
-        android:background="@drawable/day_button_unselected_round_corns"
+        android:background="@drawable/button_round_corners"
         app:srcCompat="@android:drawable/ic_delete" />
 
     <TextView

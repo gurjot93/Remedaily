@@ -1,9 +1,7 @@
 package com.example.devan.remedaily;
 
 import android.annotation.SuppressLint;
-import android.graphics.Typeface;
 import android.support.v4.app.NavUtils;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,8 +11,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +38,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_new_medicine_activity);
+        setContentView(R.layout.add_medicine_activity);
 
         findViewById(R.id.addTimeButton).setEnabled(false);
         saveButton = findViewById(R.id.saveButton);
@@ -104,6 +102,8 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                 public boolean onTouch(View v, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
+                            return false;
+                        case MotionEvent.ACTION_UP:
                             setCurrentButtonSelected(currentButton);
                             AddNewMedicineActivity.this.currentButton = currentButton;
                             // Add Time button should be active only when week mode selected
@@ -114,8 +114,6 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             int buttonId = currentButton.getId();
                             currentDay = buttonIdStrToWeekDayMap.get(Integer.toString(buttonId));
                             setListViewAdapter(currentDay);
-                            return false;
-                        case MotionEvent.ACTION_UP:
                             return false;
                     }
                     return false;
@@ -131,9 +129,9 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        setTimePickerFragment(-1);
                         return false;
                     case MotionEvent.ACTION_UP:
+                        setTimePickerFragment(-1);
                         return false;
                 }
                 return false;
@@ -146,13 +144,15 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
+                        return false;
+                    case MotionEvent.ACTION_UP:
                         // if we are in weekly mode, make each week day have the same, but
                         // independent time entries list
                         if(sameScheduleSwitchButton.isChecked()) {
                             for(WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
                                 ArrayList<TimeEntry> timeEntriesList = weekDay.getTimeEntriesList();
                                 for(TimeEntry timeEntry : currentDay.getTimeEntriesList())
-                                timeEntriesList.add(new TimeEntry(timeEntry.getHour(),timeEntry.getMinute()));
+                                    timeEntriesList.add(new TimeEntry(timeEntry.getHour(),timeEntry.getMinute()));
                             }
                         }
 
@@ -161,8 +161,6 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
                         // here come stuff to be done on save - how do we save schedule and name?
 
-                        return false;
-                    case MotionEvent.ACTION_UP:
                         return false;
                 }
                 return false;
@@ -189,9 +187,13 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             if(doEnable) {
                 weekDayButton.setTextColor(getResources().getColor(R.color.colorBlack));
             }
-            else {
-                weekDayButton.setTextColor(getResources().getColor(R.color.colorButtonText));
-            }
+        }
+        // source : https://stackoverflow.com/questions/8863776/android-layout-wont-redraw-after-setvisibilityview-gone/8863908
+        RelativeLayout weekDaysRelativeLayout = (RelativeLayout) findViewById(R.id.weekDaysRelativeLayout);
+        if(doEnable) {
+            weekDaysRelativeLayout.setVisibility(View.VISIBLE);
+        } else {
+            weekDaysRelativeLayout.setVisibility(View.GONE);
         }
         setCurrentButtonSelected(null);
         saveButton.setEnabled(false); // enabled in TimePickerFragment ont first time stemp creation
@@ -257,7 +259,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             if (weekDayButton == currentButton) {
                 weekDayButton.setBackgroundResource(R.drawable.day_button_selected_round_corns);
             } else {
-                weekDayButton.setBackgroundResource(R.drawable.day_button_unselected_round_corns);
+                weekDayButton.setBackgroundResource(R.drawable.button_round_corners);
             }
         }
     }
