@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignStart="@+id/newMedicineNameField"
                     android:layout_below="@+id/newMedicineDosageField"
-                    android:layout_marginBottom="25dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_marginEnd="15dp"
                     android:background="@drawable/button_round_corners"
                     android:text="Daily"
@@ -75,12 +75,40 @@
                     android:textSize="24sp" />
 
                 <RelativeLayout
+                    android:id="@+id/calenderButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_below="@+id/sameScheduleToAllDaysSwitch"
+                    android:layout_marginBottom="10dp">
+
+                        <Button
+                            android:id="@+id/startDateButton"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="85dp"
+                            android:background="@drawable/calendar_icon" />
+
+                        <Button
+                            android:id="@+id/endDateButton"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginEnd="85dp"
+                            android:background="@drawable/calendar_icon" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:id="@+id/weekDaysRelativeLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/sameScheduleToAllDaysSwitch"
-                    android:layout_marginBottom="25dp"
-                    android:layout_marginEnd="15dp">
+                    android:layout_below="@+id/calenderButtons"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp">
 
                         <LinearLayout
                             android:id="@+id/weekDaysLinearLayout"
@@ -206,7 +234,7 @@
                             android:layout_marginStart="56dp"
                             android:background="@drawable/button_round_corners"
                             android:text="Save"
-                            android:textColor="@color/colorButtonText"
+                            android:textColor="@color/colorBlack"
                             android:textSize="25sp" />
                 </RelativeLayout>
 

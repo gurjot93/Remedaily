@@ -43,6 +43,7 @@ public class TimePickerFragment extends DialogFragment {
             new TimePickerDialog.OnTimeSetListener() {
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     selectedTime = new TimeEntry(hourOfDay, minute);
+                    // check if this is an attempt to add time entry with existing value
                     for(TimeEntry timeEntry : addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList()) {
                         if(selectedTime.compareTo(timeEntry) == 0) {
                             Toast.makeText(getActivity(), "Not added - attempt to add existing time" +
@@ -58,9 +59,7 @@ public class TimePickerFragment extends DialogFragment {
                     else {
                         addNewMedicineActivityObj.getCurrentDay().getTimeEntriesList().add(selectedTime);
                     }
-                    addNewMedicineActivityObj.getSaveButton().setEnabled(true);
-                    addNewMedicineActivityObj.getSaveButton().setTextColor(getResources().getColor(R.color.colorBlack));
-                    Button currentButton = addNewMedicineActivityObj.getCurrentButton();
+                    Button currentButton = addNewMedicineActivityObj.getCurrentDayButton();
                     if(null != currentButton) {
                         currentButton.setTextColor(
                                 addNewMedicineActivityObj.getResources().getColor(R.color.colorHasTimeEntries));

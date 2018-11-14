@@ -52,14 +52,9 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
                     if(null != timeEntriesList.get(finalPosition)) {
                         timeEntriesList.remove(finalPosition);
                         if((0 == timeEntriesList.size()) &&
-                                (null != addNewMedicineActivityObj.getCurrentButton())) {
-                            addNewMedicineActivityObj.getCurrentButton().setTextColor(
+                                (null != addNewMedicineActivityObj.getCurrentDayButton())) {
+                            addNewMedicineActivityObj.getCurrentDayButton().setTextColor(
                                     addNewMedicineActivityObj.getResources().getColor(R.color.colorBlack));
-                        }
-                        if(addNewMedicineActivityObj.allDaysAreEmpty()) {
-                            addNewMedicineActivityObj.getSaveButton().setEnabled(false);
-                            addNewMedicineActivityObj.getSaveButton().setTextColor(
-                                    addNewMedicineActivityObj.getResources().getColor(R.color.colorButtonText));
                         }
                         Collections.sort(timeEntriesList);
                         TimeListAdapter.this.notifyDataSetChanged();
@@ -76,7 +71,6 @@ public class TimeListAdapter extends ArrayAdapter<TimeEntry> {
                     ListView listView = (ListView) parentRow.getParent();
                     final int finalPosition = listView.getPositionForView(parentRow);
                     addNewMedicineActivityObj.setTimePickerFragment(finalPosition);
-
                 }
             });
         }
