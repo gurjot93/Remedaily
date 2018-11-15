@@ -227,16 +227,8 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_UP:
                         if(!scheduleDataIsValidForSaving) {
                             saveButton.setBackgroundResource(R.drawable.button_round_corners);
-                            Toast toast = Toast.makeText(AddNewMedicineActivity.this, ""
-                                    , Toast.LENGTH_SHORT);
-                            toast.setGravity(Gravity.TOP,0,250);
 
-                            //set text size
-                            // source : https://stackoverflow.com/questions/5274354/how-can-we-increase-the-font-size-in-toast
-                            ViewGroup group = (ViewGroup) toast.getView();
-                            TextView messageTextView = (TextView) group.getChildAt(0);
-                            messageTextView.setTextSize(25);
-
+                            Toast toast = getToastDialog();
                             if(medicineName.equals("")) {
                                 toast.setText("Please set medicine name");
                                 toast.show();
@@ -414,17 +406,43 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     }
 
     public void setDateToMedicineSchedule(String date) {
+        Toast toastDialog = getToastDialog();
+
         if(isSettingStartDate) {
-            medicineSchedule.setStartDate(date);
-        }
-        else {
-            if(date.compareTo(medicineSchedule.getStartDate()) > 0) {
-                medicineSchedule.setEndDate(date);
-            } else {
-                Toast.makeText(this, "Date not set - End date not after Start date"
-                                    , Toast.LENGTH_SHORT).show();
+            if(null != medicineSchedule.getEndDate()) {
+                if(date.compareTo(medicineSchedule.getEndDate()) < 0) {
+                    medicineSchedule.setStartDate(date);
+                } else {
+                    toastDialog.setText("Date not set - start day must occur before end date");
+                    toastDialog.show();
+                }
             }
+            medicineSchedule.setStartDate(date);
+        } else {
+            if(null != medicineSchedule.getStartDate()) {
+                if(date.compareTo(medicineSchedule.getStartDate()) > 0) {
+                    medicineSchedule.setEndDate(date);
+                } else {
+                    toastDialog.setText("Date not set - end date must occur after start date");
+                    toastDialog.show();
+                }
+            }
+            medicineSchedule.setEndDate(date);
         }
+    }
+
+    private Toast getToastDialog() {
+        Toast toast = Toast.makeText(AddNewMedicineActivity.this, ""
+                , Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP,0,250);
+
+        //set text size
+        // source : https://stackoverflow.com/questions/5274354/how-can-we-increase-the-font-size-in-toast
+        ViewGroup group = (ViewGroup) toast.getView();
+        TextView messageTextView = (TextView) group.getChildAt(0);
+        messageTextView.setTextSize(25);
+
+        return toast;
     }
 }
 
