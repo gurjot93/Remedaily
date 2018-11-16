@@ -3,12 +3,8 @@
     <string name="fname">First Name:</string>
     <string name="lname">Last Name:</string>
     <string name="age">Enter Age:</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="gender">I am</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
-
     <string name="GoToUserDetailsBtn">User Details</string>
     <string name="MainActivityLabel">Main Activity</string>
     <string name="UserDetailsActivityLabel">User Details</string>

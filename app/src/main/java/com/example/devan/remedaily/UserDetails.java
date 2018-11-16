@@ -51,7 +51,7 @@ public class UserDetails extends AppCompatActivity {
                     firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
                 }
                 else {
-                    firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.Notfocus));
+                    firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
                 }
             }
         });
@@ -63,7 +63,7 @@ public class UserDetails extends AppCompatActivity {
                     lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
                 }
                 else {
-                    lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.Notfocus));
+                    lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
                 }
             }
         });
@@ -75,7 +75,7 @@ public class UserDetails extends AppCompatActivity {
                     ageTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
                 }
                 else {
-                    ageTv.setTextColor(ContextCompat.getColor(context, R.color.Notfocus));
+                    ageTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
                 }
             }
         });

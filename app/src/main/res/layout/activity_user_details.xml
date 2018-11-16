@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#f2f2f2">
+    android:background="@color/colorAccent">
 
 
     <TextView
@@ -30,9 +30,11 @@
         android:ems="10"
         android:textSize="20sp"
         android:hint="Enter your first name"
-        android:textColorLink="#9f6934"
+        android:backgroundTint="@color/DarkBrown"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"
         android:padding="10dp"/>
 
     <TextView
@@ -41,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:fontFamily="sans-serif"
-        android:textColor="#8B4513"
+        android:textColor="@color/DarkBrown"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="invisible"/>
@@ -67,10 +69,12 @@
         android:ems="10"
         android:textSize="20sp"
         android:hint="Enter your last name"
-        android:textColorLink="@android:color/background_dark"
+        android:backgroundTint="@color/DarkBrown"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/lastNameValidateLbl"
@@ -78,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:fontFamily="sans-serif"
-        android:textColor="#8B4513"
+        android:textColor="@color/DarkBrown"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="invisible"/>
@@ -106,10 +110,12 @@
         android:textSize="20sp"
         android:hint="Enter your age"
         android:inputType="number"
-        android:textColorLink="@android:color/background_dark"
+        android:backgroundTint="@color/DarkBrown"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/ageValidateLbl"
@@ -117,68 +123,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:fontFamily="sans-serif"
-        android:textColor="#8B4513"
+        android:textColor="@color/DarkBrown"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="invisible"/>
-
-
-
-
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/genderLbl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="1"
-            android:fontFamily="@font/roboto"
-            android:text="@string/gender"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="5dp"/>
-
-        <RadioButton
-            android:id="@+id/radioButtonMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/radio"
-            android:checked="true"
-            android:fontFamily="@font/roboto"
-            android:text="@string/male"
-            android:textSize="18sp"
-            />
-
-        <RadioButton
-            android:id="@+id/radioButtonFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/radio"
-            android:fontFamily="@font/roboto"
-            android:text="@string/female"
-            android:textSize="18sp" />
-
-    </RadioGroup>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="20dp">
         <Button
             android:id="@+id/saveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"
             android:textSize="25sp"
@@ -194,7 +154,7 @@
             android:background="@drawable/buttonshape"
             android:layout_margin="5dp"
             android:textSize="25sp"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 
