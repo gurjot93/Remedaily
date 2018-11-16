@@ -18,6 +18,7 @@
         android:background="@drawable/buttonshape"
         android:layout_margin="15dp"
         android:textSize="25sp"
+        android:textColor="#ffffff"
         android:layout_gravity="center_horizontal"
         />
 
