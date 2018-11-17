@@ -21,6 +21,8 @@
             android:label="Main Activity"/>
         <activity android:name=".UserDetails"
             android:label="User Details"></activity>
+        <activity android:name=".Home"
+            android:label="Home"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

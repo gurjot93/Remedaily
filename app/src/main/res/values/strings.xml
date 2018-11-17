@@ -8,5 +8,6 @@
     <string name="GoToUserDetailsBtn">User Details</string>
     <string name="MainActivityLabel">Main Activity</string>
     <string name="UserDetailsActivityLabel">User Details</string>
-
+    <string name="NoUpcomingMedicine">NO UPCOMING MEDICINE</string>
+    <string name="NoMissedMedicine">NO MISSED MEDICINE</string>
 </resources>
