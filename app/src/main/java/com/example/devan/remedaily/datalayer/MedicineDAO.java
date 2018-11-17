@@ -1,3 +1,9 @@
+/*
+    Page Name : Home.java
+    Author : Deep Singh (B00792279)
+    Purpose : DataStub layer
+ */
+
 package com.example.devan.remedaily.datalayer;
 
 import java.text.SimpleDateFormat;

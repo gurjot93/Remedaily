@@ -1,3 +1,11 @@
+/*
+    Page Name : Home.java
+    Author : Deep Singh (B00792279)
+    Purpose : Data Layer for the home page. It feeds the medicine information from the
+    datalayer/Medicine.java file
+
+ */
+
 package com.example.devan.remedaily.datalayer;
 
 import java.util.ArrayList;

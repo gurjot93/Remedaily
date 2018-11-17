@@ -1,3 +1,12 @@
+/*
+    Page Name : Home.java
+    Author : Deep Singh (B00792279)
+    Purpose : Business Layer for the home page. It feeds the medicine information from the
+    datalayer/MedicineDataLayer.java file
+
+ */
+
+
 package com.example.devan.remedaily.businesslayer;
 
 import com.example.devan.remedaily.Models.Medicine;

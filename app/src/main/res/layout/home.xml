@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--
+    Page name : Home.xml
+    Author : Deep Singh (B00792279)
+    Purpose : This XML shows the missed and upcoming medicine list
+
+-->
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
