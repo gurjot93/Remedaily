@@ -12,7 +12,7 @@ public class MedicineBusinessLayer {
     public ArrayList<Medicine> getUpcomingMedicineList() throws ParseException {
 
         // set current arraylist of medicines to null
-        ArrayList<Medicine> medicineArrayList = null;
+        ArrayList<Medicine> medicineArrayList = new ArrayList<>();
 
         // now we need to get the upcoming medicine list from the database
         MedicineDataLayer medicineDataObject = new MedicineDataLayer();
@@ -20,7 +20,24 @@ public class MedicineBusinessLayer {
 
         // iterate it
         for(int i=0; i<medicineDAO.size(); i++){
-            medicineArrayList.add(new Medicine(Integer.parseInt(medicineDAO.get(i)[0].toString()),medicineDAO.get(i)[1].toString(),medicineDAO.get(i)[2].toString(), new SimpleDateFormat("dd/MM/yyyy").parse(medicineDAO.get(i)[4].toString())));
+            medicineArrayList.add(new Medicine(Integer.parseInt(medicineDAO.get(i)[0].toString()),medicineDAO.get(i)[1].toString(),medicineDAO.get(i)[2].toString(), medicineDAO.get(i)[4].toString()));
+        }
+
+        return medicineArrayList;
+    }
+
+    public ArrayList<Medicine> getMissedMedicineList()throws ParseException {
+
+        // set current arraylist of medicines to null
+        ArrayList<Medicine> medicineArrayList = new ArrayList<>();
+
+        // now we need to get the upcoming medicine list from the database
+        MedicineDataLayer medicineDataObject = new MedicineDataLayer();
+        ArrayList<Object[]> medicineDAO = medicineDataObject.getMissedMedicineList();
+
+        // iterate it
+        for(int i=0; i<medicineDAO.size(); i++){
+            medicineArrayList.add(new Medicine(Integer.parseInt(medicineDAO.get(i)[0].toString()),medicineDAO.get(i)[1].toString(),medicineDAO.get(i)[2].toString(), medicineDAO.get(i)[4].toString()));
         }
 
         return medicineArrayList;

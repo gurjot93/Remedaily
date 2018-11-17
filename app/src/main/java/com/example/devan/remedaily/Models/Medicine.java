@@ -6,9 +6,9 @@ public class Medicine {
     private final int medicineImage;
     private final String medicineName;
     private final String medicineDosage;
-    private final Date dateTimeRegistered;
+    private final String dateTimeRegistered;
 
-    public Medicine(int medicineImage, String medicineName, String medicineDosage, Date dateTimeRegistered){
+    public Medicine(int medicineImage, String medicineName, String medicineDosage, String dateTimeRegistered){
         this.medicineImage = medicineImage;
         this.medicineName = medicineName;
         this.medicineDosage = medicineDosage;
@@ -27,7 +27,7 @@ public class Medicine {
         return this.medicineDosage;
     }
 
-    public Date getDateTimeRegistered(){
+    public String getDateTimeRegistered(){
         return this.dateTimeRegistered;
     }
 }
