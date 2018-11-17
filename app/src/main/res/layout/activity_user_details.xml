@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/background2">
+    android:background="@color/colorAccent">
 
 
     <TextView
@@ -15,11 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:alpha="0.8"
-        android:fontFamily="@font/merriweather_sans_bold_italic"
+        android:alpha="1"
+        android:fontFamily="@font/roboto"
         android:text="@string/fname"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 
@@ -27,13 +27,14 @@
         android:id="@+id/editTextFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
         android:ems="10"
         android:textSize="20sp"
         android:hint="Enter your first name"
-        android:textColorLink="@android:color/background_dark"
+        android:backgroundTint="@color/DarkBrown"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"
         android:padding="10dp"/>
 
     <TextView
@@ -41,12 +42,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:background="#000000"
         android:fontFamily="sans-serif"
-        android:textColor="#FFFF33"
+        android:textColor="@color/DarkBrown"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:alpha="0.9"
         android:visibility="invisible"/>
 
     <TextView
@@ -55,11 +54,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:alpha="0.8"
-        android:fontFamily="@font/merriweather_sans_bold_italic"
+        android:alpha="1"
+        android:fontFamily="@font/roboto"
         android:text="@string/lname"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 
@@ -67,26 +66,25 @@
         android:id="@+id/editTextLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
         android:ems="10"
         android:textSize="20sp"
         android:hint="Enter your last name"
-        android:textColorLink="@android:color/background_dark"
+        android:backgroundTint="@color/DarkBrown"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/lastNameValidateLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:background="#000000"
         android:fontFamily="sans-serif"
-        android:textColor="#FFFF33"
+        android:textColor="@color/DarkBrown"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:alpha="0.9"
         android:visibility="invisible"/>
 
     <TextView
@@ -95,11 +93,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:alpha="0.8"
-        android:fontFamily="@font/merriweather_sans_bold_italic"
+        android:alpha="1"
+        android:fontFamily="@font/roboto"
         android:text="@string/age"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         />
 
@@ -108,77 +106,39 @@
         android:id="@+id/editTextAge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
         android:ems="10"
         android:textSize="20sp"
         android:hint="Enter your age"
         android:inputType="number"
-        android:textColorLink="@android:color/background_dark"
+        android:backgroundTint="@color/DarkBrown"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/ageValidateLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:background="#000000"
         android:fontFamily="sans-serif"
-        android:textColor="#FFFF33"
+        android:textColor="@color/DarkBrown"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:alpha="0.9"
         android:visibility="invisible"/>
-
-    <TextView
-        android:id="@+id/genderLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:alpha="0.8"
-        android:fontFamily="@font/merriweather_sans_bold_italic"
-        android:text="@string/gender"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/radioButtonMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/radio"
-            android:checked="true"
-            android:fontFamily="@font/merriweather_sans_bold_italic"
-            android:text="@string/male"
-            android:textSize="20sp" />
-
-        <RadioButton
-            android:id="@+id/radioButtonFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/radio"
-            android:fontFamily="@font/merriweather_sans_bold_italic"
-            android:text="@string/female"
-            android:textSize="20sp" />
-
-    </RadioGroup>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="20dp">
         <Button
             android:id="@+id/saveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save"
+            android:textColor="@color/white"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"
             android:textSize="25sp"
@@ -194,6 +154,7 @@
             android:background="@drawable/buttonshape"
             android:layout_margin="5dp"
             android:textSize="25sp"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 
