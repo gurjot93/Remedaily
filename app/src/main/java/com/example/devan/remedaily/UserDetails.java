@@ -9,19 +9,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.devan.remedaily.db.AppDatabase;
+import com.example.devan.remedaily.db.Med;
+import com.example.devan.remedaily.db.User;
+import com.example.devan.remedaily.db.utils.DatabaseInitializer;
+
+import java.util.List;
+
 public class UserDetails extends AppCompatActivity {
 
     public TextView firstNameTv,lastNameTv,ageTv;
     public EditText firstNameEd,lastNameEd,ageEd;
-    public Button saveBtn;
-    public TextView firstNameError,lastNameError,ageError;
+    public Button saveBtn, cancelBtn;
+    public TextView firstNameError,lastNameError,ageError,showDB;
     public String firstName,lastName,age;
     public Context context;
+    AppDatabase appData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
-
+        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         firstNameEd=findViewById(R.id.editTextFirstName);
         lastNameEd=findViewById(R.id.editTextLastName);
         ageEd=findViewById(R.id.editTextAge);
@@ -32,6 +41,7 @@ public class UserDetails extends AppCompatActivity {
         firstNameTv=findViewById(R.id.firstNameLbl);
         lastNameTv=findViewById(R.id.lastNameLbl);
         ageTv=findViewById(R.id.ageLbl);
+        cancelBtn = findViewById(R.id.cancelBtn);
         context=this;
 
         //A method to validate the user input
@@ -40,7 +50,20 @@ public class UserDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Validations();
+                DatabaseInitializer.insertSyncUser(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+            }
+        });
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder sb = new StringBuilder();
+                List<User> youngUsers = DatabaseInitializer.showUsers(appData);
 
+                for (User youngUser : youngUsers) {
+                    sb.append(String.format(
+                            "%s, %s , %s\n", youngUser.firstName, youngUser.lastName, youngUser.age));
+                }
+                firstNameTv.setText(sb);
             }
         });
 

@@ -1,35 +1,20 @@
 /*
- * Copyright 2017, The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+Created by Devanshu Srivastava
+Contains the business logic for Database
+*/
 
 package com.example.devan.remedaily.db.utils;
 
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import android.util.Log;
-
 import com.example.devan.remedaily.db.AppDatabase;
 import com.example.devan.remedaily.db.Med;
-
+import com.example.devan.remedaily.db.User;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class DatabaseInitializer {
-
-    // Simulate a blocking operation delaying each Loan insertion with a delay:
-    private static final int DELAY_MILLIS = 500;
 
     public static void populateAsync(final AppDatabase db) {
 
@@ -39,6 +24,19 @@ public class DatabaseInitializer {
 
     public static void populateSync(@NonNull final AppDatabase db) {
         populateWithTestData(db);
+    }
+
+    public static void populateSyncUser(@NonNull final AppDatabase db) {
+        populateWithTestDataUser(db);
+    }
+
+    public static void insertSyncUser(@NonNull final AppDatabase db,final String FirstName,
+                                      final String LastName, final String Age) {
+        insertWithTestDataUser(db,FirstName,
+        LastName, Age);
+    }
+    public static List<User>  showUsers(@NonNull final AppDatabase db) {
+        return showActiveUser(db);
     }
 
     private static Med addMed(final AppDatabase db, final String id, final String medname,
@@ -52,36 +50,37 @@ public class DatabaseInitializer {
         return med;
     }
 
+    private static User addUser(final AppDatabase db, final String FirstName,
+                              final String LastName, final String Age) {
+        User user = new User();
+        user.firstName = FirstName;
+        user.lastName = LastName;
+        user.age = Age;
+        db.userModel().insertUser(user);
+        return user;
+    }
+
     private static void populateWithTestData(AppDatabase db) {
         db.medModel().deleteAll();
-
         Med med1 = addMed(db, "1", "Paracetamol", "January, 2018", "February, 2019");
         Med med2 = addMed(db, "2", "Sporlac", "December, 2018", "March, 2019");
         Med med3 = addMed(db, "3", "Azithromicin", "March, 2018", "April, 2019");
+    }
+    private static void populateWithTestDataUser(AppDatabase db) {
+        db.userModel().deleteUser();
 
-//        try {
-//            // Loans are added with a delay, to have time for the UI to react to changes.
-//
-//            Date today = getTodayPlusDays(0);
-//            Date yesterday = getTodayPlusDays(-1);
-//            Date twoDaysAgo = getTodayPlusDays(-2);
-//            Date lastWeek = getTodayPlusDays(-7);
-//            Date twoWeeksAgo = getTodayPlusDays(-14);
-//
-//            addLoan(db, "1", user1, book1, twoWeeksAgo, lastWeek);
-//            Thread.sleep(DELAY_MILLIS);
-//            addLoan(db, "2", user2, book1, lastWeek, yesterday);
-//            Thread.sleep(DELAY_MILLIS);
-//            addLoan(db, "3", user2, book2, lastWeek, today);
-//            Thread.sleep(DELAY_MILLIS);
-//            addLoan(db, "4", user2, book3, lastWeek, twoDaysAgo);
-//            Thread.sleep(DELAY_MILLIS);
-//            addLoan(db, "5", user2, book4, lastWeek, today);
-//            Log.d("DB", "Added loans");
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        User med1 = addUser(db,  "Paracetamol", "January, 2018", "February, 2019");
+        User med2 = addUser(db,  "Sporlac", "December, 2018", "March, 2019");
+    }
+    private static void insertWithTestDataUser(AppDatabase db,final String FirstName,
+                                               final String LastName, final String Age) {
+        db.userModel().deleteUser();
+        User med1 = addUser(db,FirstName,LastName,Age);
+    }
+
+    private static List<User>  showActiveUser(AppDatabase db) {
+        List<User>  med1 = db.userModel().loadAllUsers();
+        return med1;
     }
 
     private static Date getTodayPlusDays(int daysAgo) {

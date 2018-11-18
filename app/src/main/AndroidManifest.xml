@@ -20,9 +20,9 @@
         <activity android:name=".MainActivity"
             android:label="Main Activity"/>
         <activity android:name=".UserDetails"
-            android:label="User Details"></activity>
+            android:label="User Details"/>
         <activity android:name=".Home"
-            android:label="Home"></activity>
+            android:label="Home"/>
 
         <meta-data
             android:name="preloaded_fonts"
