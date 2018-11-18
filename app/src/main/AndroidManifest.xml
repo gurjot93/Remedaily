@@ -16,11 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddNewMedicineActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.devan.remedaily.SplashScreen" />
-        </activity>
+        <activity android:name=".AddNewMedicineActivity"></activity>
     </application>
 
 </manifest>
