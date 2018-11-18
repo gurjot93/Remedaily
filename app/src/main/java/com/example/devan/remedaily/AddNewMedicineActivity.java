@@ -3,6 +3,7 @@ package com.example.devan.remedaily;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
@@ -109,11 +110,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
         ((Button)findViewById(R.id.startDateButton)).setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         return false;
                     case MotionEvent.ACTION_UP:
+                        if(buttonNotInFocus(view, event)) {
+                            return false;
+                        }
                         AddNewMedicineActivity.this.isSettingStartDate = true;
                         setDatePickerFragment();
                         return false;
@@ -125,11 +129,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
         ((Button)findViewById(R.id.endDateButton)).setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         return false;
                     case MotionEvent.ACTION_UP:
+                        if(buttonNotInFocus(view, event)) {
+                            return false;
+                        }
                         AddNewMedicineActivity.this.isSettingStartDate = false;
                         setDatePickerFragment();
                         return false;
@@ -149,11 +156,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             weekDayButtons[weekDayIndex] = currentDayButton;
             currentDayButton.setOnTouchListener(new View.OnTouchListener() {
                 @Override
-                public boolean onTouch(View v, MotionEvent event) {
+                public boolean onTouch(View view, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
                             return false;
                         case MotionEvent.ACTION_UP:
+                            if(buttonNotInFocus(view, event)) {
+                                return false;
+                            }
                             setCurrentDayButtonSelected(currentDayButton);
                             AddNewMedicineActivity.this.currentDayButton = currentDayButton;
                             // Add Time button should be active only when week mode selected
@@ -176,11 +186,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         addTimeButton.setEnabled(false);
         addTimeButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         return false;
                     case MotionEvent.ACTION_UP:
+                        if(buttonNotInFocus(view, event)) {
+                            return false;
+                        }
                         setTimePickerFragment(-1);
                         return false;
                 }
@@ -191,7 +204,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
         saveButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(View view, MotionEvent event) {
                 String medicineName = ((EditText)findViewById(R.id.newMedicineNameField)).getText().toString();
                 String medicineDosage = ((EditText)findViewById(R.id.newMedicineDosageField)).getText().toString();
                 boolean isDaily = sameScheduleSwitchButton.isChecked();
@@ -220,13 +233,16 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         if(!scheduleDataIsValidForSaving) {
-                            saveButton.setBackgroundResource(R.drawable.button_round_corners_error);
+                            saveButton.setBackgroundResource(R.drawable.button_error);
                             return false;
                         }
                         return false;
                     case MotionEvent.ACTION_UP:
+                        if(buttonNotInFocus(view, event)) {
+                            return false;
+                        }
                         if(!scheduleDataIsValidForSaving) {
-                            saveButton.setBackgroundResource(R.drawable.button_round_corners);
+                            saveButton.setBackgroundResource(R.drawable.button);
 
                             Toast toast = getToastDialog();
                             if(medicineName.equals("")) {
@@ -400,7 +416,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             if (weekDayButton == currentDayButton) {
                 weekDayButton.setBackgroundResource(R.drawable.day_button_selected_round_corns);
             } else {
-                weekDayButton.setBackgroundResource(R.drawable.button_round_corners);
+                weekDayButton.setBackgroundResource(R.drawable.button);
             }
         }
     }
@@ -443,6 +459,20 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         messageTextView.setTextSize(25);
 
         return toast;
+    }
+
+    private boolean buttonNotInFocus(View view, MotionEvent event) {
+        Rect rect = new Rect();
+        // get the View's (Button's) Rect relative to its parent
+        view.getHitRect(rect);
+        // offset the touch coordinates with the values from r
+        // to obtain meaningful coordinates
+        final float x = event.getX() + rect.left;
+        final float y = event.getY() + rect.top;
+        if (!rect.contains((int) x, (int) y)) {
+            return true;
+        }
+        return false;
     }
 }
 
