@@ -13,7 +13,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(50);
+                    sleep(1000);
                     Intent intent = new  Intent(getApplicationContext(),AddNewMedicineActivity.class);
                     startActivity(intent);
                 } catch (InterruptedException e) {
