@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // click on hamburger icon or back arrow
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayout.addDrawerListener(drawerToggle);
 
 //        // Called when invalidateOptionsMenu() is invoked
 //        public boolean onPrepareOptionsMenu(Menu menu) {
@@ -115,15 +116,25 @@ public class MainActivity extends AppCompatActivity {
      * is selected.
      * */
     private void selectItemFromDrawer(int position) {
-        Fragment fragment = new PreferencesFragment();
+        switch (position){
+            case 0 :
+                // first menu item clicked
+                // create appropriate intention
+                break;
+            case 1 :
+                // second menu item clicked
+                // create appropriate intention
+                break;
+            case 2 :
+                // thirdt menu item clicked
+                // create appropriate intention
+                break;
+        }
 
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.mainContent, fragment)
-                .commit();
+//        drawerListView.setItemChecked(position, true);
+//        setTitle(navigationItems.get(position).title);
 
-        drawerListView.setItemChecked(position, true);
-        setTitle(navigationItems.get(position).title);
+        // start new activity
 
         // Close the drawer
         drawerLayout.closeDrawer(drawerPane);
