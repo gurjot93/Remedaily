@@ -1,12 +1,15 @@
-package com.example.devan.remedaily.db;
+package com.example.devan.remedaily.datalayer;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
+import com.example.devan.remedaily.datalayer.User;
+
 import java.util.List;
 
 import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
+
 @Dao
 
 public interface UserDao {
@@ -17,8 +20,8 @@ public interface UserDao {
     User loadUsersbyName(String firstName);
 
     @Insert(onConflict = IGNORE)
-    void insertUser(User user);
+    Long insertUser(User user);
 
     @Query("DELETE FROM user")
-    void deleteUser();
+    int deleteUser();
 }

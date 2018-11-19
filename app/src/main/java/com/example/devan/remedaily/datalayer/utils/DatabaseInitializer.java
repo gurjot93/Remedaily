@@ -3,13 +3,13 @@ Created by Devanshu Srivastava
 Contains the business logic for Database
 */
 
-package com.example.devan.remedaily.db.utils;
+package com.example.devan.remedaily.datalayer.utils;
 
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
-import com.example.devan.remedaily.db.AppDatabase;
-import com.example.devan.remedaily.db.Med;
-import com.example.devan.remedaily.db.User;
+import com.example.devan.remedaily.datalayer.AppDatabase;
+import com.example.devan.remedaily.datalayer.Med;
+import com.example.devan.remedaily.datalayer.User;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -26,15 +26,6 @@ public class DatabaseInitializer {
         populateWithTestData(db);
     }
 
-    public static void populateSyncUser(@NonNull final AppDatabase db) {
-        populateWithTestDataUser(db);
-    }
-
-    public static void insertSyncUser(@NonNull final AppDatabase db,final String FirstName,
-                                      final String LastName, final String Age) {
-        insertWithTestDataUser(db,FirstName,
-        LastName, Age);
-    }
     public static List<User>  showUsers(@NonNull final AppDatabase db) {
         return showActiveUser(db);
     }
@@ -50,15 +41,7 @@ public class DatabaseInitializer {
         return med;
     }
 
-    private static User addUser(final AppDatabase db, final String FirstName,
-                              final String LastName, final String Age) {
-        User user = new User();
-        user.firstName = FirstName;
-        user.lastName = LastName;
-        user.age = Age;
-        db.userModel().insertUser(user);
-        return user;
-    }
+
 
     private static void populateWithTestData(AppDatabase db) {
         db.medModel().deleteAll();
@@ -66,17 +49,7 @@ public class DatabaseInitializer {
         Med med2 = addMed(db, "2", "Sporlac", "December, 2018", "March, 2019");
         Med med3 = addMed(db, "3", "Azithromicin", "March, 2018", "April, 2019");
     }
-    private static void populateWithTestDataUser(AppDatabase db) {
-        db.userModel().deleteUser();
 
-        User med1 = addUser(db,  "Paracetamol", "January, 2018", "February, 2019");
-        User med2 = addUser(db,  "Sporlac", "December, 2018", "March, 2019");
-    }
-    private static void insertWithTestDataUser(AppDatabase db,final String FirstName,
-                                               final String LastName, final String Age) {
-        db.userModel().deleteUser();
-        User med1 = addUser(db,FirstName,LastName,Age);
-    }
 
     private static List<User>  showActiveUser(AppDatabase db) {
         List<User>  med1 = db.userModel().loadAllUsers();
