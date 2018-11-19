@@ -23,7 +23,8 @@
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
+            android:gravity="center_vertical"
             android:text="Menu"
             android:layout_marginStart="10dp"
             android:textColor="#ffffff"
