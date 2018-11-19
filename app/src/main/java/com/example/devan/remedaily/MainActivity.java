@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        navigationItems.add(new NavigationItem("Home", "Meetup destination", R.drawable.ic_home));
-        navigationItems.add(new NavigationItem("Preferences", "Change your preferences", R.drawable.ic_settings));
-        navigationItems.add(new NavigationItem("About", "Get to know about us", R.drawable.ic_info));
+        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
+        navigationItems.add(new NavigationItem("Calender", "", R.drawable.calender_icon_white_128));
+        navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
 
         // DrawerLayout
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -192,11 +192,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             TextView titleView = (TextView) view.findViewById(R.id.drawerMenuItemTitle);
-            TextView subtitleView = (TextView) view.findViewById(R.id.drawerMenuItemSubTitle);
             ImageView iconView = (ImageView) view.findViewById(R.id.drawerMenuItemIcon);
 
             titleView.setText( navigationItems.get(position).title );
-            subtitleView.setText( navigationItems.get(position).subtitle );
             iconView.setImageResource(navigationItems.get(position).icon);
 
             return view;
