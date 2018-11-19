@@ -1,18 +1,17 @@
-package com.example.devan.remedaily;
+/*Creator Aaditya Ghadvi*/
+package com.example.devan.remedaily.View;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.example.devan.remedaily.db.AppDatabase;
-import com.example.devan.remedaily.db.Med;
-import com.example.devan.remedaily.db.User;
-import com.example.devan.remedaily.db.utils.DatabaseInitializer;
+import com.example.devan.remedaily.R;
+import com.example.devan.remedaily.businesslayer.UserDetailsBusinessLayer;
+import com.example.devan.remedaily.datalayer.AppDatabase;
 
 import java.util.List;
 
@@ -24,7 +23,8 @@ public class UserDetails extends AppCompatActivity {
     public TextView firstNameError,lastNameError,ageError,showDB;
     public String firstName,lastName,age;
     public Context context;
-    AppDatabase appData;
+    private boolean isValidate = true;
+    public AppDatabase appData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +49,19 @@ public class UserDetails extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Validations();
-                DatabaseInitializer.insertSyncUser(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+                if(Validations()){
+                    try {
+                        UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         });
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringBuilder sb = new StringBuilder();
-                List<User> youngUsers = DatabaseInitializer.showUsers(appData);
-
-                for (User youngUser : youngUsers) {
-                    sb.append(String.format(
-                            "%s, %s , %s\n", youngUser.firstName, youngUser.lastName, youngUser.age));
-                }
-                firstNameTv.setText(sb);
+                /*TODO*/
             }
         });
 
@@ -102,14 +100,13 @@ public class UserDetails extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
-    public  void Validations(){
+    public boolean Validations(){
 
         firstName=firstNameEd.getText().toString();
         if(firstName.matches("")) {
+            isValidate =true;
             firstNameError.setText("\u274C"+"First name is required"+"\u274C");
             firstNameError.setVisibility(View.VISIBLE);
         }
@@ -125,6 +122,7 @@ public class UserDetails extends AppCompatActivity {
 
         lastName=lastNameEd.getText().toString();
         if(lastName.matches("")) {
+            isValidate =true;
             lastNameError.setText("\u274C"+"Last name is required"+"\u274C");
             lastNameError.setVisibility(View.VISIBLE);
         }
@@ -140,6 +138,7 @@ public class UserDetails extends AppCompatActivity {
 
         age=ageEd.getText().toString();
         if(age.matches("")) {
+            isValidate =true;
             ageError.setText("\u274C"+"Age is required"+"\u274C");
             ageError.setVisibility(View.VISIBLE);
         }
@@ -154,7 +153,7 @@ public class UserDetails extends AppCompatActivity {
                 ageError.setVisibility(View.VISIBLE);
             }
         }
+    return isValidate ;
     }
-
 }
 

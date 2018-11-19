@@ -1,4 +1,4 @@
-package com.example.devan.remedaily.db;
+package com.example.devan.remedaily.datalayer;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;

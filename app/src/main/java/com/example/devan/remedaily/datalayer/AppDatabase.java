@@ -14,26 +14,31 @@
  * limitations under the License.
  */
 
-package com.example.devan.remedaily.db;
+package com.example.devan.remedaily.datalayer;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.example.devan.remedaily.datalayer.Med;
+import com.example.devan.remedaily.datalayer.MedDao;
+import com.example.devan.remedaily.datalayer.User;
+import com.example.devan.remedaily.datalayer.UserDao;
+
 @Database(entities = {Med.class,User.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static AppDatabase INSTANCE;
+    private static com.example.devan.remedaily.datalayer.AppDatabase INSTANCE;
 
     public abstract MedDao medModel();
     public abstract UserDao userModel();
 
 
-    public static AppDatabase getInMemoryDatabase(Context context) {
+    public static com.example.devan.remedaily.datalayer.AppDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class)
+                    Room.inMemoryDatabaseBuilder(context.getApplicationContext(), com.example.devan.remedaily.datalayer.AppDatabase.class)
                     // To simplify the codelab, allow queries on the main thread.
                     // Don't do this on a real app! See PersistenceBasicSample for an example.
                     .allowMainThreadQueries()
