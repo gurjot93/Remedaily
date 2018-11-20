@@ -1,28 +1,33 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
-import android.app.FragmentManager;
 import android.content.Context;
-import android.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.view.MenuItem;
+
+import com.example.devan.remedaily.R;
+import com.example.devan.remedaily.View.UserDetails;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    private TextView txtView;
+    public Button userDetailsBtn;
     private static String TAG = MainActivity.class.getSimpleName();
 
     ListView drawerListView;
@@ -36,7 +41,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        txtView = findViewById(R.id.txtView);
 
+        userDetailsBtn = findViewById(R.id.userDetailsBtn);
+
+        userDetailsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UserDetails.class);
+                startActivity(intent);
+            }
+        });
         navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calender_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
@@ -90,8 +105,6 @@ public class MainActivity extends AppCompatActivity {
         // More info: http://codetheory.in/difference-between-setdisplayhomeasupenabled-sethomebuttonenabled-and-setdisplayshowhomeenabled/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle
         // If it returns true, then it has handled
@@ -201,3 +214,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+

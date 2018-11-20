@@ -1,9 +1,11 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 import android.content.Intent;
-import android.sax.StartElementListener;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.devan.remedaily.View.Home;
+import com.example.devan.remedaily.R;
 
 public class SplashScreen extends AppCompatActivity {
     @Override
@@ -14,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(0);
+                    sleep(3000);
                     Intent intent = new  Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                     SplashScreen.this.finish();

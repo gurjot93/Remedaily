@@ -3,4 +3,14 @@
     <string name="hello_blank_fragment">Hello blank fragment!</string>
     <string name="drawer_open">Drawer open</string>
     <string name="drawer_close">Drawer close</string>
+    <string name="fname">First Name:</string>
+    <string name="lname">Last Name:</string>
+    <string name="age">Enter Age:</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="GoToUserDetailsBtn">User Details</string>
+    <string name="MainActivityLabel">Main Activity</string>
+    <string name="UserDetailsActivityLabel">User Details</string>
+    <string name="NoUpcomingMedicine">NO UPCOMING MEDICINE</string>
+    <string name="NoMissedMedicine">NO MISSED MEDICINE</string>
 </resources>

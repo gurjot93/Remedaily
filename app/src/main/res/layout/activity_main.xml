@@ -1,47 +1,72 @@
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawerLayout"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".View.MainActivity">
 
-    <!-- The main content view -->
-    <RelativeLayout
-        android:id="@+id/mainContent"
+    <Button
+        android:id="@+id/userDetailsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        android:background="@drawable/buttonshape"
+        android:text="@string/GoToUserDetailsBtn"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/txtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawerLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-    <!-- The navigation drawer -->
-    <RelativeLayout
-        android:layout_width="280dp"
-        android:layout_height="match_parent"
-        android:id="@+id/drawerPane"
-        android:layout_gravity="start"
-        android:background="@color/colorDrawerMenuBackground">
+        <!-- The main content view -->
+        <RelativeLayout
+            android:id="@+id/mainContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-        <!-- Profile Box -->
-
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:gravity="center_vertical"
-            android:text="Menu"
-            android:layout_marginStart="10dp"
-            android:textColor="#ffffff"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-
-        <!-- List of Actions (pages) -->
-        <ListView
-            android:id="@+id/navList"
+        <!-- The navigation drawer -->
+        <RelativeLayout
+            android:id="@+id/drawerPane"
             android:layout_width="280dp"
             android:layout_height="match_parent"
-            android:layout_below="@+id/userName"
-            android:choiceMode="singleChoice"
-            android:divider="@null"
-            android:background="@color/colorDrawerMenuBackground" />
+            android:layout_gravity="start"
+            android:background="@color/colorDrawerMenuBackground">
 
-    </RelativeLayout>
+            <!-- Profile Box -->
 
-</android.support.v4.widget.DrawerLayout>
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_marginStart="10dp"
+                android:gravity="center_vertical"
+                android:text="Menu"
+                android:textColor="#ffffff"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+
+            <!-- List of Actions (pages) -->
+            <ListView
+                android:id="@+id/navList"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/userName"
+                android:background="@color/colorDrawerMenuBackground"
+                android:choiceMode="singleChoice"
+                android:divider="@null" />
+
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+</LinearLayout>
