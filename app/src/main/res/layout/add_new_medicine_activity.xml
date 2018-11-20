@@ -15,6 +15,7 @@
             android:layout_height="532dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:animateLayoutChanges="true"
             android:background="@drawable/layout_rounded_corners"
             tools:context=".AddNewMedicineActivity">
 
