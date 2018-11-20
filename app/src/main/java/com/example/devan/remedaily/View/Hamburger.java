@@ -20,20 +20,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.devan.remedaily.R;
-import com.example.devan.remedaily.View.UserDetails;
+import com.example.devan.remedaily.datalayer.AppDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    private TextView txtView;
+import static com.example.devan.remedaily.businesslayer.HamburgerBusinessLayer.ShowUserInfo;
+
+public class Hamburger extends AppCompatActivity {
+    private TextView txtView,userName;
     public Button userDetailsBtn;
-    private static String TAG = MainActivity.class.getSimpleName();
-
+    private static String TAG = Hamburger.class.getSimpleName();
     ListView drawerListView;
     RelativeLayout drawerPane;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
+    public AppDatabase appData;
+
 
     ArrayList<NavigationItem> navigationItems = new ArrayList<NavigationItem>();
 
@@ -42,13 +44,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtView = findViewById(R.id.txtView);
-
+        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
+        userName = findViewById(R.id.userName);
         userDetailsBtn = findViewById(R.id.userDetailsBtn);
-
+        try {
+            /*Gets the user data from DB. */
+            userName.setText(ShowUserInfo(appData));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, UserDetails.class);
+                Intent intent = new Intent(Hamburger.this, UserDetails.class);
                 startActivity(intent);
             }
         });

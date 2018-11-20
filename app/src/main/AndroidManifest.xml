@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.MainActivity"
+        <activity android:name=".View.Hamburger"
             android:label="Main Activity"/>
         <activity android:name=".View.UserDetails"
             android:label="User Details"/>

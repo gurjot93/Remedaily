@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    tools:context=".View.MainActivity">
+    tools:context=".View.Hamburger">
 
     <Button
         android:id="@+id/userDetailsBtn"
@@ -51,9 +51,8 @@
                 android:layout_height="80dp"
                 android:layout_marginStart="10dp"
                 android:gravity="center_vertical"
-                android:text="Menu"
                 android:textColor="#ffffff"
-                android:textSize="28sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
 
