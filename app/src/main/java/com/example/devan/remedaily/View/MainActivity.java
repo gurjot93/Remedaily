@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txtView;
-    public Button userDetailsBtn;
+    public Button userDetailsBtn,calenderBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,11 +22,20 @@ public class MainActivity extends AppCompatActivity {
         txtView= findViewById(R.id.txtView);
 
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
+        calenderBtn=findViewById(R.id.calenderBtn);
 
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,UserDetails.class);
+                startActivity(intent);
+            }
+        });
+
+        calenderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,calender.class);
                 startActivity(intent);
             }
         });
