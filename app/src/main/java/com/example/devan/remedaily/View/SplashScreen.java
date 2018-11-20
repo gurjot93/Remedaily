@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.devan.remedaily.View.Home;
 import com.example.devan.remedaily.R;
 
 public class SplashScreen extends AppCompatActivity {
@@ -17,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(3000);
-                    Intent intent = new  Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent = new  Intent(getApplicationContext(),UserDetails.class);
                     startActivity(intent);
                     SplashScreen.this.finish();
                 } catch (InterruptedException e) {
