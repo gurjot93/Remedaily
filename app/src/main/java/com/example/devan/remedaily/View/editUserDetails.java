@@ -15,11 +15,11 @@ import com.example.devan.remedaily.datalayer.AppDatabase;
 
 import java.util.List;
 
-public class UserDetails extends AppCompatActivity {
+public class editUserDetails extends AppCompatActivity {
 
     public TextView firstNameTv,lastNameTv,ageTv;
     public EditText firstNameEd,lastNameEd,ageEd;
-    public Button saveBtn, cancelBtn;
+    public Button updateBtn, cancelBtn;
     public TextView firstNameError,lastNameError,ageError,showDB;
     public String firstName,lastName,age;
     public Context context;
@@ -29,12 +29,12 @@ public class UserDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_details);
+        setContentView(R.layout.activity_edit_user_details);
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         firstNameEd=findViewById(R.id.editTextFirstName);
         lastNameEd=findViewById(R.id.editTextLastName);
         ageEd=findViewById(R.id.editTextAge);
-        saveBtn=findViewById(R.id.saveBtn);
+        updateBtn=findViewById(R.id.updateBtn);
         firstNameError=findViewById(R.id.firstNameValidateLbl);
         lastNameError=findViewById(R.id.lastNameValidateLbl);
         ageError=findViewById(R.id.ageValidateLbl);
@@ -46,7 +46,7 @@ public class UserDetails extends AppCompatActivity {
 
         //A method to validate the user input
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(Validations()){
@@ -153,7 +153,7 @@ public class UserDetails extends AppCompatActivity {
                 ageError.setVisibility(View.VISIBLE);
             }
         }
-    return isValidate ;
+        return isValidate ;
     }
 }
 
