@@ -35,8 +35,15 @@
             android:name=".View.EditUserDetails"
             android:label="Edit User Details" />
 
-        <activity android:name=".View.Calender"
+        <activity
+            android:name=".View.Calender"
             android:label="Calender"></activity>
+        <activity
+            android:name=".View.SettingsHome"
+            android:label="@string/app_name_settings"></activity>
+        <activity
+            android:name=".View.SettingsResetApplication"
+            android:label="@string/app_name_settings"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

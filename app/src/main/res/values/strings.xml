@@ -17,4 +17,5 @@
     <string name="NoUpcomingMedicine">NO UPCOMING MEDICINE</string>
     <string name="NoMissedMedicine">NO MISSED MEDICINE</string>
     <string name="goToCalenderBtn">Calender</string>
+    <string name="app_name_settings">Settings</string>
 </resources>

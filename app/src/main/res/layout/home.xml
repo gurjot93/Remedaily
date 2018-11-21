@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@color/colorAccent2"
+            android:background="@color/colorAccent"
             android:text="ADD MEDICINE"
             android:textColor="@android:color/background_light" />
 
