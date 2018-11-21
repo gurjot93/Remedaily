@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDayButtonUnpressed">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="532dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/layout_rounded_corners"
+            tools:context=".AddNewMedicineActivity">
+
+                <!-- source : https://stackoverflow.com/questions/22105775/imageview-in-circular-through-xml-->
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/splashscreen" />
+
+                <EditText
+                    android:id="@+id/newMedicineNameField"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="15dp"
+                    android:ems="10"
+                    android:hint="medicine name"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/newMedicineDosageField"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/newMedicineNameField"
+                    android:layout_below="@+id/newMedicineNameField"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:ems="10"
+                    android:hint="medicine dosage"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="italic" />
+
+                <Switch
+                    android:id="@+id/sameScheduleToAllDaysSwitch"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/newMedicineNameField"
+                    android:layout_below="@+id/newMedicineDosageField"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="60dp"
+                    android:background="@drawable/button"
+                    android:text="Daily"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="24sp" />
+
+                <RelativeLayout
+                    android:id="@+id/calenderButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_below="@+id/sameScheduleToAllDaysSwitch"
+                    android:layout_marginBottom="20dp">
+
+                        <Button
+                            android:id="@+id/startDateButton"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginEnd="125dp"
+                            android:background="@drawable/calender_button_left" />
+
+                        <Button
+                            android:id="@+id/endDateButton"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginEnd="16dp"
+                            android:background="@drawable/calender_button_right" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/weekDaysRelativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/calenderButtons"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp">
+
+                        <LinearLayout
+                            android:id="@+id/weekDaysLinearLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:weightSum="7">
+
+                                <Button
+                                    android:id="@+id/Monday"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="1px"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button"
+                                    android:text="Mo"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="25sp" />
+
+                                <Button
+                                    android:id="@+id/Tuesday"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="1px"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button"
+                                    android:text="Tu"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="25sp" />
+
+                                <Button
+                                    android:id="@+id/Wednesday"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="1px"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button"
+                                    android:text="We"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="25sp" />
+
+                                <Button
+                                    android:id="@+id/Thursday"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="1px"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button"
+                                    android:text="Th"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="25sp" />
+
+                                <Button
+                                    android:id="@+id/Friday"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="1px"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button"
+                                    android:text="Fr"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="25sp" />
+
+                                <Button
+                                    android:id="@+id/Saturday"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="1px"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button"
+                                    android:text="Sa"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="25sp" />
+
+                                <Button
+                                    android:id="@+id/Sunday"
+                                    style="?android:attr/borderlessButtonStyle"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="1px"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/button"
+                                    android:text="Su"
+                                    android:textColor="@color/colorBlack"
+                                    android:textSize="25sp" />
+                        </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/AddAndSaveButtonsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/weekDaysRelativeLayout"
+                    android:layout_marginBottom="20dp">
+
+                        <Button
+                            android:id="@+id/addTimeButton"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginEnd="56dp"
+                            android:background="@drawable/button"
+                            android:text="Add"
+                            android:textColor="@color/colorButtonText"
+                            android:textSize="25sp" />
+
+                        <Button
+                            android:id="@+id/saveButton"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="56dp"
+                            android:background="@drawable/button"
+                            android:text="Save"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="25sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/AddAndSaveButtonsLayout">
+
+                        <ListView
+                            android:id="@+id/timeEntriesListView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5sp"
+                            android:layout_marginEnd="2sp"
+                            android:layout_marginStart="2sp"
+                            android:divider="@null"
+                            android:dividerHeight="0dp" />
+                </RelativeLayout>
+
+        </RelativeLayout>
+
+</RelativeLayout>
