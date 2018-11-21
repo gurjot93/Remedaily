@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
         editUserDetailsBtn=findViewById(R.id.editUserDetailsBtn);
         calenderBtn=findViewById(R.id.calenderBtn);
-
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

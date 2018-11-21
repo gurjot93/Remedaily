@@ -34,12 +34,13 @@
             android:name=".View.EditUserDetails"
             android:label="Edit User Details" />
 
+        <activity android:name=".View.Calender"
+            android:label="Calender"></activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".View.Calender"
-            android:label="Calender"></activity>
     </application>
 
 </manifest>
