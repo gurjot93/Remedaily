@@ -11,7 +11,7 @@ import com.example.devan.remedaily.R;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txtView;
-    public Button userDetailsBtn,editUserDetailsBtn;
+    public Button userDetailsBtn,editUserDetailsBtn,calenderBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
         editUserDetailsBtn=findViewById(R.id.editUserDetailsBtn);
+        calenderBtn=findViewById(R.id.calenderBtn);
 
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,EditUserDetails.class);
+                startActivity(intent);
+            }
+        });
+
+        calenderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,Calender.class);
                 startActivity(intent);
             }
         });
