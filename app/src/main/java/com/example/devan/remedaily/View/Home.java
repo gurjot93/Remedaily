@@ -7,7 +7,7 @@
  */
 
 
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.devan.remedaily.Models.Medicine;
+import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
 
 import java.text.ParseException;

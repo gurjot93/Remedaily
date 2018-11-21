@@ -2,6 +2,7 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,8 @@ public class UserDetails extends AppCompatActivity {
                 if(Validations()){
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+                        Intent intent = new  Intent(getApplicationContext(),Hamburger.class);
+                        startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

@@ -25,15 +25,18 @@
             android:name=".View.UserDetails"
             android:label="User Details" />
         <activity
-            android:name=".Home"
+            android:name=".View.Home"
             android:label="Home" />
+        <activity android:name=".View.Hamburger"
+            android:label="Main Activity"/>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+
 
         <activity android:name=".View.EditUserDetails"
             android:label="Edit User Details"></activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
