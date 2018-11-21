@@ -8,13 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.devan.remedaily.R;
-import com.example.devan.remedaily.View.UserDetails;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txtView;
-    public Button userDetailsBtn,calenderBtn;
+    public Button userDetailsBtn,editUserDetailsBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
         txtView= findViewById(R.id.txtView);
 
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
-        calenderBtn=findViewById(R.id.calenderBtn);
-
+        editUserDetailsBtn=findViewById(R.id.editUserDetailsBtn);
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        calenderBtn.setOnClickListener(new View.OnClickListener() {
+        editUserDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,calender.class);
+                Intent intent=new Intent(MainActivity.this,EditUserDetails.class);
                 startActivity(intent);
             }
         });
