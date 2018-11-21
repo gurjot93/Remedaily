@@ -29,14 +29,12 @@
             android:label="Home" />
         <activity android:name=".View.Hamburger"
             android:label="Main Activity"/>
-
-
-
         <activity android:name=".View.EditUserDetails"
             android:label="Edit User Details"></activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

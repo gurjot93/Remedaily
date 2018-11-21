@@ -15,4 +15,5 @@
     <string name="UserDetailsActivityLabel">User Details</string>
     <string name="NoUpcomingMedicine">NO UPCOMING MEDICINE</string>
     <string name="NoMissedMedicine">NO MISSED MEDICINE</string>
+    <string name="goToCalenderBtn">Calender</string>
 </resources>
