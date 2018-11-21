@@ -134,10 +134,10 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <Button
-            android:id="@+id/saveBtn"
+            android:id="@+id/updateBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/save"
+            android:text="@string/update"
             android:textColor="@color/white"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"

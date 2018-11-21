@@ -2,7 +2,6 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -16,11 +15,13 @@ import com.example.devan.remedaily.datalayer.AppDatabase;
 
 import java.util.List;
 
-public class UserDetails extends AppCompatActivity {
+import static com.example.devan.remedaily.businesslayer.EditViewBusinessLayer.ShowEditUserInfo;
+
+public class EditUserDetails extends AppCompatActivity {
 
     public TextView firstNameTv,lastNameTv,ageTv;
     public EditText firstNameEd,lastNameEd,ageEd;
-    public Button saveBtn, cancelBtn;
+    public Button updateBtn, cancelBtn;
     public TextView firstNameError,lastNameError,ageError,showDB;
     public String firstName,lastName,age;
     public Context context;
@@ -30,12 +31,12 @@ public class UserDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_details);
+        setContentView(R.layout.activity_edit_user_details);
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         firstNameEd=findViewById(R.id.editTextFirstName);
         lastNameEd=findViewById(R.id.editTextLastName);
         ageEd=findViewById(R.id.editTextAge);
-        saveBtn=findViewById(R.id.saveBtn);
+        updateBtn=findViewById(R.id.updateBtn);
         firstNameError=findViewById(R.id.firstNameValidateLbl);
         lastNameError=findViewById(R.id.lastNameValidateLbl);
         ageError=findViewById(R.id.ageValidateLbl);
@@ -44,17 +45,22 @@ public class UserDetails extends AppCompatActivity {
         ageTv=findViewById(R.id.ageLbl);
         cancelBtn = findViewById(R.id.cancelBtn);
         context=this;
-
+        try {
+            /*Fetching data to update*/
+            firstNameEd.setText(ShowEditUserInfo(appData).firstName);
+            lastNameEd.setText(ShowEditUserInfo(appData).lastName);
+            ageEd.setText(ShowEditUserInfo(appData).age);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //A method to validate the user input
 
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(Validations()){
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
-                        Intent intent = new  Intent(getApplicationContext(),Hamburger.class);
-                        startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -156,7 +162,7 @@ public class UserDetails extends AppCompatActivity {
                 ageError.setVisibility(View.VISIBLE);
             }
         }
-    return isValidate ;
+        return isValidate ;
     }
 }
 

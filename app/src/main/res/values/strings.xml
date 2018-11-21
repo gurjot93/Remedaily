@@ -7,8 +7,10 @@
     <string name="lname">Last Name:</string>
     <string name="age">Enter Age:</string>
     <string name="save">Save</string>
+    <string name="update">Update</string>
     <string name="cancel">Cancel</string>
     <string name="GoToUserDetailsBtn">User Details</string>
+    <string name="GoToEditUserDetailsBtn">Edit User Details</string>
     <string name="MainActivityLabel">Main Activity</string>
     <string name="UserDetailsActivityLabel">User Details</string>
     <string name="NoUpcomingMedicine">NO UPCOMING MEDICINE</string>
