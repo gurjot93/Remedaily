@@ -32,8 +32,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".View.calender"
-            android:label="Calender"></activity>
     </application>
 
 </manifest>
