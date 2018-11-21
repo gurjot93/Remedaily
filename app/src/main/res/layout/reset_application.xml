@@ -18,7 +18,7 @@
         android:layout_weight="0.2"
         android:fontFamily="sans-serif"
         android:lineSpacingExtra="8sp"
-        android:text="This Will Reset The Application Data!!. Do You Wish To Continue?"
+        android:text="This Will Reset The Application Data! Do You Wish To Continue?"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@android:color/holo_red_dark"
