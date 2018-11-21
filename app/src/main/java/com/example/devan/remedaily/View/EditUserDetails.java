@@ -15,7 +15,9 @@ import com.example.devan.remedaily.datalayer.AppDatabase;
 
 import java.util.List;
 
-public class editUserDetails extends AppCompatActivity {
+import static com.example.devan.remedaily.businesslayer.EditViewBusinessLayer.ShowEditUserInfo;
+
+public class EditUserDetails extends AppCompatActivity {
 
     public TextView firstNameTv,lastNameTv,ageTv;
     public EditText firstNameEd,lastNameEd,ageEd;
@@ -43,7 +45,14 @@ public class editUserDetails extends AppCompatActivity {
         ageTv=findViewById(R.id.ageLbl);
         cancelBtn = findViewById(R.id.cancelBtn);
         context=this;
-
+        try {
+            /*Fetching data to update*/
+            firstNameEd.setText(ShowEditUserInfo(appData).firstName);
+            lastNameEd.setText(ShowEditUserInfo(appData).lastName);
+            ageEd.setText(ShowEditUserInfo(appData).age);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //A method to validate the user input
 
         updateBtn.setOnClickListener(new View.OnClickListener() {

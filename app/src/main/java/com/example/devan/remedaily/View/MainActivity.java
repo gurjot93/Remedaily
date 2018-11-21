@@ -8,9 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.devan.remedaily.R;
-import com.example.devan.remedaily.View.UserDetails;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txtView;
@@ -35,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         editUserDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,editUserDetails.class);
+                Intent intent=new Intent(MainActivity.this,EditUserDetails.class);
                 startActivity(intent);
             }
         });

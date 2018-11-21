@@ -32,7 +32,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".View.editUserDetails"
+        <activity android:name=".View.EditUserDetails"
             android:label="Edit User Details"></activity>
     </application>
 
