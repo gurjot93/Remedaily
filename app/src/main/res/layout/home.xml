@@ -24,7 +24,7 @@
 
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/addMed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -81,14 +81,21 @@
         android:layout_gravity="start"
         android:background="@color/colorDrawerMenuBackground">
 
+        <ImageView
+            android:layout_marginTop="10sp"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_marginStart="10sp"
+            android:id="@+id/userImage"
+            android:src="@drawable/user"/>
         <TextView
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:gravity="center_vertical"
-            android:text="Menu"
             android:layout_marginStart="20dp"
             android:textColor="#ffffff"
+            android:layout_toRightOf="@+id/userImage"
             android:textSize="25sp"/>
 
 
@@ -100,7 +107,8 @@
             android:layout_below="@+id/userName"
             android:background="@color/colorDrawerMenuBackground"
             android:choiceMode="singleChoice"
-            android:divider="@null" />
+            android:divider="@null"
+            android:layout_marginTop="50sp"/>
 
     </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

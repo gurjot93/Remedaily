@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +49,8 @@ public class UserDetails extends AppCompatActivity {
         ageTv=findViewById(R.id.ageLbl);
         cancelBtn = findViewById(R.id.cancelBtn);
         context=this;
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Click functionality of the save button
         saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +62,7 @@ public class UserDetails extends AppCompatActivity {
                 if(firstNameValidate && lastNameValidate && ageValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
-                        Intent intent = new  Intent(getApplicationContext(),Hamburger.class);
+                        Intent intent = new  Intent(getApplicationContext(),Home.class);
                         startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -76,7 +78,12 @@ public class UserDetails extends AppCompatActivity {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*TODO*/
+                try {
+                    Intent intent = new  Intent(getApplicationContext(),Home.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -120,6 +127,17 @@ public class UserDetails extends AppCompatActivity {
                 }
             }
         });
+    }
+    // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     //A method to validate the user input. Different flags are used in this method. These flags will become true if the input is true, otherwise they will become false.

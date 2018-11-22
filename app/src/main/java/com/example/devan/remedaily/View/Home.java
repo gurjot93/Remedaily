@@ -10,6 +10,7 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.devan.remedaily.AddNewMedicineActivity;
 import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 
 public class Home  extends Hamburger {
 
-    public Button userDetailsBtn;
+    public Button userDetailsBtn,addMed;
     private Context mContext;
     private LinearLayout lLinearLayout;
     private LinearLayout mLinearLayout;
@@ -46,7 +48,14 @@ public class Home  extends Hamburger {
 
         lLinearLayout = findViewById(R.id.upcomingMedicineList);
         mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);
-
+        addMed = findViewById(R.id.addMed);
+        addMed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, AddNewMedicineActivity.class);
+                startActivity(intent);
+            }
+        });
 
         try {
             populateMissedMedicine();

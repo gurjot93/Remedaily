@@ -28,11 +28,12 @@ import static com.example.devan.remedaily.businesslayer.HamburgerBusinessLayer.S
 
 public class Hamburger extends AppCompatActivity {
     private static String TAG = Hamburger.class.getSimpleName();
-
+    TextView userName;
     ListView drawerListView;
     RelativeLayout drawerPane;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
+    AppDatabase appData;
 
     ArrayList<NavigationItem> navigationItems = new ArrayList<NavigationItem>();
 
@@ -40,10 +41,17 @@ public class Hamburger extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.add_new_medicine_activity);
-
-        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
+        userName = findViewById(R.id.userName);
+//        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
+        navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
+        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
+        try {
+            userName.setText(ShowUserInfo(appData));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // DrawerLayout
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -120,18 +128,29 @@ public class Hamburger extends AppCompatActivity {
      * is selected.
      * */
     private void selectItemFromDrawer(int position) {
-        switch (position){
-            case 0 :
-                // first menu item clicked
-                // create appropriate intention
-                break;
-            case 1 :
+        Intent intent;
+        switch (position) {
+//            case 0:
+//                // first menu item clicked
+//                // create appropriate intention
+//
+//                break;
+            case 0:
                 // second menu item clicked
                 // create appropriate intention
+                intent = new Intent(this, UserDetails.class);
+                startActivity(intent);
+
                 break;
-            case 2 :
-                // thirdt menu item clicked
+            case 1:
+                // third menu item clicked
                 // create appropriate intention
+                intent = new Intent(this, Calender.class);
+                startActivity(intent);
+                break;
+            case 2:
+                intent = new Intent(this, SettingsHome.class);
+                startActivity(intent);
                 break;
         }
 
@@ -190,15 +209,14 @@ public class Hamburger extends AppCompatActivity {
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = inflater.inflate(R.layout.drawer_item, null);
-            }
-            else {
+            } else {
                 view = convertView;
             }
 
             TextView titleView = (TextView) view.findViewById(R.id.drawerMenuItemTitle);
             ImageView iconView = (ImageView) view.findViewById(R.id.drawerMenuItemIcon);
 
-            titleView.setText( navigationItems.get(position).title );
+            titleView.setText(navigationItems.get(position).title);
             iconView.setImageResource(navigationItems.get(position).icon);
 
             return view;
