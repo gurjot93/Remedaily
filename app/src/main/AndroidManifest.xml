@@ -48,7 +48,7 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Help"
+        <activity android:name=".View.Help"
             android:label="Help"></activity>
     </application>
 

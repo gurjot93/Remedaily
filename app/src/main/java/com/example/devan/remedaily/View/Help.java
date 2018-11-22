@@ -1,4 +1,4 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.devan.remedaily.R;
 
 public class Help extends AppCompatActivity {
 

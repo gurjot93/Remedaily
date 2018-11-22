@@ -18,19 +18,19 @@
     <string name="NoMissedMedicine">NO MISSED MEDICINE</string>
     <string name="goToCalenderBtn">Calender</string>
     <string name="app_name_settings">Settings</string>
-    <string name="help1_label">(1)User registration:</string>
+    <string name="help1_label">(1) User registration:</string>
     <string name="help1_desc">A user can register through the UserDetails activity.The user can enter details such as name and age.To save these details user needs to click on save button.To cancel the operation, the user must click on cancel button.</string>
-    <string name="help2_label">(2)Edit user details:</string>
+    <string name="help2_label">(2) Edit user details:</string>
     <string name="help2_desc">A user can edit the entered details through the EditUserDetails activity.The user can enter new details such as name and age.To save these new details user needs to click on update button.To cancel the operation, the user must click on cancel button.</string>
-    <string name="help3_label">(3)Settings:</string>
+    <string name="help3_label">(3) Settings:</string>
     <string name="help3_desc">User can control various types of settings such as notification, change user details, reset settings etc.Through this activity, the user will be able to change his/her details, change the notification-related settings and there will also be a reset setting option that will allow the user to completely reset the application data. The activity will also contain an option to delete the user and medication details.</string>
-    <string name="help4_label">(4)Add new medicine:</string>
+    <string name="help4_label">(4) Add new medicine:</string>
     <string name="help4_desc">This activity will add the new medications into the database. On the navigation to the “Add New Medication” view, the user will be presented with the screen where all new medication details are inserted.First, the user will type the medication name and the dosage. Then the user will select the mode of scheduling. Two modes of scheduling are implemented: daily and weekly. In the daily mode, the user chooses administration times which are applied to all the days of the week (the same to every weekday). In the weekly mode user scheduled administration times separately for the each day of the week separately. The user also selects the start and the stop days of the drug administration period.Clicking on the drug image window opens the camera, enabling the user to take and save the image of the medication box/label.</string>
-    <string name="help5_label">(5)Calender:</string>
+    <string name="help5_label">(5) Calender:</string>
     <string name="help5_desc">The calendar activity will show all the saved medication of the users on the screen. Along with the medication, the following details will also be shown: the dosage, the time and the day.</string>
-    <string name="help6_label">(6)My Medication Activity:</string>
+    <string name="help6_label">(6) My Medication Activity:</string>
     <string name="help6_desc">This activity is accessible via the navigation menu. Its main purpose is to display the current user’s inputted medications on a list. The user will be able to scroll through all of their medications and even add a new medication from this activity.Each medication list item, when tapped, will bring the user to the medication details activity.</string>
-    <string name="help7_label">(7)Contact us:</string>
+    <string name="help7_label">(7) Contact us:</string>
     <string name="help7_desc">Developers: \n\nDevanshu Srivastava\nAditya Gadhvi\nGurjot Singh\nEugene Shishlannikov\nDeep Prakash Singh\nAlex Dunn\n\nEmail:remedaily@gmail.com</string>
 
 </resources>
