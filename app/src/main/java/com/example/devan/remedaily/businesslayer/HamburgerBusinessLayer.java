@@ -16,6 +16,9 @@ public class HamburgerBusinessLayer {
             sb.append(String.format(
                     "%s %s\n", User.firstName, User.lastName));
         }
+        if(sb.length()==0){
+            sb.append("User");
+        }
         return sb;
     }
     private static List<User>  ShowActiveUser(AppDatabase db) {

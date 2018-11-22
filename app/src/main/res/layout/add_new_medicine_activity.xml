@@ -26,7 +26,7 @@
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginStart="15dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginTop="15dp"
                     android:src="@drawable/splashscreen" />
 
@@ -79,29 +79,77 @@
                 <RelativeLayout
                     android:id="@+id/calenderButtons"
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
+                    android:layout_height="100dp"
                     android:layout_below="@+id/sameScheduleToAllDaysSwitch"
                     android:layout_marginBottom="20dp">
 
-                        <Button
-                            android:id="@+id/startDateButton"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                        <LinearLayout
+                            android:id="@+id/calendersLinearLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentTop="true"
-                            android:layout_marginEnd="125dp"
-                            android:background="@drawable/calender_button_left" />
+                            android:layout_marginEnd="15dp"
+                            android:orientation="vertical">
 
-                        <Button
-                            android:id="@+id/endDateButton"
-                            style="?android:attr/borderlessButtonStyle"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/calender_button_right" />
+                                <RelativeLayout
+                                    android:id="@+id/startDateLinearLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="10dp"
+                                    android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/startDateLabel"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="45dp"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginEnd="63dp"
+                                            android:textSize="20sp"
+                                            android:textColor="@color/colorBlack"
+                                            android:gravity="center"
+                                            android:text="Start Date" />
+
+                                        <Button
+                                            android:id="@+id/startDateButton"
+                                            style="?android:attr/borderlessButtonStyle"
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:layout_alignParentRight="true"
+                                            android:background="@drawable/calender_button" />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:id="@+id/stopDateLinearLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal" >
+
+                                        <TextView
+                                            android:id="@+id/endDateLabel"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="45dp"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginEnd="63dp"
+                                            android:textSize="20sp"
+                                            android:textColor="@color/colorBlack"
+                                            android:gravity="center"
+                                            android:text="End Date" />
+
+                                        <Button
+                                            android:id="@+id/endDateButton"
+                                            style="?android:attr/borderlessButtonStyle"
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:layout_alignParentRight="true"
+                                            android:background="@drawable/calender_button" />
+
+                                </RelativeLayout>
+
+                        </LinearLayout>
 
                 </RelativeLayout>
 
