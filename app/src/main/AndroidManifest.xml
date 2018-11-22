@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddNewMedicineActivity"></activity>
+        <activity android:name=".AddNewMedicineActivity" />
         <activity
             android:name=".View.MainActivity"
             android:label="Main Activity" />
@@ -34,20 +34,22 @@
         <activity
             android:name=".View.EditUserDetails"
             android:label="Edit User Details" />
-
         <activity
             android:name=".View.Calender"
-            android:label="Calender"></activity>
+            android:label="Calender" />
         <activity
             android:name=".View.SettingsHome"
-            android:label="@string/app_name_settings"></activity>
+            android:label="@string/app_name_settings" />
         <activity
             android:name=".View.SettingsResetApplication"
-            android:label="@string/app_name_settings"></activity>
+            android:label="@string/app_name_settings" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".Help"
+            android:label="Help"></activity>
     </application>
 
 </manifest>
