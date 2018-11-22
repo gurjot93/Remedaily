@@ -27,41 +27,22 @@ import java.util.ArrayList;
 import static com.example.devan.remedaily.businesslayer.HamburgerBusinessLayer.ShowUserInfo;
 
 public class Hamburger extends AppCompatActivity {
-    private TextView txtView,userName;
-    public Button userDetailsBtn;
     private static String TAG = Hamburger.class.getSimpleName();
+
     ListView drawerListView;
     RelativeLayout drawerPane;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
-    public AppDatabase appData;
-
 
     ArrayList<NavigationItem> navigationItems = new ArrayList<NavigationItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        txtView = findViewById(R.id.txtView);
-        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
-        userName = findViewById(R.id.userName);
-        userDetailsBtn = findViewById(R.id.userDetailsBtn);
-        try {
-            /*Gets the user data from DB. */
-            userName.setText(ShowUserInfo(appData));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        userDetailsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Hamburger.this, UserDetails.class);
-                startActivity(intent);
-            }
-        });
+        //setContentView(R.layout.add_new_medicine_activity);
+
         navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
-        navigationItems.add(new NavigationItem("Calender", "", R.drawable.calender_icon_white_128));
+        navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
 
         // DrawerLayout
@@ -113,6 +94,8 @@ public class Hamburger extends AppCompatActivity {
         // More info: http://codetheory.in/difference-between-setdisplayhomeasupenabled-sethomebuttonenabled-and-setdisplayshowhomeenabled/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle
         // If it returns true, then it has handled

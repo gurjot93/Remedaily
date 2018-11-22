@@ -11,6 +11,7 @@ package com.example.devan.remedaily.View;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
@@ -28,7 +29,7 @@ import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public class Home extends AppCompatActivity {
+public class Home  extends Hamburger {
 
     public Button userDetailsBtn;
     private Context mContext;
@@ -37,8 +38,8 @@ public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        super.onCreate(savedInstanceState);
 
         // set the context
         mContext = getApplicationContext();

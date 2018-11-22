@@ -6,5 +6,5 @@
             <solid android:color="@color/colorDayButtonUnpressed" />
         </shape>
     </item>
-    <item android:drawable="@drawable/calender_icon_black_128_white_15"/>
+    <item android:drawable="@drawable/calendar_icon_black_128"/>
 </layer-list>
