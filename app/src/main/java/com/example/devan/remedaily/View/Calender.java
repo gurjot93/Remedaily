@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,7 +20,7 @@ public class Calender extends AppCompatActivity {
 
     ListView listView;
 
-    int[] IMAGES={R.drawable.pill_icon,R.drawable.pill_icon,R.drawable.pill_icon,R.drawable.pill_icon};
+    int[] IMAGES={R.drawable.drugs,R.drawable.drugs,R.drawable.drugs,R.drawable.drugs};
     String[] NAMES={"Inhaler","Vitamin B12","Tylenol","Advil"};
     String[] DAYS={"Daily","Mondays","Tuesdays","Wednesdays"};
     String[] DOSAGE={"1 Dose,1 Inhalation","1 Dose,1 Inhalation","1 Dose,1 Inhalation","1 Dose,1 Inhalation"};
@@ -33,14 +34,25 @@ public class Calender extends AppCompatActivity {
         ImageView imageView=(ImageView)findViewById(R.id.imageView);
 
 
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         listView=(ListView)findViewById(R.id.mainListView);
         CustomAdaptor customAdaptor=new CustomAdaptor();
         listView.setAdapter(customAdaptor);
 
 
     }
-
+    // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     public class CustomAdaptor extends BaseAdapter {
 
         @Override

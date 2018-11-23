@@ -27,42 +27,33 @@ import java.util.ArrayList;
 import static com.example.devan.remedaily.businesslayer.HamburgerBusinessLayer.ShowUserInfo;
 
 public class Hamburger extends AppCompatActivity {
-    private TextView txtView,userName;
-    public Button userDetailsBtn;
     private static String TAG = Hamburger.class.getSimpleName();
+    TextView userName;
     ListView drawerListView;
     RelativeLayout drawerPane;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
-    public AppDatabase appData;
-
+    AppDatabase appData;
 
     ArrayList<NavigationItem> navigationItems = new ArrayList<NavigationItem>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        txtView = findViewById(R.id.txtView);
-        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
+        //setContentView(R.layout.add_new_medicine_activity);
         userName = findViewById(R.id.userName);
-        userDetailsBtn = findViewById(R.id.userDetailsBtn);
+//        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
+        navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
+        navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));
+        navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
+        navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
+        navigationItems.add(new NavigationItem("Help and Support", "", R.drawable.customer_support));
+        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         try {
-            /*Gets the user data from DB. */
             userName.setText(ShowUserInfo(appData));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        userDetailsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Hamburger.this, UserDetails.class);
-                startActivity(intent);
-            }
-        });
-        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
-        navigationItems.add(new NavigationItem("Calender", "", R.drawable.calender_icon_white_128));
-        navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
 
         // DrawerLayout
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -113,6 +104,8 @@ public class Hamburger extends AppCompatActivity {
         // More info: http://codetheory.in/difference-between-setdisplayhomeasupenabled-sethomebuttonenabled-and-setdisplayshowhomeenabled/
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Pass the event to ActionBarDrawerToggle
         // If it returns true, then it has handled
@@ -137,18 +130,39 @@ public class Hamburger extends AppCompatActivity {
      * is selected.
      * */
     private void selectItemFromDrawer(int position) {
-        switch (position){
-            case 0 :
-                // first menu item clicked
-                // create appropriate intention
-                break;
-            case 1 :
+        Intent intent;
+        switch (position) {
+//            case 0:
+//                // first menu item clicked
+//                // create appropriate intention
+//
+//                break;
+            case 0:
                 // second menu item clicked
                 // create appropriate intention
+                intent = new Intent(this, UserDetails.class);
+                startActivity(intent);
+
                 break;
-            case 2 :
-                // thirdt menu item clicked
+            case 1:
+                // third menu item clicked
                 // create appropriate intention
+                intent = new Intent(this, EditUserDetails.class);
+                startActivity(intent);
+                break;
+            case 2:
+                // third menu item clicked
+                // create appropriate intention
+                intent = new Intent(this, Calender.class);
+                startActivity(intent);
+                break;
+            case 3:
+                intent = new Intent(this, SettingsHome.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent = new Intent(this, Help.class);
+                startActivity(intent);
                 break;
         }
 
@@ -207,15 +221,14 @@ public class Hamburger extends AppCompatActivity {
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 view = inflater.inflate(R.layout.drawer_item, null);
-            }
-            else {
+            } else {
                 view = convertView;
             }
 
             TextView titleView = (TextView) view.findViewById(R.id.drawerMenuItemTitle);
             ImageView iconView = (ImageView) view.findViewById(R.id.drawerMenuItemIcon);
 
-            titleView.setText( navigationItems.get(position).title );
+            titleView.setText(navigationItems.get(position).title);
             iconView.setImageResource(navigationItems.get(position).icon);
 
             return view;
