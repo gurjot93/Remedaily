@@ -20,7 +20,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:text="TextView"
-            android:textSize="23dp"
+            android:textSize="23sp"
             android:textStyle="bold" />
 
 
@@ -35,8 +35,8 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="400px"
-                android:layout_height="400px"
+                android:layout_width="200sp"
+                android:layout_height="200sp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="38dp"
@@ -53,7 +53,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_toEndOf="@+id/imageView"
                 android:text="TextView"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -64,7 +64,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="73dp"
                 android:text="TextView"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/medicineTimeTv"
@@ -74,7 +74,7 @@
                 android:layout_alignBottom="@+id/imageView"
                 android:layout_marginBottom="-1dp"
                 android:text="TextView"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
         </RelativeLayout>
 
     </LinearLayout>
