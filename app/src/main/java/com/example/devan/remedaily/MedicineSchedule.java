@@ -8,10 +8,11 @@ public class MedicineSchedule {
 
     private String name;
     private String dosage;
+    private String drugBoxImagePath;
     private String startDate;
     private String endDate;
     private boolean isDaily;
-    private ArrayList<String>[] weekSchedule;
+    private String[] weekSchedule;
 
     public MedicineSchedule() {
         name = null;
@@ -19,7 +20,7 @@ public class MedicineSchedule {
         startDate = null;
         endDate = null;
         isDaily = false;
-        weekSchedule = new ArrayList[NUMBER_OF_DAYS_IN_ONE_WEEK];
+        weekSchedule = new String[NUMBER_OF_DAYS_IN_ONE_WEEK];
     }
 
     public void setName(String name) {
@@ -29,6 +30,8 @@ public class MedicineSchedule {
     public void setDosage(String dosage) {
         this.dosage = dosage;
     }
+
+    public void setDrugBoxImagePath(String drugBoxImagePath) { this.drugBoxImagePath = drugBoxImagePath; }
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
@@ -50,6 +53,8 @@ public class MedicineSchedule {
         return this.dosage;
     }
 
+    public String getDrugBoxImagePath() { return this.drugBoxImagePath; }
+
     public String getStartDate() {
         return this.startDate;
     }
@@ -62,7 +67,7 @@ public class MedicineSchedule {
         return  this.isDaily;
     }
 
-    public ArrayList<String>[] getWeekSchedule() {
+    public String[] getWeekSchedule() {
         return this.weekSchedule;
     }
 }

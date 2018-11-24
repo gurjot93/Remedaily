@@ -21,14 +21,15 @@
 
                 <!-- source : https://stackoverflow.com/questions/22105775/imageview-in-circular-through-xml-->
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
+                    android:id="@+id/drugBoxImage"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/splashscreen" />
+                    android:src="@drawable/my_image_image"
+                    />
 
                 <EditText
                     android:id="@+id/newMedicineNameField"
@@ -118,6 +119,16 @@
                                             android:layout_height="45dp"
                                             android:layout_alignParentRight="true"
                                             android:background="@drawable/calender_button" />
+
+                                        <Button
+                                            android:id="@+id/cameraButton"
+                                            android:layout_width="45dp"
+                                            android:layout_height="45dp"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginStart="63dp"
+                                            android:background="@drawable/camera_image_black_128"
+                                            android:onClick="takeDrugBoxImageShot"/>
 
                                 </RelativeLayout>
 
