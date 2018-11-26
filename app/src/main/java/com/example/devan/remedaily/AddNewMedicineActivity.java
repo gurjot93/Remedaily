@@ -516,7 +516,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         return false;
     }
     public void takeDrugBoxImageShot(View view) {
-        Intent cameraIntent = new Intent(getApplicationContext(), Camera.class);
+        Intent cameraIntent = new Intent(getApplicationContext(), com.example.devan.remedaily.Camera.class);
         String currentPhotoPath = medicineSchedule.getDrugBoxImagePath();
         cameraIntent.putExtra("previousPhotoPath", currentPhotoPath == null ? "" : currentPhotoPath);
         startActivityForResult(cameraIntent, REQUEST_TAKE_PHOTO);
