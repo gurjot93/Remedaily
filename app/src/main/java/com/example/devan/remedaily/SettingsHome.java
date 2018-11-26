@@ -1,4 +1,4 @@
-package com.example.devan.remedaily.View;
+package com.example.devan.remedaily;
 /*
  * Class to create the Settings Home Page
  * Created by: Gurjot Singh (B00811724)
@@ -13,8 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-import com.example.devan.remedaily.R;
-
 /*
 * Referred from: http://hacksmile.com/how-to-create-android-settings-screen-using-preferencefragment/
 
@@ -27,6 +25,7 @@ public class SettingsHome extends AppCompatActivity {
         setContentView(R.layout.settings);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // this will create fragments from android.app.Fragment,
         Fragment fragment = new SettingsHolder();
 
@@ -38,16 +37,6 @@ public class SettingsHome extends AppCompatActivity {
         transaction.commit();
 
     }
-    //class to add the settings_page.xml to the activity
-    public static class SettingsHolder extends PreferenceFragment {
-        @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            // Calling the settings UI
-            addPreferencesFromResource(R.xml.settings_page);
-
-        }
-    }
     // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -57,6 +46,17 @@ public class SettingsHome extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    //class to add the settings_page.xml to the activity
+    public static class SettingsHolder extends PreferenceFragment {
+        @Override
+        public void onCreate(@Nullable Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            // Calling the settings UI
+            addPreferencesFromResource(R.xml.settings_page);
+
         }
     }
 }
