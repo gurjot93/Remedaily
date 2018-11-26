@@ -106,7 +106,6 @@ public class Home  extends Hamburger {
     private void showMedicineOnScreen(ArrayList<Medicine> MedicineArrayList, LinearLayout linearLayout) {
         for (int i = 0; i < MedicineArrayList.size(); i++) {
 
-
             // adding cardview programatically
             // Source : https://android--code.blogspot.com/2015/12/android-how-to-create-cardview.html
             CardView CardViewObj = new CardView(mContext);

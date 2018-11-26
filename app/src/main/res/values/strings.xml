@@ -32,5 +32,5 @@
     <string name="help6_desc">This activity is accessible via the navigation menu. Its main purpose is to display the current user’s inputted medications on a list. The user will be able to scroll through all of their medications and even add a new medication from this activity.Each medication list item, when tapped, will bring the user to the medication details activity.</string>
     <string name="help7_label">(7) Contact us:</string>
     <string name="help7_desc">Developers: \n\nDevanshu Srivastava\nAditya Gadhvi\nGurjot Singh\nEugene Shishlannikov\nDeep Prakash Singh\nAlex Dunn\n\nEmail:remedaily@gmail.com</string>
-
+    <string name="txtdailyMedicineActivity">Daily Medicine</string>
 </resources>
