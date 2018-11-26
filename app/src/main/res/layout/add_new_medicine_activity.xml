@@ -21,14 +21,15 @@
 
                 <!-- source : https://stackoverflow.com/questions/22105775/imageview-in-circular-through-xml-->
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
+                    android:id="@+id/drugBoxImage"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/splashscreen" />
+                    android:onClick="takeDrugBoxImageShot"
+                    android:src="@drawable/camera_image_black_128" />
 
                 <EditText
                     android:id="@+id/newMedicineNameField"
@@ -103,21 +104,34 @@
                                             android:id="@+id/startDateLabel"
                                             android:layout_width="wrap_content"
                                             android:layout_height="45dp"
-                                            android:layout_alignParentEnd="true"
+                                            android:layout_alignParentStart="true"
                                             android:layout_alignParentTop="true"
+                                            android:layout_marginStart="15dp"
+                                            android:gravity="center"
+                                            android:text="Start Date"
                                             android:layout_marginEnd="63dp"
                                             android:textSize="20sp"
-                                            android:textColor="@color/colorBlack"
-                                            android:gravity="center"
-                                            android:text="Start Date" />
-
+                                            android:textColor="@color/colorBlack" />
                                         <Button
                                             android:id="@+id/startDateButton"
                                             style="?android:attr/borderlessButtonStyle"
                                             android:layout_width="45dp"
                                             android:layout_height="45dp"
-                                            android:layout_alignParentRight="true"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginStart="130dp"
                                             android:background="@drawable/calender_button" />
+
+                                        <TextView
+                                            android:id="@+id/startDateSelected"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="45dp"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginStart="200dp"
+                                            android:gravity="center"
+                                            android:text="mm/dd/yyyy"
+                                            android:textColor="@color/colorBlack"
+                                            android:textSize="20sp" />
 
                                 </RelativeLayout>
 
@@ -131,21 +145,35 @@
                                             android:id="@+id/endDateLabel"
                                             android:layout_width="wrap_content"
                                             android:layout_height="45dp"
-                                            android:layout_alignParentEnd="true"
+                                            android:layout_alignParentStart="true"
                                             android:layout_alignParentTop="true"
+                                            android:layout_marginStart="15dp"
+                                            android:gravity="center"
+                                            android:text="End Date"
                                             android:layout_marginEnd="63dp"
                                             android:textSize="20sp"
-                                            android:textColor="@color/colorBlack"
-                                            android:gravity="center"
-                                            android:text="End Date" />
+                                            android:textColor="@color/colorBlack"/>
 
                                         <Button
                                             android:id="@+id/endDateButton"
                                             style="?android:attr/borderlessButtonStyle"
                                             android:layout_width="45dp"
                                             android:layout_height="45dp"
-                                            android:layout_alignParentRight="true"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginStart="130dp"
                                             android:background="@drawable/calender_button" />
+
+                                        <TextView
+                                            android:id="@+id/endDateSelected"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="45dp"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_marginStart="200dp"
+                                            android:gravity="center"
+                                            android:text="mm/dd/yyyy"
+                                            android:textColor="@color/colorBlack"
+                                            android:textSize="20sp" />
 
                                 </RelativeLayout>
 

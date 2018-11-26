@@ -4,22 +4,17 @@ import java.sql.Ref;
 import java.util.ArrayList;
 
 public class MedicineSchedule {
-    static private int NUMBER_OF_DAYS_IN_ONE_WEEK = 7;
+    static private ArrayList<ArrayList<String>> weekSchedule;
 
-    private String name;
-    private String dosage;
-    private String startDate;
-    private String endDate;
-    private boolean isDaily;
-    private ArrayList<String>[] weekSchedule;
+    static private String name;
+    static private String dosage;
+    static private String startDate;
+    static private String endDate;
+    static private String path;
+    static private boolean isDaily;
 
     public MedicineSchedule() {
-        name = null;
-        dosage = null;
-        startDate = null;
-        endDate = null;
-        isDaily = false;
-        weekSchedule = new ArrayList[NUMBER_OF_DAYS_IN_ONE_WEEK];
+        weekSchedule = new ArrayList<ArrayList<String>>();
     }
 
     public void setName(String name) {
@@ -42,6 +37,10 @@ public class MedicineSchedule {
         this.isDaily = isDaily;
     }
 
+    public void setDrugBoxImagePath(String path) {
+        this.path = path;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -59,10 +58,14 @@ public class MedicineSchedule {
     }
 
     public boolean getIsDaily() {
-        return  this.isDaily;
+        return this.isDaily;
     }
 
-    public ArrayList<String>[] getWeekSchedule() {
+    public String getDrugBoxImagePath() {
+        return this.path;
+    }
+
+    public ArrayList<ArrayList<String>> getWeekSchedule() {
         return this.weekSchedule;
     }
 }

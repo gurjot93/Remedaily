@@ -58,6 +58,23 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <!-- This section configures drug box image saving feature
+        source : https://developer.android.com/training/camera/photobasics
+        -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+
+        <activity
+            android:name=".Camera"
+            android:label="Camera"
+            android:screenOrientation="portrait"></activity>
 
         <activity android:name=".View.Help"
             android:label="Help and Support"
