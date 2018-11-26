@@ -28,6 +28,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.devan.remedaily.businesslayer.AddNewMedBusinessLayer;
+import com.example.devan.remedaily.datalayer.AppDatabase;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -40,10 +43,11 @@ import static java.lang.Thread.sleep;
 public class AddNewMedicineActivity extends AppCompatActivity {
 
     public static Button[] weekDayButtons = new Button[7];
+    public AppDatabase appData;
 
     private final String[] weekDaysArr = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
             "Saturday", "Sunday"};
-
+    public  ArrayList<String> timeEntriesStrings;
     private TimeListAdapter timeListAdapter;
 
     private HashMap<String, WeekDay> buttonIdStrToWeekDayMap = new HashMap<>();
@@ -65,7 +69,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_new_medicine_activity);
-
+        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         findViewById(R.id.addTimeButton).setEnabled(false);
         saveButton = findViewById(R.id.saveButton);
         //saveButton.setEnabled(false);
@@ -274,7 +278,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                                 return false;
                             }
                             if (!administrationTimeIsScheduled) {
-                                toast.setText("Please set administration time");
+                                toast.setText("Please schedule time for medicine");
                                 toast.show();
                                 return false;
                             }
@@ -298,15 +302,15 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                         for (int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
                             int weekDayId = getResources().getIdentifier(weekDaysArr[weekDayIndex], "id",
                                     getApplicationContext().getPackageName());
-                            String timeEntriesString = "";
+                            timeEntriesStrings  = new ArrayList<>();
+
                             for (TimeEntry timeEntry : buttonIdStrToWeekDayMap.get(Integer.toString(weekDayId)).getTimeEntriesList()) {
                                 String time = String.format("%02d", timeEntry.getHour()) + ":" +
                                         String.format("%02d", timeEntry.getMinute());
-                                timeEntriesString += time + ";";
+                                timeEntriesStrings.add(time);
                             }
-                            medicineSchedule.getWeekSchedule()[weekDayIndex] = timeEntriesString;
+                            medicineSchedule.getWeekSchedule().add(timeEntriesStrings); //ArrayList<Arraylist<Strings>> builds here.
                         }
-
                         String savingMessage = "Saving";
                         SpannableString spannableString = new SpannableString(savingMessage);
                         spannableString.setSpan(new RelativeSizeSpan(2f), 0, spannableString.length(), 0);
@@ -323,7 +327,18 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             }
                         }, 1500);
                         // call here DB method to pass it reference to medicineSchedule object
+                        try {
 
+                            String medName = medicineSchedule.getName();
+                            String medDosage = medicineSchedule.getDosage();
+                            String medImagePath =medicineSchedule.getDrugBoxImagePath();
+                            String medStartDate=medicineSchedule.getStartDate();
+                            String medEndDate =medicineSchedule.getEndDate();
+
+                            AddNewMedBusinessLayer.AddMeds(appData,true,medName ,medDosage,medImagePath,medStartDate,medEndDate,medicineSchedule.getWeekSchedule());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         return false;
                 }
                 return false;
