@@ -44,8 +44,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.EditUserDetails"
-            android:label="Edit User Details"
-            android:screenOrientation="portrait" />
+            android:label="Edit User Details" />
 
         <activity
             android:name=".View.Calender"
@@ -67,7 +66,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <!-- This section configures drug box image saving feature
          source : https://developer.android.com/training/camera/photobasics
          -->
@@ -80,6 +78,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
+        <activity android:name=".View.Help"
+            android:label="Help and Support"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
