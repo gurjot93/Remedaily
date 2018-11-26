@@ -57,7 +57,6 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private DatePickerFragment datePickerFragment;
     boolean isSettingStartDate;
 
-    private String drugBoxImagePath;
 
     static final int REQUEST_TAKE_PHOTO = 1;
 
@@ -432,27 +431,37 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     public void setDateToMedicineSchedule(String date) {
         Toast toastDialog = getToastDialog();
+        TextView startDateSelected = (TextView) findViewById(R.id.startDateSelected);
+        TextView endDateSelected = (TextView) findViewById(R.id.endDateSelected);
 
         if (isSettingStartDate) {
             if (null != medicineSchedule.getEndDate()) {
                 if (date.compareTo(medicineSchedule.getEndDate()) < 0) {
                     medicineSchedule.setStartDate(date);
+                    startDateSelected.setText(date);
                 } else {
                     toastDialog.setText("Date not set - start day must occur before end date");
                     toastDialog.show();
                 }
             }
-            medicineSchedule.setStartDate(date);
+            else {
+                medicineSchedule.setStartDate(date);
+                startDateSelected.setText(date);
+            }
         } else {
             if (null != medicineSchedule.getStartDate()) {
                 if (date.compareTo(medicineSchedule.getStartDate()) > 0) {
                     medicineSchedule.setEndDate(date);
+                    endDateSelected.setText(date);
                 } else {
                     toastDialog.setText("Date not set - end date must occur after start date");
                     toastDialog.show();
                 }
             }
-            medicineSchedule.setEndDate(date);
+            else {
+                medicineSchedule.setEndDate(date);
+                endDateSelected.setText(date);
+            }
         }
     }
 
