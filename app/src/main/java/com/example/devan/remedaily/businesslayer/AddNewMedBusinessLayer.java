@@ -32,8 +32,9 @@ public class AddNewMedBusinessLayer {
         med.timeObject = arrTimeItem; //arraylist of arraylist<strings>
         db.medModel().insertMeds(med);
         return true;
+
     }
     //endregion
 
-    
+
 }
