@@ -21,14 +21,14 @@
 
                 <!-- source : https://stackoverflow.com/questions/22105775/imageview-in-circular-through-xml-->
                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/drugBoxImage"
+                    android:id="@+id/profile_image"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/my_image_image" />
+                    android:src="@drawable/splashscreen" />
 
                 <EditText
                     android:id="@+id/newMedicineNameField"
@@ -106,10 +106,10 @@
                                             android:layout_alignParentEnd="true"
                                             android:layout_alignParentTop="true"
                                             android:layout_marginEnd="63dp"
-                                            android:gravity="center"
-                                            android:text="Start Date"
+                                            android:textSize="20sp"
                                             android:textColor="@color/colorBlack"
-                                            android:textSize="20sp" />
+                                            android:gravity="center"
+                                            android:text="Start Date" />
 
                                         <Button
                                             android:id="@+id/startDateButton"
@@ -119,23 +119,13 @@
                                             android:layout_alignParentRight="true"
                                             android:background="@drawable/calender_button" />
 
-                                        <Button
-                                            android:id="@+id/cameraButton"
-                                            android:layout_width="45dp"
-                                            android:layout_height="45dp"
-                                            android:layout_alignParentStart="true"
-                                            android:layout_alignParentTop="true"
-                                            android:layout_marginStart="76dp"
-                                            android:background="@drawable/camera_image_black_128"
-                                            android:onClick="takeDrugBoxImageShot" />
-
                                 </RelativeLayout>
 
                                 <RelativeLayout
                                     android:id="@+id/stopDateLinearLayout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal" >
 
                                         <TextView
                                             android:id="@+id/endDateLabel"
@@ -144,10 +134,10 @@
                                             android:layout_alignParentEnd="true"
                                             android:layout_alignParentTop="true"
                                             android:layout_marginEnd="63dp"
-                                            android:gravity="center"
-                                            android:text="End Date"
+                                            android:textSize="20sp"
                                             android:textColor="@color/colorBlack"
-                                            android:textSize="20sp" />
+                                            android:gravity="center"
+                                            android:text="End Date" />
 
                                         <Button
                                             android:id="@+id/endDateButton"

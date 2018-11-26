@@ -2,9 +2,6 @@ package com.example.devan.remedaily;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -28,12 +25,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 import static java.lang.Thread.sleep;
 
@@ -42,7 +35,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     public static Button[] weekDayButtons = new Button[7];
 
     private final String[] weekDaysArr = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
-            "Saturday", "Sunday"};
+                                          "Saturday", "Sunday"};
 
     private TimeListAdapter timeListAdapter;
 
@@ -56,10 +49,6 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private TimePickerFragment timePickerFragment;
     private DatePickerFragment datePickerFragment;
     boolean isSettingStartDate;
-
-    private String drugBoxImagePath;
-
-    static final int REQUEST_TAKE_PHOTO = 1;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -87,10 +76,10 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 currentDay = new WeekDay("AllDays");
-                if (isChecked) {
+                if(isChecked) {
                     // Add Time button should be active only when week mode selected
                     // or specific day selected
-                    Button addTimeBtn = (Button) findViewById(R.id.addTimeButton);
+                    Button addTimeBtn = (Button)findViewById(R.id.addTimeButton);
                     addTimeBtn.setEnabled(true);
                     addTimeBtn.setTextColor(getResources().getColor(R.color.colorBlack));
                     // Discard possibly existing schedules, as we are going to fill all the same
@@ -100,10 +89,11 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                     enableButtons(false);
                     AddNewMedicineActivity.this.currentDayButton = null;
                     setListViewAdapter(currentDay);
-                } else {
+                }
+                else {
                     // Add Time button should be active only when week mode selected
                     // or specific day selected
-                    Button addTimeBtn = (Button) findViewById(R.id.addTimeButton);
+                    Button addTimeBtn = (Button)findViewById(R.id.addTimeButton);
                     addTimeBtn.setEnabled(false);
                     addTimeBtn.setTextColor(getResources().getColor(R.color.colorButtonText));
                     // Discard possibly existing schedules, as we are going to fill different times
@@ -117,14 +107,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         });
 
 
-        ((Button) findViewById(R.id.startDateButton)).setOnTouchListener(new View.OnTouchListener() {
+        ((Button)findViewById(R.id.startDateButton)).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         return false;
                     case MotionEvent.ACTION_UP:
-                        if (buttonNotInFocus(view, event)) {
+                        if(buttonNotInFocus(view, event)) {
                             return false;
                         }
                         AddNewMedicineActivity.this.isSettingStartDate = true;
@@ -136,14 +126,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         });
 
 
-        ((Button) findViewById(R.id.endDateButton)).setOnTouchListener(new View.OnTouchListener() {
+        ((Button)findViewById(R.id.endDateButton)).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         return false;
                     case MotionEvent.ACTION_UP:
-                        if (buttonNotInFocus(view, event)) {
+                        if(buttonNotInFocus(view, event)) {
                             return false;
                         }
                         AddNewMedicineActivity.this.isSettingStartDate = false;
@@ -155,7 +145,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         });
 
 
-        for (int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
+        for(int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
             int weekDayId = getResources().getIdentifier(weekDaysArr[weekDayIndex], "id",
                     getApplicationContext().getPackageName());
 
@@ -170,14 +160,14 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                         case MotionEvent.ACTION_DOWN:
                             return false;
                         case MotionEvent.ACTION_UP:
-                            if (buttonNotInFocus(view, event)) {
+                            if(buttonNotInFocus(view, event)) {
                                 return false;
                             }
                             setCurrentDayButtonSelected(currentDayButton);
                             AddNewMedicineActivity.this.currentDayButton = currentDayButton;
                             // Add Time button should be active only when week mode selected
                             // or specific day selected
-                            Button addTimeBtn = (Button) findViewById(R.id.addTimeButton);
+                            Button addTimeBtn = (Button)findViewById(R.id.addTimeButton);
                             addTimeBtn.setEnabled(true);
                             addTimeBtn.setTextColor(getResources().getColor(R.color.colorBlack));
                             int buttonId = currentDayButton.getId();
@@ -200,7 +190,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_DOWN:
                         return false;
                     case MotionEvent.ACTION_UP:
-                        if (buttonNotInFocus(view, event)) {
+                        if(buttonNotInFocus(view, event)) {
                             return false;
                         }
                         setTimePickerFragment(-1);
@@ -214,19 +204,19 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         saveButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                String medicineName = ((EditText) findViewById(R.id.newMedicineNameField)).getText().toString();
-                String medicineDosage = ((EditText) findViewById(R.id.newMedicineDosageField)).getText().toString();
+                String medicineName = ((EditText)findViewById(R.id.newMedicineNameField)).getText().toString();
+                String medicineDosage = ((EditText)findViewById(R.id.newMedicineDosageField)).getText().toString();
                 boolean isDaily = sameScheduleSwitchButton.isChecked();
                 boolean startDateIsSet = (null != medicineSchedule.getStartDate());
                 boolean endDateIsSet = (null != medicineSchedule.getEndDate());
 
                 // check if no time was scheduled. In this case SAVE button will not perform saving
                 boolean administrationTimeIsScheduled = false;
-                if (isDaily) {
+                if(isDaily) {
                     administrationTimeIsScheduled = !currentDay.getTimeEntriesList().isEmpty();
                 } else {
-                    for (WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
-                        if (!weekDay.getTimeEntriesList().isEmpty()) {
+                    for(WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
+                        if(!weekDay.getTimeEntriesList().isEmpty()) {
                             administrationTimeIsScheduled = true;
                             break;
                         }
@@ -234,47 +224,47 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                 }
 
                 boolean scheduleDataIsValidForSaving = (!medicineName.equals("")) &&
-                        (!medicineDosage.equals("")) &&
-                        startDateIsSet &&
-                        endDateIsSet &&
-                        administrationTimeIsScheduled;
+                                                       (!medicineDosage.equals("")) &&
+                                                        startDateIsSet &&
+                                                        endDateIsSet &&
+                                                        administrationTimeIsScheduled;
 
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        if (!scheduleDataIsValidForSaving) {
+                        if(!scheduleDataIsValidForSaving) {
                             saveButton.setBackgroundResource(R.drawable.button_error);
                             return false;
                         }
                         return false;
                     case MotionEvent.ACTION_UP:
-                        if (buttonNotInFocus(view, event)) {
+                        if(buttonNotInFocus(view, event)) {
                             return false;
                         }
-                        if (!scheduleDataIsValidForSaving) {
+                        if(!scheduleDataIsValidForSaving) {
                             saveButton.setBackgroundResource(R.drawable.button);
 
                             Toast toast = getToastDialog();
-                            if (medicineName.equals("")) {
+                            if(medicineName.equals("")) {
                                 toast.setText("Please set medicine name");
                                 toast.show();
                                 return false;
                             }
-                            if (medicineDosage.equals("")) {
+                            if(medicineDosage.equals("")) {
                                 toast.setText("Please set medicine dosage");
                                 toast.show();
                                 return false;
                             }
-                            if (!startDateIsSet) {
+                            if(!startDateIsSet) {
                                 toast.setText("Please set start date");
                                 toast.show();
                                 return false;
                             }
-                            if (!endDateIsSet) {
+                            if(!endDateIsSet) {
                                 toast.setText("Please set end date");
                                 toast.show();
                                 return false;
                             }
-                            if (!administrationTimeIsScheduled) {
+                            if(!administrationTimeIsScheduled) {
                                 toast.setText("Please set administration time");
                                 toast.show();
                                 return false;
@@ -283,11 +273,11 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                         }
                         // if we are in weekly mode, make each week day have the same, but
                         // independent time entries list
-                        if (sameScheduleSwitchButton.isChecked()) {
-                            for (WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
+                        if(sameScheduleSwitchButton.isChecked()) {
+                            for(WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
                                 ArrayList<TimeEntry> timeEntriesList = weekDay.getTimeEntriesList();
-                                for (TimeEntry timeEntry : currentDay.getTimeEntriesList())
-                                    timeEntriesList.add(new TimeEntry(timeEntry.getHour(), timeEntry.getMinute()));
+                                for(TimeEntry timeEntry : currentDay.getTimeEntriesList())
+                                    timeEntriesList.add(new TimeEntry(timeEntry.getHour(),timeEntry.getMinute()));
                             }
                         }
 
@@ -296,20 +286,20 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                         medicineSchedule.setIsDaily(isDaily);
                         //not setting start and end dates here. They are set in date picker
 
-                        for (int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
+                        for(int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
                             int weekDayId = getResources().getIdentifier(weekDaysArr[weekDayIndex], "id",
                                     getApplicationContext().getPackageName());
-                            String timeEntriesString = "";
-                            for (TimeEntry timeEntry : buttonIdStrToWeekDayMap.get(Integer.toString(weekDayId)).getTimeEntriesList()) {
-                                String time = String.format("%02d", timeEntry.getHour()) + ":" +
-                                        String.format("%02d", timeEntry.getMinute());
-                                timeEntriesString += time + ";";
+                            ArrayList<String> timeEntriesStrings = new ArrayList<>();
+                            for(TimeEntry timeEntry : buttonIdStrToWeekDayMap.get(Integer.toString(weekDayId)).getTimeEntriesList()) {
+                                String time = String.format("%02d",timeEntry.getHour()) + ":" +
+                                        String.format("%02d",timeEntry.getMinute());
+                                timeEntriesStrings.add(time);
                             }
-                            medicineSchedule.getWeekSchedule()[weekDayIndex] = timeEntriesString;
+                            medicineSchedule.getWeekSchedule()[weekDayIndex] = timeEntriesStrings;
                         }
 
                         String savingMessage = "Saving";
-                        SpannableString spannableString = new SpannableString(savingMessage);
+                        SpannableString spannableString=  new SpannableString(savingMessage);
                         spannableString.setSpan(new RelativeSizeSpan(2f), 0, spannableString.length(), 0);
                         spannableString.setSpan(new ForegroundColorSpan(Color.BLACK), 0, spannableString.length(), 0);
 
@@ -348,13 +338,13 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private void enableButtons(boolean doEnable) {
         for (Button weekDayButton : weekDayButtons) {
             weekDayButton.setEnabled(doEnable);
-            if (doEnable) {
+            if(doEnable) {
                 weekDayButton.setTextColor(getResources().getColor(R.color.colorBlack));
             }
         }
         // source : https://stackoverflow.com/questions/8863776/android-layout-wont-redraw-after-setvisibilityview-gone/8863908
         RelativeLayout weekDaysRelativeLayout = (RelativeLayout) findViewById(R.id.weekDaysRelativeLayout);
-        if (doEnable) {
+        if(doEnable) {
             weekDaysRelativeLayout.setVisibility(View.VISIBLE);
         } else {
             weekDaysRelativeLayout.setVisibility(View.GONE);
@@ -363,12 +353,12 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     }
 
     private void clearCurrentSchedule() {
-        for (WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
+        for(WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
             weekDay.getTimeEntriesList().clear();
         }
 
         // clear current day - useful when switchin from week schedule to day schedule
-        if (null != currentDay) {
+        if(null != currentDay) {
             currentDay.getTimeEntriesList().clear();
         }
     }
@@ -412,8 +402,8 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     }
 
     public boolean allDaysAreEmpty() {
-        for (WeekDay weekDay : buttonIdStrToWeekDayMap.values()) {
-            if (weekDay.getTimeEntriesList().size() > 0) {
+        for(WeekDay weekDay: buttonIdStrToWeekDayMap.values()) {
+            if(weekDay.getTimeEntriesList().size() > 0) {
                 return false;
             }
         }
@@ -433,9 +423,9 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     public void setDateToMedicineSchedule(String date) {
         Toast toastDialog = getToastDialog();
 
-        if (isSettingStartDate) {
-            if (null != medicineSchedule.getEndDate()) {
-                if (date.compareTo(medicineSchedule.getEndDate()) < 0) {
+        if(isSettingStartDate) {
+            if(null != medicineSchedule.getEndDate()) {
+                if(date.compareTo(medicineSchedule.getEndDate()) < 0) {
                     medicineSchedule.setStartDate(date);
                 } else {
                     toastDialog.setText("Date not set - start day must occur before end date");
@@ -444,8 +434,8 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             }
             medicineSchedule.setStartDate(date);
         } else {
-            if (null != medicineSchedule.getStartDate()) {
-                if (date.compareTo(medicineSchedule.getStartDate()) > 0) {
+            if(null != medicineSchedule.getStartDate()) {
+                if(date.compareTo(medicineSchedule.getStartDate()) > 0) {
                     medicineSchedule.setEndDate(date);
                 } else {
                     toastDialog.setText("Date not set - end date must occur after start date");
@@ -459,7 +449,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private Toast getToastDialog() {
         Toast toast = Toast.makeText(AddNewMedicineActivity.this, ""
                 , Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.TOP, 0, 250);
+        toast.setGravity(Gravity.TOP,0,250);
 
         //set text size
         // source : https://stackoverflow.com/questions/5274354/how-can-we-increase-the-font-size-in-toast
@@ -482,44 +472,6 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-
-
-    public void setDrugBoxImage(String drugBoxImagePath) {
-        this.medicineSchedule.setDrugBoxImagePath(drugBoxImagePath);
-
-        try {
-            Bitmap drugBoxBitmapImage = null;
-            File drugBoxImageFile = new File(drugBoxImagePath);
-            BitmapFactory.Options options = new BitmapFactory.Options();
-            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-
-            drugBoxBitmapImage = BitmapFactory.decodeStream(new FileInputStream(drugBoxImageFile),
-                    null, options);
-            ((CircleImageView) findViewById(R.id.drugBoxImage)).setImageBitmap(drugBoxBitmapImage);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void takeDrugBoxImageShot(View view) {
-        Intent cameraIntent = new Intent(getApplicationContext(), Camera.class);
-        String currentPhotoPath = medicineSchedule.getDrugBoxImagePath();
-        cameraIntent.putExtra("previousPhotoPath", currentPhotoPath == null ? "" : currentPhotoPath);
-        startActivityForResult(cameraIntent, REQUEST_TAKE_PHOTO);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_TAKE_PHOTO) {
-            if (resultCode == RESULT_OK) {
-                String currentPhotoPath = data.getStringExtra("currentPhotoPath");
-                medicineSchedule.setDrugBoxImagePath(currentPhotoPath);
-                setDrugBoxImage(currentPhotoPath);
-            } else {
-                medicineSchedule.setDrugBoxImagePath(null);
-            }
-        }
     }
 }
 
