@@ -1,5 +1,12 @@
 package com.example.devan.remedaily.View;
 
+/*
+    Page Name : Calendar.java
+    Author : Deep Singh (B00792279)
+    Purpose : Backend java file calendar resource file
+ */
+
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,9 +28,9 @@ import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
 
 import java.util.ArrayList;
 
+
 public class Calender extends AppCompatActivity {
 
-    ListView listView;
     private Context mContext;
     private ScrollView scrollView;
 
