@@ -3,9 +3,7 @@ package com.example.devan.remedaily.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.example.devan.remedaily.AddNewMedicineActivity;
 import com.example.devan.remedaily.R;
 
 public class SplashScreen extends AppCompatActivity {

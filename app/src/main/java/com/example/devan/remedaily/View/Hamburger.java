@@ -44,8 +44,10 @@ public class Hamburger extends AppCompatActivity {
         userName = findViewById(R.id.userName);
 //        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
         navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
+        navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
+        navigationItems.add(new NavigationItem("Help and Support", "", R.drawable.customer_support));
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         try {
             userName.setText(ShowUserInfo(appData));
@@ -145,11 +147,21 @@ public class Hamburger extends AppCompatActivity {
             case 1:
                 // third menu item clicked
                 // create appropriate intention
-                intent = new Intent(this, Calender.class);
+                intent = new Intent(this, EditUserDetails.class);
                 startActivity(intent);
                 break;
             case 2:
+                // third menu item clicked
+                // create appropriate intention
+                intent = new Intent(this, Calender.class);
+                startActivity(intent);
+                break;
+            case 3:
                 intent = new Intent(this, SettingsHome.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent = new Intent(this, Help.class);
                 startActivity(intent);
                 break;
         }

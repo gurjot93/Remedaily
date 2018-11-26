@@ -2,9 +2,11 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +46,8 @@ public class EditUserDetails extends AppCompatActivity {
         lastNameTv=findViewById(R.id.lastNameLbl);
         ageTv=findViewById(R.id.ageLbl);
         cancelBtn = findViewById(R.id.cancelBtn);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         context=this;
         try {
             /*Fetching data to update*/
@@ -61,6 +65,8 @@ public class EditUserDetails extends AppCompatActivity {
                 if(Validations()){
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+                        Intent intent = new Intent(EditUserDetails.this, Home.class);
+                        startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -109,6 +115,17 @@ public class EditUserDetails extends AppCompatActivity {
                 }
             }
         });
+    }
+// source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public boolean Validations(){
