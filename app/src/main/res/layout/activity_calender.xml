@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.Calender"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".View.Calender">
 
-
-    <ListView
-        android:id="@+id/mainListView"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/calendarViewResult"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null">
+        android:layout_height="match_parent">
 
-    </ListView>
+
+
+    </ScrollView>
 
 
 </RelativeLayout>
