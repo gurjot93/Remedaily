@@ -30,4 +30,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
     compile 'android.arch.persistence.room:runtime:1.1.1'
+    compile 'com.google.code.gson:gson:2.8.2'
+
 }

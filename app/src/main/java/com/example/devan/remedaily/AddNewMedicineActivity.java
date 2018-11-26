@@ -2,6 +2,10 @@ package com.example.devan.remedaily;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Camera;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -25,17 +29,26 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.devan.remedaily.businesslayer.AddNewMedBusinessLayer;
+import com.example.devan.remedaily.datalayer.AppDatabase;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static java.lang.Thread.sleep;
 
 public class AddNewMedicineActivity extends AppCompatActivity {
 
     public static Button[] weekDayButtons = new Button[7];
+    public AppDatabase appData;
 
     private final String[] weekDaysArr = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
-                                          "Saturday", "Sunday"};
+            "Saturday", "Sunday"};
+    public  ArrayList<String> timeEntriesStrings;
 
     private TimeListAdapter timeListAdapter;
 
@@ -50,12 +63,13 @@ public class AddNewMedicineActivity extends AppCompatActivity {
     private DatePickerFragment datePickerFragment;
     boolean isSettingStartDate;
 
+    static final int REQUEST_TAKE_PHOTO = 1;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_new_medicine_activity);
-
+        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         findViewById(R.id.addTimeButton).setEnabled(false);
         saveButton = findViewById(R.id.saveButton);
         //saveButton.setEnabled(false);
@@ -264,8 +278,8 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                                 toast.show();
                                 return false;
                             }
-                            if(!administrationTimeIsScheduled) {
-                                toast.setText("Please set administration time");
+                            if (!administrationTimeIsScheduled) {
+                                toast.setText("Please schedule time for medicine");
                                 toast.show();
                                 return false;
                             }
@@ -289,15 +303,22 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                         for(int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
                             int weekDayId = getResources().getIdentifier(weekDaysArr[weekDayIndex], "id",
                                     getApplicationContext().getPackageName());
+                            timeEntriesStrings  = new ArrayList<>();
+
+                            for (TimeEntry timeEntry : buttonIdStrToWeekDayMap.get(Integer.toString(weekDayId)).getTimeEntriesList()) {
+                                String time = String.format("%02d", timeEntry.getHour()) + ":" +
+                                        String.format("%02d", timeEntry.getMinute());
+                                timeEntriesStrings.add(time);
+                            }
+                            medicineSchedule.getWeekSchedule().add(timeEntriesStrings); //ArrayList<Arraylist<Strings>> builds here.
                             ArrayList<String> timeEntriesStrings = new ArrayList<>();
                             for(TimeEntry timeEntry : buttonIdStrToWeekDayMap.get(Integer.toString(weekDayId)).getTimeEntriesList()) {
                                 String time = String.format("%02d",timeEntry.getHour()) + ":" +
                                         String.format("%02d",timeEntry.getMinute());
                                 timeEntriesStrings.add(time);
                             }
-                            medicineSchedule.getWeekSchedule()[weekDayIndex] = timeEntriesStrings;
+                            medicineSchedule.getWeekSchedule().add(timeEntriesStrings);//[weekDayIndex] = timeEntriesStrings;
                         }
-
                         String savingMessage = "Saving";
                         SpannableString spannableString=  new SpannableString(savingMessage);
                         spannableString.setSpan(new RelativeSizeSpan(2f), 0, spannableString.length(), 0);
@@ -314,7 +335,18 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             }
                         }, 1500);
                         // call here DB method to pass it reference to medicineSchedule object
+                        try {
 
+                            String medName = medicineSchedule.getName();
+                            String medDosage = medicineSchedule.getDosage();
+                            String medImagePath =medicineSchedule.getDrugBoxImagePath();
+                            String medStartDate=medicineSchedule.getStartDate();
+                            String medEndDate =medicineSchedule.getEndDate();
+
+                            AddNewMedBusinessLayer.AddMeds(appData,true,medName ,medDosage,medImagePath,medStartDate,medEndDate,medicineSchedule.getWeekSchedule());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         return false;
                 }
                 return false;
@@ -422,27 +454,37 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     public void setDateToMedicineSchedule(String date) {
         Toast toastDialog = getToastDialog();
+        TextView startDateSelected = (TextView) findViewById(R.id.startDateSelected);
+        TextView endDateSelected = (TextView) findViewById(R.id.endDateSelected);
 
         if(isSettingStartDate) {
             if(null != medicineSchedule.getEndDate()) {
                 if(date.compareTo(medicineSchedule.getEndDate()) < 0) {
                     medicineSchedule.setStartDate(date);
+                    startDateSelected.setText(date);
                 } else {
                     toastDialog.setText("Date not set - start day must occur before end date");
                     toastDialog.show();
                 }
             }
-            medicineSchedule.setStartDate(date);
+            else {
+                medicineSchedule.setStartDate(date);
+                startDateSelected.setText(date);
+            }
         } else {
             if(null != medicineSchedule.getStartDate()) {
                 if(date.compareTo(medicineSchedule.getStartDate()) > 0) {
                     medicineSchedule.setEndDate(date);
+                    endDateSelected.setText(date);
                 } else {
                     toastDialog.setText("Date not set - end date must occur after start date");
                     toastDialog.show();
                 }
             }
-            medicineSchedule.setEndDate(date);
+            else {
+                medicineSchedule.setEndDate(date);
+                endDateSelected.setText(date);
+            }
         }
     }
 
@@ -472,6 +514,41 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+    public void takeDrugBoxImageShot(View view) {
+        Intent cameraIntent = new Intent(getApplicationContext(), Camera.class);
+        String currentPhotoPath = medicineSchedule.getDrugBoxImagePath();
+        cameraIntent.putExtra("previousPhotoPath", currentPhotoPath == null ? "" : currentPhotoPath);
+        startActivityForResult(cameraIntent, REQUEST_TAKE_PHOTO);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_TAKE_PHOTO) {
+            if (resultCode == RESULT_OK) {
+                String currentPhotoPath = data.getStringExtra("currentPhotoPath");
+                medicineSchedule.setDrugBoxImagePath(currentPhotoPath);
+                setDrugBoxImage(currentPhotoPath);
+            } else {
+                medicineSchedule.setDrugBoxImagePath(null);
+            }
+        }
+    }
+    public void setDrugBoxImage(String drugBoxImagePath) {
+        this.medicineSchedule.setDrugBoxImagePath(drugBoxImagePath);
+
+        try {
+            Bitmap drugBoxBitmapImage = null;
+            File drugBoxImageFile = new File(drugBoxImagePath);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
+            drugBoxBitmapImage = BitmapFactory.decodeStream(new FileInputStream(drugBoxImageFile),
+                    null, options);
+            ((CircleImageView) findViewById(R.id.drugBoxImage)).setImageBitmap(drugBoxBitmapImage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
