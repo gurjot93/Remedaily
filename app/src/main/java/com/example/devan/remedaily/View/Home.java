@@ -11,7 +11,9 @@ package com.example.devan.remedaily.View;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -31,7 +33,7 @@ import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public class Home  extends Hamburger {
+public class Home extends Hamburger {
 
     public Button userDetailsBtn,addMed;
     private Context mContext;
@@ -45,6 +47,9 @@ public class Home  extends Hamburger {
 
         // set the context
         mContext = getApplicationContext();
+        /*running the notification */
+        DisplayNotification displaynotification = new DisplayNotification(this);
+        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
 
         lLinearLayout = findViewById(R.id.upcomingMedicineList);
         mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);
@@ -65,6 +70,7 @@ public class Home  extends Hamburger {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void populateMissedMedicine() throws ParseException {
         // get the upcoming medicine details
         MedicineBusinessLayer MedicineObj = new MedicineBusinessLayer();
@@ -82,6 +88,7 @@ public class Home  extends Hamburger {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showNoMedicationAvailable(LinearLayout linearLayout, int TextID){
         TextView ChildTextView2 = new TextView(mContext);
 
@@ -103,6 +110,7 @@ public class Home  extends Hamburger {
         linearLayout.addView(ChildTextView2);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void showMedicineOnScreen(ArrayList<Medicine> MedicineArrayList, LinearLayout linearLayout) {
         for (int i = 0; i < MedicineArrayList.size(); i++) {
 
@@ -264,6 +272,7 @@ public class Home  extends Hamburger {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void populateUpcomingMedicine() throws ParseException {
 
 
