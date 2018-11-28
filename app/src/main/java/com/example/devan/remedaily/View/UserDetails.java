@@ -64,6 +64,7 @@ public class UserDetails extends AppCompatActivity {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
                         Intent intent = new  Intent(getApplicationContext(),Home.class);
                         startActivity(intent);
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

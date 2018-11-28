@@ -1,4 +1,4 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 import java.sql.Ref;
 import java.util.ArrayList;

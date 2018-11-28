@@ -1,4 +1,4 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 public class TimeEntry implements Comparable<TimeEntry>{
     private int hourOfDay;
