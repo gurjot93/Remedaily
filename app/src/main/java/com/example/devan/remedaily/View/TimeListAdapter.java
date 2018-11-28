@@ -1,4 +1,4 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.devan.remedaily.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

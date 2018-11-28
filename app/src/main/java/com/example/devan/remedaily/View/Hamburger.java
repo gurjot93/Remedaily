@@ -43,6 +43,10 @@ public class Hamburger extends AppCompatActivity {
         //setContentView(R.layout.add_new_medicine_activity);
         userName = findViewById(R.id.userName);
 //        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
+
+
+
+
         navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
         navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
