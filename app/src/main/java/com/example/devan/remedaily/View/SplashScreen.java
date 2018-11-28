@@ -25,5 +25,9 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         thread.start();
+        /*running the notification */
+        DisplayNotification displaynotification = new DisplayNotification(this);
+        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
+
     }
 }

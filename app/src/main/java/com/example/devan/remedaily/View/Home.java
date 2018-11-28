@@ -47,9 +47,6 @@ public class Home extends Hamburger {
 
         // set the context
         mContext = getApplicationContext();
-        /*running the notification */
-        DisplayNotification displaynotification = new DisplayNotification(this);
-        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
 
         lLinearLayout = findViewById(R.id.upcomingMedicineList);
         mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);

@@ -89,7 +89,7 @@ public class DisplayNotification extends ContextWrapper {
              * Referred from: https://stackoverflow.com/questions/13716723/open-application-after-clicking-on-notification
              * */
             notification.contentIntent=  PendingIntent.getActivity(this, 0,
-                    new Intent(this, UserDetails.class), PendingIntent.FLAG_CANCEL_CURRENT);
+                    new Intent(this, Help.class), PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Issuing the notification.
             mNotificationManager.notify(001, notification);
@@ -112,7 +112,7 @@ public class DisplayNotification extends ContextWrapper {
 
             /*Intent for a new class by clicking the notification */
             notification.contentIntent=  PendingIntent.getActivity(this, 0,
-                    new Intent(this, UserDetails.class), PendingIntent.FLAG_CANCEL_CURRENT);
+                    new Intent(this, Help.class), PendingIntent.FLAG_CANCEL_CURRENT);
 
             /* Notification manager to fetch the context and the notification service.
             *  Referred from: https://stackoverflow.com/questions/13716723/open-application-after-clicking-on-notification
