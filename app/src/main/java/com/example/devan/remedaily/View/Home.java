@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.devan.remedaily.AddNewMedicineActivity;
 import com.example.devan.remedaily.Models.Medicine;
@@ -47,6 +48,18 @@ public class Home extends Hamburger {
 
         // set the context
         mContext = getApplicationContext();
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
+        i.putExtra(Intent.EXTRA_TEXT   , "body of email");
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(Home.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+
         /*running the notification */
         DisplayNotification displaynotification = new DisplayNotification(this);
         displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
