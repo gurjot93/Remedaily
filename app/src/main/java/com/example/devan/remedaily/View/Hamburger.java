@@ -20,11 +20,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.devan.remedaily.R;
+import com.example.devan.remedaily.businesslayer.UserDetailsBusinessLayer;
 import com.example.devan.remedaily.datalayer.AppDatabase;
 
 import java.util.ArrayList;
 
 import static com.example.devan.remedaily.businesslayer.HamburgerBusinessLayer.ShowUserInfo;
+import static com.example.devan.remedaily.businesslayer.UserDetailsBusinessLayer.IsUserPresent;
 
 public class Hamburger extends AppCompatActivity {
     private static String TAG = Hamburger.class.getSimpleName();
@@ -43,12 +45,15 @@ public class Hamburger extends AppCompatActivity {
         //setContentView(R.layout.add_new_medicine_activity);
         userName = findViewById(R.id.userName);
 //        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
+        appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
 
-
-
-
-        navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
-        navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));
+        if (IsUserPresent(appData)) {
+            navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));
+        } else {
+            navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
+        }
+        /*navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
+        navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));*/
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
         navigationItems.add(new NavigationItem("Help and Support", "", R.drawable.customer_support));
@@ -144,27 +149,28 @@ public class Hamburger extends AppCompatActivity {
             case 0:
                 // second menu item clicked
                 // create appropriate intention
-                intent = new Intent(this, UserDetails.class);
-                startActivity(intent);
-
+                if (IsUserPresent(appData)) {
+                    intent = new Intent(this, EditUserDetails.class);
+                    startActivity(intent);
+                }
+                else{
+                    intent = new Intent(this, UserDetails.class);
+                    startActivity(intent);
+                }
                 break;
             case 1:
-                // third menu item clicked
-                // create appropriate intention
-                intent = new Intent(this, EditUserDetails.class);
-                startActivity(intent);
-                break;
-            case 2:
                 // third menu item clicked
                 // create appropriate intention
                 intent = new Intent(this, Calender.class);
                 startActivity(intent);
                 break;
-            case 3:
+            case 2:
+                // third menu item clicked
+                // create appropriate intention
                 intent = new Intent(this, SettingsHome.class);
                 startActivity(intent);
                 break;
-            case 4:
+            case 3:
                 intent = new Intent(this, Help.class);
                 startActivity(intent);
                 break;
