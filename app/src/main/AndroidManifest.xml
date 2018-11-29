@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddNewMedicineActivity"
+            android:name=".View.AddNewMedicineActivity"
             android:label="Add Medicine"
             android:screenOrientation="portrait"></activity>
         <activity
@@ -72,7 +72,7 @@
         </provider>
 
         <activity
-            android:name=".Camera"
+            android:name=".View.Camera"
             android:label="Camera"
             android:screenOrientation="portrait"></activity>
 
