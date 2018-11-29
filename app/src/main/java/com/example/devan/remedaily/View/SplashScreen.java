@@ -1,12 +1,15 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.devan.remedaily.R;
 
 public class SplashScreen extends AppCompatActivity {
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
