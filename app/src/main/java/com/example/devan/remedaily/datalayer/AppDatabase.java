@@ -44,7 +44,6 @@ public abstract class AppDatabase extends RoomDatabase {
             INSTANCE =
                     Room.inMemoryDatabaseBuilder(context.getApplicationContext(), com.example.devan.remedaily.datalayer.AppDatabase.class)
                     // To simplify the codelab, allow queries on the main thread.
-                    // Don't do this on a real app! See PersistenceBasicSample for an example.
                     .allowMainThreadQueries()
                     .build();
         }

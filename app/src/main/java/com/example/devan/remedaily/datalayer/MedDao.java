@@ -27,4 +27,7 @@ public interface MedDao{
 
     @Query("DELETE FROM med")
     void deleteAll();
+
+    @Query("select * from med where startDate = :StartDate")
+    List<com.example.devan.remedaily.datalayer.Med> loadMedByDate(String StartDate);
 }

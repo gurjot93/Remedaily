@@ -33,7 +33,7 @@ public class DatePickerFragment extends DialogFragment {
             new DatePickerDialog.OnDateSetListener() {
                 public void onDateSet(DatePicker view, int year, int month, int day) {
                     MedicineSchedule medicineSchedule = addNewMedicineActivityObj.getMedicineSchedule();
-                        String date = String.format("%02d",month) + "/" +
+                        String date = String.format("%02d",month+1) + "/" +
                                 String.format("%02d",day) + "/" + String.format("%04d",year);
                         addNewMedicineActivityObj.setDateToMedicineSchedule(date);
                 }
