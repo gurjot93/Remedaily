@@ -16,8 +16,8 @@ public interface UserDao {
     @Query("select * from user")
     List<User> loadAllUsers();
 
-    @Query("select * from user where firstName = :firstName")
-    User loadUsersbyName(String firstName);
+    @Query("select userPresent from user")
+    boolean userPresent();
 
     @Insert(onConflict = IGNORE)
     Long insertUser(User user);

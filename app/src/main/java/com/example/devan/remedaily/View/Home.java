@@ -14,8 +14,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.View;
@@ -26,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.devan.remedaily.AddNewMedicineActivity;
+import com.example.devan.remedaily.View.AddNewMedicineActivity;
 import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
@@ -49,16 +47,6 @@ public class Home extends Hamburger {
         // set the context
         mContext = getApplicationContext();
 
-        Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"recipient@example.com"});
-        i.putExtra(Intent.EXTRA_SUBJECT, "subject of email");
-        i.putExtra(Intent.EXTRA_TEXT   , "body of email");
-        try {
-            startActivity(Intent.createChooser(i, "Send mail..."));
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(Home.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-        }
 
         /*running the notification */
         DisplayNotification displaynotification = new DisplayNotification(this);
