@@ -14,8 +14,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.View;
@@ -25,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.devan.remedaily.AddNewMedicineActivity;
+import com.example.devan.remedaily.View.AddNewMedicineActivity;
 import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
@@ -47,9 +45,6 @@ public class Home extends Hamburger {
 
         // set the context
         mContext = getApplicationContext();
-        /*running the notification */
-        DisplayNotification displaynotification = new DisplayNotification(this);
-        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
 
         lLinearLayout = findViewById(R.id.upcomingMedicineList);
         mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);

@@ -1,11 +1,10 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Camera;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Handler;
@@ -29,6 +28,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.AddNewMedBusinessLayer;
 import com.example.devan.remedaily.datalayer.AppDatabase;
 
@@ -516,7 +516,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         return false;
     }
     public void takeDrugBoxImageShot(View view) {
-        Intent cameraIntent = new Intent(getApplicationContext(), com.example.devan.remedaily.Camera.class);
+        Intent cameraIntent = new Intent(getApplicationContext(), com.example.devan.remedaily.View.Camera.class);
         String currentPhotoPath = medicineSchedule.getDrugBoxImagePath();
         cameraIntent.putExtra("previousPhotoPath", currentPhotoPath == null ? "" : currentPhotoPath);
         startActivityForResult(cameraIntent, REQUEST_TAKE_PHOTO);

@@ -1,4 +1,4 @@
-package com.example.devan.remedaily;
+package com.example.devan.remedaily.View;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -8,6 +8,8 @@ import android.text.format.DateFormat;
 import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.devan.remedaily.R;
 
 import java.util.Calendar;
 import java.util.Collections;

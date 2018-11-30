@@ -27,7 +27,7 @@ public class EditUserDetails extends AppCompatActivity {
     public TextView firstNameError,lastNameError,ageError,showDB;
     public String firstName,lastName,age;
     public Context context;
-    private boolean isValidate = true;
+    private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true;
     public AppDatabase appData;
 
     @Override
@@ -62,7 +62,8 @@ public class EditUserDetails extends AppCompatActivity {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Validations()){
+                Validations();
+                if(firstNameValidate && lastNameValidate && ageValidate){
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
                         Intent intent = new Intent(EditUserDetails.this, Home.class);
@@ -128,58 +129,66 @@ public class EditUserDetails extends AppCompatActivity {
         }
     }
 
-    public boolean Validations(){
+    public void Validations(){
 
         firstName=firstNameEd.getText().toString();
         if(firstName.matches("")) {
-            isValidate =true;
+            firstNameValidate =false;
             firstNameError.setText("\u274C"+"First name is required"+"\u274C");
             firstNameError.setVisibility(View.VISIBLE);
         }
         else {
             if (firstName.matches("[a-zA-Z]*")) {
                 firstNameError.setVisibility(View.INVISIBLE);
+                firstNameValidate =true;
             }
             else {
                 firstNameError.setText("\u274C"+"Please enter a valid first name!!!"+"\u274C");
                 firstNameError.setVisibility(View.VISIBLE);
+                firstNameValidate =false;
             }
         }
 
         lastName=lastNameEd.getText().toString();
         if(lastName.matches("")) {
-            isValidate =true;
+            lastNameValidate =false;
             lastNameError.setText("\u274C"+"Last name is required"+"\u274C");
             lastNameError.setVisibility(View.VISIBLE);
         }
         else {
             if (lastName.matches("[a-zA-Z]*")) {
                 lastNameError.setVisibility(View.INVISIBLE);
+                lastNameValidate =true;
+
             }
             else {
                 lastNameError.setText("\u274C"+"Please enter a valid last name!!!"+"\u274C");
                 lastNameError.setVisibility(View.VISIBLE);
+                lastNameValidate =false;
+
             }
         }
 
         age=ageEd.getText().toString();
         if(age.matches("")) {
-            isValidate =true;
+            ageValidate =false;
             ageError.setText("\u274C"+"Age is required"+"\u274C");
             ageError.setVisibility(View.VISIBLE);
         }
         else {
 
-            if(Integer.parseInt(age)>0 && Integer.parseInt(age)<=125) {
+            if(Integer.parseInt(age)>0 && Integer.parseInt(age)<=125 ) {
                 ageError.setVisibility(View.INVISIBLE);
+                ageValidate =true;
 
             }
             else {
                 ageError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
                 ageError.setVisibility(View.VISIBLE);
+                ageValidate=false;
             }
         }
-        return isValidate ;
+
     }
 }
 

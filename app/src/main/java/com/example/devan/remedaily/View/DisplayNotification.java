@@ -2,9 +2,10 @@ package com.example.devan.remedaily.View;
 /*
  * Class to create the Notifications
  * Created by: Gurjot Singh (B00811724)
- * Created date: November 18, 2018
+ * Created date: November 26, 2018
  * Version: 1
  * */
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -14,6 +15,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import com.example.devan.remedaily.R;
 
@@ -38,12 +40,16 @@ public class DisplayNotification extends ContextWrapper {
     * Function to create Notifications.
     * Input Required for this function- Message Details and the Description to be displayed on the notification
     * */
+    @TargetApi(Build.VERSION_CODES.M)
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void createNotification(String messageDetails, String descriptionDetails) {
 
         /*
         * Notifications for Android Oreo and above versions (they require channel creations)
         * Channel Creations Referred from: https://stackoverflow.com/questions/45668079/notificationchannel-issue-in-android-o
         * */
+        //EnableFlashLight e = new EnableFlashLight(this);
+        //e.enableFlash();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
             // The id of the channel
@@ -89,10 +95,11 @@ public class DisplayNotification extends ContextWrapper {
              * Referred from: https://stackoverflow.com/questions/13716723/open-application-after-clicking-on-notification
              * */
             notification.contentIntent=  PendingIntent.getActivity(this, 0,
-                    new Intent(this, UserDetails.class), PendingIntent.FLAG_CANCEL_CURRENT);
+                    new Intent(this, Help.class), PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Issuing the notification.
             mNotificationManager.notify(001, notification);
+
         }
 
         /*
@@ -112,7 +119,7 @@ public class DisplayNotification extends ContextWrapper {
 
             /*Intent for a new class by clicking the notification */
             notification.contentIntent=  PendingIntent.getActivity(this, 0,
-                    new Intent(this, UserDetails.class), PendingIntent.FLAG_CANCEL_CURRENT);
+                    new Intent(this, Help.class), PendingIntent.FLAG_CANCEL_CURRENT);
 
             /* Notification manager to fetch the context and the notification service.
             *  Referred from: https://stackoverflow.com/questions/13716723/open-application-after-clicking-on-notification
@@ -122,6 +129,8 @@ public class DisplayNotification extends ContextWrapper {
             /*Issuing the notification*/
             mNotificationManager.notify(001, notification);
         }
-
+        /*Call to Create a Flashlight Notification along with the normal notification*/
+        EnableFlashLight enableFlashLight = new EnableFlashLight(this);
+        enableFlashLight.enableFlash();
     }
 }
