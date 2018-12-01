@@ -74,11 +74,15 @@
         <activity
             android:name=".View.Camera"
             android:label="Camera"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity android:name=".View.Help"
             android:label="Help and Support"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false"/>
     </application>
 
 </manifest>
