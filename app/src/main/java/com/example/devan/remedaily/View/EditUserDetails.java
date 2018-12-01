@@ -1,9 +1,7 @@
 /*Creator Aditya Gadhvi*/
 package com.example.devan.remedaily.View;
 
-//Importing all the necessary packages
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,84 +9,64 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.UserDetailsBusinessLayer;
 import com.example.devan.remedaily.datalayer.AppDatabase;
 
+import java.util.List;
 
-public class UserDetails extends AppCompatActivity {
+import static com.example.devan.remedaily.businesslayer.EditViewBusinessLayer.ShowEditUserInfo;
 
-    //Declaring the Views and variables.
-<<<<<<< HEAD
-    public TextView firstNameTv,lastNameTv,ageTv,emailTv;
-    public EditText firstNameEd,lastNameEd,ageEd,emailEd;
-=======
+public class EditUserDetails extends AppCompatActivity {
+
     public TextView firstNameTv,lastNameTv,ageTv;
     public EditText firstNameEd,lastNameEd,ageEd;
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
-    public Button saveBtn, cancelBtn;
-    public TextView firstNameError,lastNameError,ageError,emailError,showDB;
-    public String firstName,lastName,age,email;
+    public Button updateBtn, cancelBtn;
+    public TextView firstNameError,lastNameError,ageError,showDB;
+    public String firstName,lastName,age;
     public Context context;
-<<<<<<< HEAD
-    private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true,emailValidate=true;
-=======
-    private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true;
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
+    private boolean isValidate = true;
     public AppDatabase appData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Initializing the different views and context
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_details);
+        setContentView(R.layout.activity_edit_user_details);
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         firstNameEd=findViewById(R.id.editTextFirstName);
         lastNameEd=findViewById(R.id.editTextLastName);
         ageEd=findViewById(R.id.editTextAge);
-        emailEd=findViewById(R.id.editTextEmail);
-        saveBtn=findViewById(R.id.saveBtn);
+        updateBtn=findViewById(R.id.updateBtn);
         firstNameError=findViewById(R.id.firstNameValidateLbl);
         lastNameError=findViewById(R.id.lastNameValidateLbl);
         ageError=findViewById(R.id.ageValidateLbl);
-        emailError=findViewById(R.id.emailValidateLbl);
         firstNameTv=findViewById(R.id.firstNameLbl);
         lastNameTv=findViewById(R.id.lastNameLbl);
         ageTv=findViewById(R.id.ageLbl);
-        emailTv=findViewById(R.id.emailLbl);
         cancelBtn = findViewById(R.id.cancelBtn);
         context=this;
+        try {
+            /*Fetching data to update*/
+            firstNameEd.setText(ShowEditUserInfo(appData).firstName);
+            lastNameEd.setText(ShowEditUserInfo(appData).lastName);
+            ageEd.setText(ShowEditUserInfo(appData).age);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //A method to validate the user input
 
-
-        //Click functionality of the save button
-        saveBtn.setOnClickListener(new View.OnClickListener() {
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Validations();
-
-<<<<<<< HEAD
-                if(firstNameValidate && lastNameValidate && ageValidate && emailValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
-=======
-                if(firstNameValidate && lastNameValidate && ageValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
+                if(Validations()){
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
-                        Intent intent = new  Intent(getApplicationContext(),Hamburger.class);
-                        startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                else {
-                    Toast.makeText(getApplicationContext(),"Enter valid data",Toast.LENGTH_SHORT).show();
-                }
             }
         });
-
-        //Click functionality of the cancel button
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,14 +74,11 @@ public class UserDetails extends AppCompatActivity {
             }
         });
 
-        //Focus methods to determine whether the user clicked on the edittext or not.
-
         firstNameEd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
@@ -116,7 +91,6 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
@@ -129,111 +103,66 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     ageTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     ageTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
                 }
             }
         });
-
-        emailEd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    emailTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
-                }
-                else {
-                    emailTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
-                }
-            }
-        });
     }
 
-    //A method to validate the user input. Different flags are used in this method. These flags will become true if the input is true, otherwise they will become false.
-    public void Validations(){
+    public boolean Validations(){
 
         firstName=firstNameEd.getText().toString();
         if(firstName.matches("")) {
+            isValidate =true;
             firstNameError.setText("\u274C"+"First name is required"+"\u274C");
             firstNameError.setVisibility(View.VISIBLE);
-            firstNameValidate =false;
         }
         else {
             if (firstName.matches("[a-zA-Z]*")) {
                 firstNameError.setVisibility(View.INVISIBLE);
-                firstNameValidate =true;
-
             }
             else {
                 firstNameError.setText("\u274C"+"Please enter a valid first name!!!"+"\u274C");
                 firstNameError.setVisibility(View.VISIBLE);
-                firstNameValidate =false;
-
             }
         }
 
         lastName=lastNameEd.getText().toString();
         if(lastName.matches("")) {
+            isValidate =true;
             lastNameError.setText("\u274C"+"Last name is required"+"\u274C");
             lastNameError.setVisibility(View.VISIBLE);
-            lastNameValidate =false;
         }
         else {
             if (lastName.matches("[a-zA-Z]*")) {
                 lastNameError.setVisibility(View.INVISIBLE);
-                saveBtn.setEnabled(true);
-                lastNameValidate =true;
             }
             else {
                 lastNameError.setText("\u274C"+"Please enter a valid last name!!!"+"\u274C");
                 lastNameError.setVisibility(View.VISIBLE);
-                lastNameValidate =false;
             }
         }
 
         age=ageEd.getText().toString();
         if(age.matches("")) {
+            isValidate =true;
             ageError.setText("\u274C"+"Age is required"+"\u274C");
             ageError.setVisibility(View.VISIBLE);
-            ageValidate =false;
         }
         else {
 
             if(Integer.parseInt(age)>0 && Integer.parseInt(age)<=125) {
                 ageError.setVisibility(View.INVISIBLE);
-                ageValidate =true;
+
             }
             else {
                 ageError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
                 ageError.setVisibility(View.VISIBLE);
-                ageValidate =false;
-<<<<<<< HEAD
             }
         }
-
-        email=emailEd.getText().toString();
-        if(email.matches("")) {
-            emailError.setText("\u274C"+"Email id is required"+"\u274C");
-            emailError.setVisibility(View.VISIBLE);
-            emailValidate =false;
-        }
-        else {
-
-            if(email.matches("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
-                emailError.setVisibility(View.INVISIBLE);
-                emailValidate =true;
-            }
-            else {
-                emailError.setText("\u274C"+"Please enter a valid email id!!!"+"\u274C");
-                emailError.setVisibility(View.VISIBLE);
-                emailValidate =false;
-=======
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
-            }
-        }
-
+        return isValidate ;
     }
 }
 
