@@ -6,6 +6,7 @@
     <string name="fname">First Name:</string>
     <string name="lname">Last Name:</string>
     <string name="age">Enter Age:</string>
+    <string name="email">Enter Email:</string>
     <string name="save">Save</string>
     <string name="update">Update</string>
     <string name="cancel">Cancel</string>
