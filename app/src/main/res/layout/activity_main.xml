@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="View.MainActivity"
-    android:background="@drawable/background"
+    android:background="@color/white"
     android:orientation="vertical"
    >
 
@@ -13,12 +13,14 @@
         android:id="@+id/userDetailsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginTop="200dp"
+        android:textSize="25sp"
         android:background="@drawable/buttonshape"
         android:text="@string/GoToUserDetailsBtn"
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         />
+
 
     <Button
         android:id="@+id/editUserDetailsBtn"
@@ -31,6 +33,7 @@
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         />
+
 
     <TextView
         android:id="@+id/txtView"

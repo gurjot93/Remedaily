@@ -2,9 +2,11 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +49,8 @@ public class EditUserDetails extends AppCompatActivity {
         ageTv=findViewById(R.id.ageLbl);
         emailTv=findViewById(R.id.emailLbl);
         cancelBtn = findViewById(R.id.cancelBtn);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         context=this;
         try {
             /*Fetching data to update*/
@@ -62,9 +66,13 @@ public class EditUserDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Validations();
+
                 if(firstNameValidate && lastNameValidate && ageValidate && emailValidate){
+
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+                        Intent intent = new Intent(EditUserDetails.this, Home.class);
+                        startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -128,11 +136,25 @@ public class EditUserDetails extends AppCompatActivity {
         });
 
     }
+// source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public void Validations(){
 
         firstName=firstNameEd.getText().toString();
         if(firstName.matches("")) {
+
+            firstNameValidate =false;
+
             firstNameError.setText("\u274C"+"First name is required"+"\u274C");
             firstNameError.setVisibility(View.VISIBLE);
             firstNameValidate =false;
@@ -154,6 +176,9 @@ public class EditUserDetails extends AppCompatActivity {
 
         lastName=lastNameEd.getText().toString();
         if(lastName.matches("")) {
+
+            lastNameValidate =false;
+
             lastNameError.setText("\u274C"+"Last name is required"+"\u274C");
             lastNameError.setVisibility(View.VISIBLE);
             lastNameValidate =false;
@@ -162,26 +187,30 @@ public class EditUserDetails extends AppCompatActivity {
             if (lastName.matches("[a-zA-Z]*")) {
                 lastNameError.setVisibility(View.INVISIBLE);
                 lastNameValidate =true;
+
             }
             else {
                 lastNameError.setText("\u274C"+"Please enter a valid last name!!!"+"\u274C");
                 lastNameError.setVisibility(View.VISIBLE);
                 lastNameValidate =false;
+
             }
         }
 
 
         age=ageEd.getText().toString();
         if(age.matches("")) {
+        ageValidate =false;
             ageError.setText("\u274C"+"Age is required"+"\u274C");
             ageError.setVisibility(View.VISIBLE);
             ageValidate =false;
         }
         else {
 
-            if(Integer.parseInt(age)>0 && Integer.parseInt(age)<=125) {
+            if(Integer.parseInt(age)>0 && Integer.parseInt(age)<=125 ) {
                 ageError.setVisibility(View.INVISIBLE);
                 ageValidate =true;
+
             }
             else {
                 ageError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
@@ -212,7 +241,7 @@ public class EditUserDetails extends AppCompatActivity {
         }
 
 
+            }
+        }
 
-    }
-}
 

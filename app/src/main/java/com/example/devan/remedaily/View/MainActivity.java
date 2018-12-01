@@ -11,14 +11,22 @@ import com.example.devan.remedaily.R;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txtView;
-    public Button userDetailsBtn,editUserDetailsBtn;
+    public Button userDetailsBtn,editUserDetailsBtn,calenderBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         txtView= findViewById(R.id.txtView);
 
+        /*running the notifications code for reference
+        DisplayNotification displayNotification = new DisplayNotification(this);
+        displayNotification.createNotification("Hello","Welcome to Remedaily!"); */
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
+
+        //calenderBtn=findViewById(R.id.calenderBtn);
+
+
         editUserDetailsBtn=findViewById(R.id.editUserDetailsBtn);
 
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
@@ -29,13 +37,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+       /* calenderBtn.setOnClickListener(new View.OnClickListener() {
+
         editUserDetailsBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,EditUserDetails.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
 }
