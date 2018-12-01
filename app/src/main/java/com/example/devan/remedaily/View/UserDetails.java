@@ -62,7 +62,7 @@ public class UserDetails extends AppCompatActivity {
             public void onClick(View v) {
 
                     Validations();
-                    if (firstNameValidate && lastNameValidate && ageValidate && emailValidate) { //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
+
 
                         //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
 
@@ -76,7 +76,7 @@ public class UserDetails extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-        });
+        }});
 
 
         //Click functionality of the cancel button
@@ -145,7 +145,9 @@ public class UserDetails extends AppCompatActivity {
 
 
 
-    }
+}
+
+
     // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -157,6 +159,10 @@ public class UserDetails extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
+
 
     //A method to validate the user input. Different flags are used in this method. These flags will become true if the input is true, otherwise they will become false.
     public void Validations(){
