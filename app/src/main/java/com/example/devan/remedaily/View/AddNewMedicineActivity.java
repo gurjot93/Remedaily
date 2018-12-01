@@ -10,9 +10,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
@@ -45,8 +45,6 @@ import java.util.Date;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static java.lang.Thread.sleep;
 
 public class AddNewMedicineActivity extends AppCompatActivity {
 
@@ -305,7 +303,13 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
                         medicineSchedule.setName(medicineName);
                         medicineSchedule.setDosage(medicineDosage);
-                        medicineSchedule.setIsDaily(isDaily);
+
+                        if(isDaily){
+                            medicineSchedule.setIsDaily(1);
+                        }else{
+                            medicineSchedule.setIsDaily(0);
+                        }
+
                         //not setting start and end dates here. They are set in date picker
 
                         for (int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
@@ -343,8 +347,12 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             String medImagePath = medicineSchedule.getDrugBoxImagePath();
                             String medStartDate = medicineSchedule.getStartDate();
                             String medEndDate = medicineSchedule.getEndDate();
+                            int tagDaily = 0;
 
-                            AddNewMedBusinessLayer.AddMeds(appData, true, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
+                            if(sameScheduleSwitchButton.isChecked()){
+                                tagDaily = 1;
+                            }
+                            AddNewMedBusinessLayer.AddMeds(appData, tagDaily, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
 
                             SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy'T'HH:mm");
 //                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");

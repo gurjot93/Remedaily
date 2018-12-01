@@ -11,7 +11,7 @@ public class MedicineSchedule {
     static private String startDate;
     static private String endDate;
     static private String path;
-    static private boolean isDaily;
+    static private int isDaily;
 
     public MedicineSchedule() {
         weekSchedule = new ArrayList<ArrayList<String>>();
@@ -33,7 +33,7 @@ public class MedicineSchedule {
         this.endDate = endDate;
     }
 
-    public void setIsDaily(boolean isDaily) {
+    public void setIsDaily(int isDaily) {
         this.isDaily = isDaily;
     }
 
@@ -57,7 +57,7 @@ public class MedicineSchedule {
         return this.endDate;
     }
 
-    public boolean getIsDaily() {
+    public int getIsDaily() {
         return this.isDaily;
     }
 

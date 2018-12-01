@@ -8,10 +8,13 @@
 
 package com.example.devan.remedaily.datalayer;
 
+import android.content.Context;
+
 import com.example.devan.remedaily.Models.Medicine;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MedicineDataLayer {
 
@@ -34,15 +37,27 @@ public class MedicineDataLayer {
         return medicineDAOObject.getMissedMedicineDetails();
     }
 
-    public ArrayList<String> getAllMedicineDates(){
-        return medicineDAOObject.getMedicineDates();
+    public ArrayList<String> getAllMedicineDates(Context context){
+        return medicineDAOObject.getMedicineDates(context);
     }
 
-    public ArrayList<Medicine> getMedicineFromDateTime(String DateObj){
+    public ArrayList<Med> getMedicineFromDateTime(String DateObj){
         return medicineDAOObject.getMedicineDataStubByDateTime(DateObj);
     }
 
     public ArrayList<Medicine> getDailyMedicineList(){
         return medicineDAOObject.getDailyMedicineListDataStub();
+    }
+
+    public List<Med> getAllMedicines(Context context){
+        return medicineDAOObject.getAllMedicines(context);
+    }
+
+    public List<Med> getAllNonDailyMedicines(Context context){
+        return AppDatabase.getInMemoryDatabase(context).medModel().loadMedByTag(0);
+    }
+
+    public List<Med> getAllDailyMedicines(Context context){
+        return AppDatabase.getInMemoryDatabase(context).medModel().loadMedByTag(1);
     }
 }
