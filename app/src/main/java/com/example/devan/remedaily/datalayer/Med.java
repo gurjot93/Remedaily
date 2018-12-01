@@ -11,7 +11,7 @@ public class Med {
 
     @PrimaryKey(autoGenerate = true)@NonNull
     public int id;
-    public Boolean tagDaily;
+    public int tagDaily;
     public String medName;
     public String dosage;
     public String imagePath;
@@ -21,7 +21,7 @@ public class Med {
     public Med() {
     }
 
-    public Med(int id,Boolean tagDaily, String medName,String dosage,String imagePath,String startDate,String endDate,ArrayList<ArrayList<String>> arrTimeItem){
+    public Med(int id,int tagDaily, String medName,String dosage,String imagePath,String startDate,String endDate,ArrayList<ArrayList<String>> arrTimeItem){
         this.id = id;
         this.tagDaily = tagDaily;
         this.medName= medName;

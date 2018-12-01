@@ -30,4 +30,8 @@ public interface MedDao{
 
     @Query("select * from med where startDate = :StartDate")
     List<com.example.devan.remedaily.datalayer.Med> loadMedByDate(String StartDate);
+
+    @Query("select * from med where tagDaily = :tagDaily")
+    List<com.example.devan.remedaily.datalayer.Med> loadMedByTag(int tagDaily);
+
 }

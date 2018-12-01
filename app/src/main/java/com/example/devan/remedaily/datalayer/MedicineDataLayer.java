@@ -52,4 +52,12 @@ public class MedicineDataLayer {
     public List<Med> getAllMedicines(Context context){
         return medicineDAOObject.getAllMedicines(context);
     }
+
+    public List<Med> getAllNonDailyMedicines(Context context){
+        return AppDatabase.getInMemoryDatabase(context).medModel().loadMedByTag(0);
+    }
+
+    public List<Med> getAllDailyMedicines(Context context){
+        return AppDatabase.getInMemoryDatabase(context).medModel().loadMedByTag(1);
+    }
 }
