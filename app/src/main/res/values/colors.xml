@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorBlack">#000000</color>
+    <color name="colorYellowish">#e5d73d</color>
+    <color name="colorHasTimeEntries">#2fd634</color>
+    <color name="colorMainFrameBackground">#ede3e3</color>
+    <color name="colorDayButtonUnpressed">#e5e5e5</color>
+    <color name="colorDayButtonPressed">#adadad</color>
+    <color name="colorButtonText">#727272</color>
     <color name="colorDrawerMenuBackground">#5171f8</color>
     <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303f9f</color>
-    <color name="colorAccent">#f2f2f2</color>
+    <color name="colorAccent">#ff4081</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="colorAccent2">#ff4081</color>
+    <color name="colorAccent2">#f2f2f2</color>
     <color name="focus">#654321</color>
     <color name="notFocus">#000000</color>
     <color name="brown">#9f6934</color>
-    <color name="DarkBrown">#8B4513</color>
+    <color name="DarkBrown">#8b4513</color>
     <color name="radio">#000000</color>
     <color name="Color_Home_Card_Dosage">#9E9E9E</color>
     <color name="pearlwhite">#f2f2f2</color>

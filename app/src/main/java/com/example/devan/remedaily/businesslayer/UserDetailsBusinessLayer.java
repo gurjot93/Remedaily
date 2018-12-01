@@ -9,6 +9,10 @@ import com.example.devan.remedaily.datalayer.User;
 
 
 public class UserDetailsBusinessLayer {
+    public  static boolean IsUserPresent(AppDatabase db){
+        boolean flag =db.userModel().userPresent();
+        return flag;
+    }
 
 /*    public StringBuilder ShowUserInfo() {
         StringBuilder sb = new StringBuilder();
@@ -50,6 +54,7 @@ public class UserDetailsBusinessLayer {
         user.firstName = FirstName;
         user.lastName = LastName;
         user.age = Age;
+        user.userPresent = true;
         if (1 == db.userModel().insertUser(user)) {
             return true;
         } else {

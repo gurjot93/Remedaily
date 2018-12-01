@@ -19,14 +19,18 @@ package com.example.devan.remedaily.datalayer;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
+import com.example.devan.remedaily.businesslayer.Converter;
 import com.example.devan.remedaily.datalayer.Med;
 import com.example.devan.remedaily.datalayer.MedDao;
 import com.example.devan.remedaily.datalayer.User;
 import com.example.devan.remedaily.datalayer.UserDao;
 
 @Database(entities = {Med.class,User.class}, version = 1)
+@TypeConverters(Converter.class) //https://developer.android.com/reference/android/arch/persistence/room/TypeConverter
+
 public abstract class AppDatabase extends RoomDatabase {
 
     private static com.example.devan.remedaily.datalayer.AppDatabase INSTANCE;
@@ -40,7 +44,6 @@ public abstract class AppDatabase extends RoomDatabase {
             INSTANCE =
                     Room.inMemoryDatabaseBuilder(context.getApplicationContext(), com.example.devan.remedaily.datalayer.AppDatabase.class)
                     // To simplify the codelab, allow queries on the main thread.
-                    // Don't do this on a real app! See PersistenceBasicSample for an example.
                     .allowMainThreadQueries()
                     .build();
         }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item >
+        <shape android:shape="rectangle">
+            <corners android:radius="6dip" />
+            <solid android:color="@color/colorDayButtonPressed" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/calendar_icon_black_128"/>
+</layer-list>

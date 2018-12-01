@@ -2,6 +2,14 @@ package com.example.devan.remedaily.Models;
 
 import java.util.Date;
 
+/*
+    Page Name : Medicine.java
+    Author : Deep Singh (B00792279)
+    Purpose : Model view for Medicine
+
+ */
+
+
 public class Medicine {
     private final int medicineImage;
     private final String medicineName;

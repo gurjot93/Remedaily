@@ -33,10 +33,10 @@ public class DatabaseInitializer {
     private static Med addMed(final AppDatabase db, final String id, final String medname,
                               final String createdate, final String expirydata) {
         Med med = new Med();
-        med.id = id;
+//        med.id = id;
         med.medName=medname;
-        med.createDate = createdate;
-        med.expiryDate= expirydata;
+//        med.createDate = createdate;
+//        med.expiryDate= expirydata;
         db.medModel().insertMeds(med);
         return med;
     }

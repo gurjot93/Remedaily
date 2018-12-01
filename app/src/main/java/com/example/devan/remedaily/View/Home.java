@@ -10,8 +10,10 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.View;
@@ -24,28 +26,37 @@ import android.widget.TextView;
 import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
+import com.example.devan.remedaily.datalayer.Med;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public class Home extends AppCompatActivity {
+public class Home extends Hamburger {
 
-    public Button userDetailsBtn;
+    public Button userDetailsBtn, addMed;
     private Context mContext;
     private LinearLayout lLinearLayout;
     private LinearLayout mLinearLayout;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+        super.onCreate(savedInstanceState);
 
         // set the context
         mContext = getApplicationContext();
 
         lLinearLayout = findViewById(R.id.upcomingMedicineList);
         mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);
-
+        addMed = findViewById(R.id.addMed);
+        addMed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home.this, AddNewMedicineActivity.class);
+                startActivity(intent);
+            }
+        });
 
         try {
             populateMissedMedicine();
@@ -55,11 +66,26 @@ public class Home extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+
+        try {
+            super.onWindowFocusChanged(hasFocus);
+            populateMissedMedicine();
+            populateUpcomingMedicine();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void populateMissedMedicine() throws ParseException {
         // get the upcoming medicine details
         MedicineBusinessLayer MedicineObj = new MedicineBusinessLayer();
 
-        ArrayList<Medicine> MedicineArrayList = MedicineObj.getMissedMedicineList();
+        ArrayList<Med> MedicineArrayList = null;
 
         if (MedicineArrayList != null) {
             if (MedicineArrayList.size() != 0) {
@@ -72,7 +98,9 @@ public class Home extends AppCompatActivity {
         }
     }
 
-    private void showNoMedicationAvailable(LinearLayout linearLayout, int TextID){
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void showNoMedicationAvailable(LinearLayout linearLayout, int TextID) {
+        linearLayout.removeAllViews();
         TextView ChildTextView2 = new TextView(mContext);
 
         // set the padding
@@ -93,16 +121,28 @@ public class Home extends AppCompatActivity {
         linearLayout.addView(ChildTextView2);
     }
 
-    private void showMedicineOnScreen(ArrayList<Medicine> MedicineArrayList, LinearLayout linearLayout) {
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void showMedicineOnScreen(ArrayList<Med> MedicineArrayList, LinearLayout linearLayout) {
+        linearLayout.removeAllViews();
         for (int i = 0; i < MedicineArrayList.size(); i++) {
-
 
             // adding cardview programatically
             // Source : https://android--code.blogspot.com/2015/12/android-how-to-create-cardview.html
             CardView CardViewObj = new CardView(mContext);
 
+            int HeightToSet = 100;
+
+            // set the text
+            if (MedicineArrayList.get(i).tagDaily == 0) {
+                for (int date = 0; date < MedicineArrayList.get(i).timeObject.size(); date++) {
+                    if (MedicineArrayList.get(i).timeObject.get(date).size() > 0) {
+                        HeightToSet += 20;
+                    }
+                }
+            }
+
             // set the layout params
-            LinearLayout.LayoutParams ParamsObj = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getDPI(100));
+            LinearLayout.LayoutParams ParamsObj = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getDPI(HeightToSet));
 
             // set the weight
             ParamsObj.weight = 1.0f;
@@ -187,7 +227,7 @@ public class Home extends AppCompatActivity {
             ChildTextView1.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
             // set the text
-            ChildTextView1.setText(MedicineArrayList.get(i).getMedicineName());
+            ChildTextView1.setText(MedicineArrayList.get(i).medName);
 
             // set the background color
             ChildTextView1.setBackgroundColor(getColor(R.color.white));
@@ -210,7 +250,7 @@ public class Home extends AppCompatActivity {
             ChildTextView2.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
             // set the text
-            ChildTextView2.setText(MedicineArrayList.get(i).getMedicineDosage());
+            ChildTextView2.setText(MedicineArrayList.get(i).dosage);
 
             // set the text size
             ChildTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -230,7 +270,22 @@ public class Home extends AppCompatActivity {
             ChildTextView3.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
             // set the text
-            ChildTextView3.setText(MedicineArrayList.get(i).getDateTimeRegistered().toString());
+            if (MedicineArrayList.get(i).tagDaily == 1) {
+                ChildTextView3.setText("Daily");
+            } else {
+                String time = "";
+                for (int date = 0; date < MedicineArrayList.get(i).timeObject.size(); date++) {
+                    if (MedicineArrayList.get(i).timeObject.get(date).size() > 0) {
+                        time += GetdayOfMonth(date) + " ";
+                        for (String Time : MedicineArrayList.get(i).timeObject.get(date)) {
+                            time += Time + " ";
+                        }
+                        time += "\n";
+                    }
+                }
+                ChildTextView3.setText(time.trim().toString());
+            }
+
 
             // set the text size
             ChildTextView3.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -255,13 +310,34 @@ public class Home extends AppCompatActivity {
         }
     }
 
+    private String GetdayOfMonth(int idx) {
+        switch (idx) {
+            case 0:
+                return "Monday";
+            case 1:
+                return "Tuesday";
+            case 2:
+                return "Wednesday";
+            case 3:
+                return "Thursday";
+            case 4:
+                return "Friday";
+            case 5:
+                return "Saturday";
+            case 6:
+                return "Sunday";
+        }
+        return "Monday";
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void populateUpcomingMedicine() throws ParseException {
 
 
         // get the upcoming medicine details
         MedicineBusinessLayer MedicineObj = new MedicineBusinessLayer();
 
-        ArrayList<Medicine> MedicineArrayList = MedicineObj.getUpcomingMedicineList();
+        ArrayList<Med> MedicineArrayList = MedicineObj.getUpcomingMedicineList(getApplicationContext());
 
         if (MedicineArrayList != null) {
             if (MedicineArrayList.size() != 0) {

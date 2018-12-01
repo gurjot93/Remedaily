@@ -1,12 +1,15 @@
 package com.example.devan.remedaily.View;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
 import com.example.devan.remedaily.R;
 
 public class SplashScreen extends AppCompatActivity {
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,8 +18,8 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(3000);
-                    Intent intent = new  Intent(getApplicationContext(),MainActivity.class);
+                    sleep(1000);
+                    Intent intent = new  Intent(getApplicationContext(),Home.class);
                     startActivity(intent);
                     SplashScreen.this.finish();
                 } catch (InterruptedException e) {
@@ -25,5 +28,9 @@ public class SplashScreen extends AppCompatActivity {
             }
         };
         thread.start();
+        /*running the notification */
+//        DisplayNotification displaynotification = new DisplayNotification(this);
+//        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
+
     }
 }
