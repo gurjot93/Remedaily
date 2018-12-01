@@ -10,7 +10,7 @@
 package com.example.devan.remedaily.businesslayer;
 
 import android.content.Context;
-import android.icu.util.Output;
+import android.text.method.HideReturnsTransformationMethod;
 
 import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.Models.NonDailyMedicine;
@@ -67,64 +67,16 @@ public class MedicineBusinessLayer {
         return medicineArrayList;
     }
 
-    public ArrayList<Medicine> getDailyMedicineCalendarWise() {
-        return new MedicineDataLayer().getDailyMedicineList();
-    }
+    public List<Med> getDailyMedicineCalendarWise(Context context) throws ParseException {
+        return medicineDataObject.getAllDailyMedicines(context);
 
-    public Map<Date, ArrayList<Med>> getDailyMedicineCalendarWise(Context context) throws ParseException {
-        ArrayList<NonDailyMedicine> medicineArrayList = new ArrayList<>();
-
-        // store the arraylist of medicine details
-        List<Med> getAllMedicines = medicineDataObject.getAllMedicines(context);
-
-        // prepare the output
-        Map<Date, ArrayList<Med>> OutputMap = new HashMap<>();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        for (Med medObj : getAllMedicines) {
-
-            // source : https://stackoverflow.com/a/24409106
-            Date StartDate = simpleDateFormat.parse(medObj.startDate);
-            Date EndDate = simpleDateFormat.parse(medObj.endDate);
-
-            //time is always 00:00:00 so rounding should help to ignore the missing hour when going from winter to summer time as well as the extra hour in the other direction
-            long diff = Math.round((EndDate.getTime() - StartDate.getTime()) / (double) 86400000);
-
-
-            // since there are 7 days in a week, so we will iterate it through 7 days
-            for (int days = 0; days < 7; days++) {
-                // get the arraylist of dates
-
-                if (medObj.timeObject.get(days).size() > 0) {
-                    // source https://stackoverflow.com/a/12087555
-                    for (int dateIteration = days; dateIteration <= diff; dateIteration += 7) {
-                        Calendar c = Calendar.getInstance();
-                        c.setTime(StartDate);
-                        c.add(Calendar.DATE, dateIteration);
-                        if (OutputMap.get(c.getTime()) == null) {
-                            ArrayList<Med> MedicinesToInsert = new ArrayList<>();
-                            MedicinesToInsert.add(medObj);
-                            OutputMap.put(c.getTime(),MedicinesToInsert);
-                        } else {
-                            ArrayList<Med> MedicinesToInsert = OutputMap.get(c.getTime());
-                            MedicinesToInsert.add(medObj);
-                            OutputMap.remove(c.getTime());
-                            OutputMap.put(c.getTime(),MedicinesToInsert);
-                        }
-                    }
-                }
-            }
-        }
-
-        // sort all the keys
-        // Source : https://stackoverflow.com/a/7860836
-        return new TreeMap<>(OutputMap);
     }
 
     public Map<Date, ArrayList<Med>> getNonDailyMedicineCalendarWise(Context context) throws ParseException {
         ArrayList<NonDailyMedicine> medicineArrayList = new ArrayList<>();
 
         // store the arraylist of medicine details
-        List<Med> getAllMedicines = medicineDataObject.getAllMedicines(context);
+        List<Med> getAllMedicines = medicineDataObject.getAllNonDailyMedicines(context);
 
         // prepare the output
         Map<Date, ArrayList<Med>> OutputMap = new HashMap<>();
@@ -135,61 +87,35 @@ public class MedicineBusinessLayer {
             Date StartDate = simpleDateFormat.parse(medObj.startDate);
             Date EndDate = simpleDateFormat.parse(medObj.endDate);
 
-            //time is always 00:00:00 so rounding should help to ignore the missing hour when going from winter to summer time as well as the extra hour in the other direction
             long diff = Math.round((EndDate.getTime() - StartDate.getTime()) / (double) 86400000);
 
+            // iterate through all the days
+            for (int days = 0; days <= diff; days++) {
 
-            // since there are 7 days in a week, so we will iterate it through 7 days
-            for (int days = 0; days < 7; days++) {
-                // get the arraylist of dates
+                // add the days
+                Calendar c = Calendar.getInstance();
+                c.setTime(StartDate);
+                c.add(Calendar.DATE, days);
 
-                if (medObj.timeObject.get(days).size() > 0) {
-                    Calendar StartTimeCalendar = Calendar.getInstance();
-                    StartTimeCalendar.setTime(StartDate);
-                    int DayToSelect = Math.abs(StartTimeCalendar.get(Calendar.DAY_OF_WEEK)) - 2;
+                // get the day of the week, since we are taking Monday = 0, but android takes Sunday = 1
+                // so we have to deduct 2
+                int DayToSelect = Math.abs(c.get(Calendar.DAY_OF_WEEK)) - 2;
 
-                    if(DayToSelect == -1){
-                        DayToSelect = 6; // it's sunday
-                    }
+                // if it's < 0; then it means that Sunday was chosen (sunday = 1, Sunday - 2 = -1)
+                if (DayToSelect == -1) {
+                    DayToSelect = 6; // it's sunday
+                }
 
-                    // source https://stackoverflow.com/a/12087555
-                    int StartDateIteration = days;
-
-
-                    if(days - DayToSelect < 0){
-                        StartDateIteration = days - DayToSelect + 7;
-                    }
-
-                    if(days > diff){
-                        // only 1 medicine per week only
-                        Calendar c = Calendar.getInstance();
-                        c.setTime(StartDate);
-                        c.add(Calendar.DATE, Math.abs(days - DayToSelect));
-                        if (OutputMap.get(c.getTime()) == null) {
-                            ArrayList<Med> MedicinesToInsert = new ArrayList<>();
-                            MedicinesToInsert.add(medObj);
-                            OutputMap.put(c.getTime(),MedicinesToInsert);
-                        } else {
-                            ArrayList<Med> MedicinesToInsert = OutputMap.get(c.getTime());
-                            MedicinesToInsert.add(medObj);
-                            OutputMap.remove(c.getTime());
-                            OutputMap.put(c.getTime(),MedicinesToInsert);
-                        }
-                    }
-                    for (int dateIteration = StartDateIteration; dateIteration <= diff; dateIteration += 7) {
-                        Calendar c = Calendar.getInstance();
-                        c.setTime(StartDate);
-                        c.add(Calendar.DATE, dateIteration);
-                        if (OutputMap.get(c.getTime()) == null) {
-                            ArrayList<Med> MedicinesToInsert = new ArrayList<>();
-                            MedicinesToInsert.add(medObj);
-                            OutputMap.put(c.getTime(),MedicinesToInsert);
-                        } else {
-                            ArrayList<Med> MedicinesToInsert = OutputMap.get(c.getTime());
-                            MedicinesToInsert.add(medObj);
-                            OutputMap.remove(c.getTime());
-                            OutputMap.put(c.getTime(),MedicinesToInsert);
-                        }
+                if (medObj.timeObject.get(DayToSelect).size() > 0) {
+                    if (OutputMap.get(c.getTime()) == null) {
+                        ArrayList<Med> MedicinesToInsert = new ArrayList<>();
+                        MedicinesToInsert.add(medObj);
+                        OutputMap.put(c.getTime(), MedicinesToInsert);
+                    } else {
+                        ArrayList<Med> MedicinesToInsert = OutputMap.get(c.getTime());
+                        MedicinesToInsert.add(medObj);
+                        OutputMap.remove(c.getTime());
+                        OutputMap.put(c.getTime(), MedicinesToInsert);
                     }
                 }
             }

@@ -295,7 +295,13 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
                         medicineSchedule.setName(medicineName);
                         medicineSchedule.setDosage(medicineDosage);
-                        medicineSchedule.setIsDaily(isDaily);
+
+                        if(isDaily){
+                            medicineSchedule.setIsDaily(1);
+                        }else{
+                            medicineSchedule.setIsDaily(0);
+                        }
+
                         //not setting start and end dates here. They are set in date picker
 
                         for (int weekDayIndex = 0; weekDayIndex < weekDaysArr.length; ++weekDayIndex) {
@@ -334,7 +340,12 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             String medStartDate = medicineSchedule.getStartDate();
                             String medEndDate = medicineSchedule.getEndDate();
 
-                            AddNewMedBusinessLayer.AddMeds(appData, true, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
+                            int tagDaily = 0;
+
+                            if(sameScheduleSwitchButton.isChecked()){
+                                tagDaily = 1;
+                            }
+                            AddNewMedBusinessLayer.AddMeds(appData, tagDaily, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

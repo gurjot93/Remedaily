@@ -13,13 +13,13 @@ import java.util.List;
 public class AddNewMedBusinessLayer {
 
     //region Insert Medicine
-    public static void AddMeds(@NonNull final AppDatabase db, boolean tagDaily ,String medName,
+    public static void AddMeds(@NonNull final AppDatabase db, int tagDaily ,String medName,
                                String dosage,String imagePath,String startDate,String endDate,ArrayList<ArrayList<String>> arrTimeItem) throws Exception {
         InsertMeds(db,tagDaily,medName,dosage,imagePath,startDate,endDate,arrTimeItem);
     }
 
 
-    private static boolean InsertMeds(@NonNull final AppDatabase db,boolean tagDaily ,String medName,
+    private static boolean InsertMeds(@NonNull final AppDatabase db,int tagDaily ,String medName,
                                       String dosage,String imagePath,String startDate,
                                       String endDate,ArrayList<ArrayList<String>> arrTimeItem) throws Exception {
         Med med = new Med();

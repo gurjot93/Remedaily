@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 
@@ -93,7 +94,7 @@ public class Calender extends AppCompatActivity {
 
         // we will first populate the daily medicine list
         MedicineBusinessLayer MedicineBusinessLayerObj = new MedicineBusinessLayer();
-        ArrayList<Medicine> MedicineObj = MedicineBusinessLayerObj.getDailyMedicineCalendarWise();
+        List<Med> MedicineObj = MedicineBusinessLayerObj.getDailyMedicineCalendarWise(getApplicationContext());
 
         // check if we have the elements in the medicine object or not
         if(MedicineObj.size() > 0){
@@ -208,7 +209,7 @@ public class Calender extends AppCompatActivity {
                 ChildTextView1.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
                 // set the text
-                ChildTextView1.setText(MedicineObj.get(i).getMedicineName());
+                ChildTextView1.setText(MedicineObj.get(i).medName);
 
                 // set the background color
                 ChildTextView1.setBackgroundColor(getColor(R.color.white));
@@ -231,7 +232,7 @@ public class Calender extends AppCompatActivity {
                 ChildTextView2.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
                 // set the text
-                ChildTextView2.setText(MedicineObj.get(i).getMedicineDosage());
+                ChildTextView2.setText(MedicineObj.get(i).dosage);
 
                 // set the text size
                 ChildTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -251,7 +252,11 @@ public class Calender extends AppCompatActivity {
                 ChildTextView3.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
                 // set the text
-                ChildTextView3.setText(MedicineObj.get(i).getDateTimeRegistered().toString());
+                String time = "";
+                for(String _time: MedicineObj.get(i).timeObject.get(0)){
+                    time += _time + " ";
+                }
+                ChildTextView3.setText(time.trim());
 
                 // set the text size
                 ChildTextView3.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);

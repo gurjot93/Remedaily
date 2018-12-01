@@ -103,6 +103,8 @@ public class MedicineDAO {
         return AppDatabase.getInMemoryDatabase(context).medModel().loadAllMeds();
     }
 
+
+
     public ArrayList<Med> getMedicineDataStubByDateTime(String Date){
 
         ArrayList<Med> MedicineList = new ArrayList<>();
