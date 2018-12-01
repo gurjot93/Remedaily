@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         txtView= findViewById(R.id.txtView);
 
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
-        calenderBtn=findViewById(R.id.calenderBtn);
+        //calenderBtn=findViewById(R.id.calenderBtn);
 
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        calenderBtn.setOnClickListener(new View.OnClickListener() {
+       /* calenderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,calender.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 
 }
