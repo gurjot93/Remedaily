@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
         txtView= findViewById(R.id.txtView);
 
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
-<<<<<<< HEAD
+
         //calenderBtn=findViewById(R.id.calenderBtn);
 
-=======
+
         editUserDetailsBtn=findViewById(R.id.editUserDetailsBtn);
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
+
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
+
        /* calenderBtn.setOnClickListener(new View.OnClickListener() {
-=======
+
         editUserDetailsBtn.setOnClickListener(new View.OnClickListener() {
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
+
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,EditUserDetails.class);

@@ -21,22 +21,14 @@ import com.example.devan.remedaily.datalayer.AppDatabase;
 public class UserDetails extends AppCompatActivity {
 
     //Declaring the Views and variables.
-<<<<<<< HEAD
+
     public TextView firstNameTv,lastNameTv,ageTv,emailTv;
     public EditText firstNameEd,lastNameEd,ageEd,emailEd;
-=======
-    public TextView firstNameTv,lastNameTv,ageTv;
-    public EditText firstNameEd,lastNameEd,ageEd;
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
     public Button saveBtn, cancelBtn;
     public TextView firstNameError,lastNameError,ageError,emailError,showDB;
     public String firstName,lastName,age,email;
     public Context context;
-<<<<<<< HEAD
     private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true,emailValidate=true;
-=======
-    private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true;
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
     public AppDatabase appData;
 
     @Override
@@ -63,30 +55,28 @@ public class UserDetails extends AppCompatActivity {
 
 
         //Click functionality of the save button
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
+        saveBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
             public void onClick(View v) {
 
-                Validations();
+                    Validations();
+                    if (firstNameValidate && lastNameValidate && ageValidate && emailValidate) { //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
 
-<<<<<<< HEAD
-                if(firstNameValidate && lastNameValidate && ageValidate && emailValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
-=======
-                if(firstNameValidate && lastNameValidate && ageValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
-                    try {
-                        UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
-                        Intent intent = new  Intent(getApplicationContext(),Hamburger.class);
-                        startActivity(intent);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
+
+                        try {
+                            UserDetailsBusinessLayer.InsertRecordsAsync(appData, firstNameEd.getText().toString(), lastNameEd.getText().toString(), ageEd.getText().toString());
+                            Intent intent = new Intent(getApplicationContext(), Hamburger.class);
+                            startActivity(intent);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Enter valid data", Toast.LENGTH_SHORT).show();
                     }
                 }
-                else {
-                    Toast.makeText(getApplicationContext(),"Enter valid data",Toast.LENGTH_SHORT).show();
-                }
-            }
         });
+
 
         //Click functionality of the cancel button
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +93,6 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
@@ -116,7 +105,6 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
@@ -129,7 +117,6 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     ageTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     ageTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
@@ -149,6 +136,9 @@ public class UserDetails extends AppCompatActivity {
                 }
             }
         });
+
+
+
     }
 
     //A method to validate the user input. Different flags are used in this method. These flags will become true if the input is true, otherwise they will become false.
@@ -209,7 +199,7 @@ public class UserDetails extends AppCompatActivity {
                 ageError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
                 ageError.setVisibility(View.VISIBLE);
                 ageValidate =false;
-<<<<<<< HEAD
+
             }
         }
 
@@ -229,8 +219,7 @@ public class UserDetails extends AppCompatActivity {
                 emailError.setText("\u274C"+"Please enter a valid email id!!!"+"\u274C");
                 emailError.setVisibility(View.VISIBLE);
                 emailValidate =false;
-=======
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
+
             }
         }
 

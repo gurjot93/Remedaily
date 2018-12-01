@@ -19,8 +19,7 @@
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         />
-<<<<<<< HEAD
-=======
+
 
     <Button
         android:id="@+id/editUserDetailsBtn"
@@ -33,7 +32,7 @@
         android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
         />
->>>>>>> a858b35c0291c9fa9d2edd8bf1e9881920db56fc
+
 
     <TextView
         android:id="@+id/txtView"
