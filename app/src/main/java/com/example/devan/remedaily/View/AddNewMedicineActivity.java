@@ -52,6 +52,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     public static Button[] weekDayButtons = new Button[7];
     public AppDatabase appData;
+    static int countDays =0;
 
     private final String[] weekDaysArr = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
             "Saturday", "Sunday"};
@@ -348,20 +349,22 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy'T'HH:mm");
 //                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
+
                             for (int i = 0; i < 7; i++) {
                                 if (medicineSchedule.getWeekSchedule().get(i).size() > 0) {
                                     int git = medicineSchedule.getWeekSchedule().get(i).size();
-//                                    for (int j = 0; j < git; j++) {
+                                    for (int j = 0; j < git; j++) {
 
-                                        Date date = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(i));
-                                        Date aa = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(git-1));
 
-                                        long timeInMilliseconds = aa.getTime()- date.getTime();
+                                        Date date = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(j));
+//                                        Date aa = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(git-1));
 
-                                        handleNotification(date.getTime(),timeInMilliseconds);
+//                                        long timeInMilliseconds = aa.getTime()- date.getTime();
+
+                                        handleNotification(date.getTime(), 0);
                                     }
                                 }
-
+                            }
 //                            }
 
                         } catch (Exception e) {
@@ -573,19 +576,11 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     private void handleNotification(long intmill, long intmilldiff) {
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
-
+        final int _id = (int) System.currentTimeMillis();
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, _id, alarmIntent,
+                PendingIntent.FLAG_ONE_SHOT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        Calendar calendar = Calendar.getInstance();
-//        calendar.setTimeInMillis(System.currentTimeMillis());
-//        calendar.set(Calendar.HOUR_OF_DAY, 7);
-//        calendar.set(Calendar.MINUTE, 0);
-        calendar.add(Calendar.SECOND, 1);
-
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, intmill, intmilldiff, pendingIntent);
-//        alarmManager.cancel(pendingIntent);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, intmill, pendingIntent);
 
     }
 
