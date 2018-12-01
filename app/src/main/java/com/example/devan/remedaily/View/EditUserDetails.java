@@ -28,6 +28,7 @@ public class EditUserDetails extends AppCompatActivity {
     public String firstName,lastName,age,email;
     public Context context;
     private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true,emailValidate=true;
+
     public AppDatabase appData;
 
     @Override
@@ -136,6 +137,7 @@ public class EditUserDetails extends AppCompatActivity {
         });
 
     }
+
 // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -200,7 +202,8 @@ public class EditUserDetails extends AppCompatActivity {
 
         age=ageEd.getText().toString();
         if(age.matches("")) {
-        ageValidate =false;
+
+            ageValidate =false;
             ageError.setText("\u274C"+"Age is required"+"\u274C");
             ageError.setVisibility(View.VISIBLE);
             ageValidate =false;
@@ -215,6 +218,7 @@ public class EditUserDetails extends AppCompatActivity {
             else {
                 ageError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
                 ageError.setVisibility(View.VISIBLE);
+
                 ageValidate =false;
 
             }
@@ -243,5 +247,6 @@ public class EditUserDetails extends AppCompatActivity {
 
             }
         }
+
 
 
