@@ -22,13 +22,14 @@ import com.example.devan.remedaily.datalayer.AppDatabase;
 public class UserDetails extends AppCompatActivity {
 
     //Declaring the Views and variables.
-    public TextView firstNameTv,lastNameTv,ageTv;
-    public EditText firstNameEd,lastNameEd,ageEd;
+
+    public TextView firstNameTv,lastNameTv,ageTv,emailTv;
+    public EditText firstNameEd,lastNameEd,ageEd,emailEd;
     public Button saveBtn, cancelBtn;
-    public TextView firstNameError,lastNameError,ageError,showDB;
-    public String firstName,lastName,age;
+    public TextView firstNameError,lastNameError,ageError,emailError,showDB;
+    public String firstName,lastName,age,email;
     public Context context;
-    private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true;
+    private boolean firstNameValidate = true,lastNameValidate = true,ageValidate = true,emailValidate=true;
     public AppDatabase appData;
 
     @Override
@@ -40,26 +41,32 @@ public class UserDetails extends AppCompatActivity {
         firstNameEd=findViewById(R.id.editTextFirstName);
         lastNameEd=findViewById(R.id.editTextLastName);
         ageEd=findViewById(R.id.editTextAge);
+        emailEd=findViewById(R.id.editTextEmail);
         saveBtn=findViewById(R.id.saveBtn);
         firstNameError=findViewById(R.id.firstNameValidateLbl);
         lastNameError=findViewById(R.id.lastNameValidateLbl);
         ageError=findViewById(R.id.ageValidateLbl);
+        emailError=findViewById(R.id.emailValidateLbl);
         firstNameTv=findViewById(R.id.firstNameLbl);
         lastNameTv=findViewById(R.id.lastNameLbl);
         ageTv=findViewById(R.id.ageLbl);
+        emailTv=findViewById(R.id.emailLbl);
         cancelBtn = findViewById(R.id.cancelBtn);
         context=this;
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Click functionality of the save button
-        saveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
+        saveBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
             public void onClick(View v) {
 
-                Validations();
+                    Validations();
 
-                if(firstNameValidate && lastNameValidate && ageValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
+
+                        //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
+
+                if(firstNameValidate && lastNameValidate && ageValidate && emailValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
                     try {
                         UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
                         Intent intent = new  Intent(getApplicationContext(),Home.class);
@@ -69,11 +76,8 @@ public class UserDetails extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
-                else {
-                    Toast.makeText(getApplicationContext(),"Enter valid data",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        }});
+
 
         //Click functionality of the cancel button
         cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +99,6 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     firstNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
@@ -108,7 +111,6 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     lastNameTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
@@ -121,14 +123,31 @@ public class UserDetails extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     ageTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
-
                 }
                 else {
                     ageTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
                 }
             }
         });
-    }
+
+        emailEd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    emailTv.setTextColor(ContextCompat.getColor(context, R.color.focus));
+
+                }
+                else {
+                    emailTv.setTextColor(ContextCompat.getColor(context, R.color.notFocus));
+                }
+            }
+        });
+
+
+
+}
+
+
     // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -140,6 +159,10 @@ public class UserDetails extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
+
 
     //A method to validate the user input. Different flags are used in this method. These flags will become true if the input is true, otherwise they will become false.
     public void Validations(){
@@ -199,6 +222,27 @@ public class UserDetails extends AppCompatActivity {
                 ageError.setText("\u274C"+"Please enter a valid age!!!"+"\u274C");
                 ageError.setVisibility(View.VISIBLE);
                 ageValidate =false;
+
+            }
+        }
+
+        email=emailEd.getText().toString();
+        if(email.matches("")) {
+            emailError.setText("\u274C"+"Email id is required"+"\u274C");
+            emailError.setVisibility(View.VISIBLE);
+            emailValidate =false;
+        }
+        else {
+
+            if(email.matches("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) {
+                emailError.setVisibility(View.INVISIBLE);
+                emailValidate =true;
+            }
+            else {
+                emailError.setText("\u274C"+"Please enter a valid email id!!!"+"\u274C");
+                emailError.setVisibility(View.VISIBLE);
+                emailValidate =false;
+
             }
         }
 

@@ -23,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
         DisplayNotification displayNotification = new DisplayNotification(this);
         displayNotification.createNotification("Hello","Welcome to Remedaily!"); */
         userDetailsBtn=findViewById(R.id.userDetailsBtn);
+
+        //calenderBtn=findViewById(R.id.calenderBtn);
+
+
         editUserDetailsBtn=findViewById(R.id.editUserDetailsBtn);
-        calenderBtn=findViewById(R.id.calenderBtn);
+
         userDetailsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,21 +37,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+       /* calenderBtn.setOnClickListener(new View.OnClickListener() {
+
         editUserDetailsBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this,EditUserDetails.class);
                 startActivity(intent);
             }
-        });
-
-        calenderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,Calender.class);
-                startActivity(intent);
-            }
-        });
+        });*/
     }
 
 }
