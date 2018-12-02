@@ -48,7 +48,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.EditUserDetails"
-            android:label="Edit User Details" />
+            android:label="Edit User Details"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".View.Calender"
             android:label="Calender"
@@ -82,17 +83,22 @@
         <activity
             android:name=".View.Camera"
             android:label="Camera"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".View.DeleteUser"
             android:label="Camera"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity android:name=".View.Help"
             android:label="Help and Support"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false"/>
         <activity android:name=".View.About_Us"
-            android:label="About Us"></activity>
+            android:label="About Us"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

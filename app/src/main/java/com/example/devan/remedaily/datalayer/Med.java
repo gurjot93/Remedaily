@@ -11,7 +11,7 @@ public class Med {
 
     @PrimaryKey(autoGenerate = true)@NonNull
     public int id;
-    public int tagDaily;
+    public int tagDaily; //this flag is for tagging daily meds.
     public String medName;
     public String dosage;
     public String imagePath;

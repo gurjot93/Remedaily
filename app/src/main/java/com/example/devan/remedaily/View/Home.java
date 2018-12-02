@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.R;
@@ -46,6 +47,11 @@ public class Home extends Hamburger {
 
         // set the context
         mContext = getApplicationContext();
+
+
+        /*running the notification */
+//        DisplayNotification displaynotification = new DisplayNotification(this);
+//        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
 
         lLinearLayout = findViewById(R.id.upcomingMedicineList);
         mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);
