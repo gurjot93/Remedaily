@@ -641,7 +641,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             }
         }
 
-        @Override
+       /* @Override
         protected void onPostExecute(String result) {
             if (result.equals("Success")) {
 
@@ -654,7 +654,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             else if (result.equals("error2"))
                 Toast.makeText(AddNewMedicineActivity.this, "Email Sent problem2", Toast.LENGTH_LONG).show();
 
-        }
+        }*/
     }
     //endregion
 

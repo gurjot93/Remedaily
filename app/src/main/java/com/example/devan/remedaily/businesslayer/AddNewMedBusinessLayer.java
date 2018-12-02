@@ -20,9 +20,11 @@ public class AddNewMedBusinessLayer {
     //region Insert Medicine
     public static void AddMeds(@NonNull final AppDatabase db, int tagDaily, String medName,
                                String dosage, String imagePath, String startDate, String endDate, ArrayList<ArrayList<String>> arrTimeItem) throws Exception {
-        AddMeds task = new AddMeds(db, tagDaily, medName, dosage, imagePath, startDate, endDate, arrTimeItem);
+        AddMeds task = new
+                AddMeds(db, tagDaily, medName, dosage, imagePath, startDate, endDate, arrTimeItem);
         //created threads so that adding up of medications can be done asynchronously.
         task.execute();
+
     }
 
 
