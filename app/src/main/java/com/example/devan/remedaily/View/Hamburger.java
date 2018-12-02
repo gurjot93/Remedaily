@@ -13,14 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.devan.remedaily.R;
-import com.example.devan.remedaily.businesslayer.UserDetailsBusinessLayer;
 import com.example.devan.remedaily.datalayer.AppDatabase;
 
 import java.util.ArrayList;
@@ -57,6 +55,7 @@ public class Hamburger extends AppCompatActivity {
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
         navigationItems.add(new NavigationItem("Help and Support", "", R.drawable.customer_support));
+        navigationItems.add(new NavigationItem("About Us", "", R.drawable.about_us_icon));
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
         try {
             userName.setText(ShowUserInfo(appData));
@@ -172,6 +171,10 @@ public class Hamburger extends AppCompatActivity {
                 break;
             case 3:
                 intent = new Intent(this, Help.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent = new Intent(this, About_Us.class);
                 startActivity(intent);
                 break;
         }
