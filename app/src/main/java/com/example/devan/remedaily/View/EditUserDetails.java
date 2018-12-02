@@ -72,7 +72,7 @@ public class EditUserDetails extends AppCompatActivity {
                 if(firstNameValidate && lastNameValidate && ageValidate && emailValidate){
 
                     try {
-                        UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+                        UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString(),emailEd.getText().toString());
                         Intent intent = new Intent(EditUserDetails.this, Home.class);
                         startActivity(intent);
                     } catch (Exception e) {

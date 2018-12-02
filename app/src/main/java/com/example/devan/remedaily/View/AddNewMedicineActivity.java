@@ -7,8 +7,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -31,13 +33,28 @@ import android.widget.Toast;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.AddNewMedBusinessLayer;
 import com.example.devan.remedaily.datalayer.AppDatabase;
+import com.example.devan.remedaily.datalayer.Med;
+import com.example.devan.remedaily.datalayer.User;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.SendFailedException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.devan.remedaily.businesslayer.AddNewMedBusinessLayer.GetEmailID;
 
 public class AddNewMedicineActivity extends AppCompatActivity {
 
@@ -296,9 +313,9 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                         medicineSchedule.setName(medicineName);
                         medicineSchedule.setDosage(medicineDosage);
 
-                        if(isDaily){
+                        if (isDaily) {
                             medicineSchedule.setIsDaily(1);
-                        }else{
+                        } else {
                             medicineSchedule.setIsDaily(0);
                         }
 
@@ -342,10 +359,13 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
                             int tagDaily = 0;
 
-                            if(sameScheduleSwitchButton.isChecked()){
+                            if (sameScheduleSwitchButton.isChecked()) {
                                 tagDaily = 1;
                             }
                             AddNewMedBusinessLayer.AddMeds(appData, tagDaily, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
+
+                            //This function will send email to the user with the selected medication.
+                            SendMail(medName, medDosage, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -552,5 +572,91 @@ public class AddNewMedicineActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    /*Written by - Devanshu Srivastava
+     * Purpose: Creates a thread to send an email to the user.
+     * Used libs : https://code.google.com/archive/p/javamail-android/
+     * https://stackoverflow.com/questions/6517079/send-email-in-service-without-prompting-user
+     * */
+    //region SENDING EMAIL.
+    public void SendMail(String medName, String dosage, String startDay, String endDay, ArrayList<ArrayList<String>> timeObject) {
+        final String username = "remedaily123@gmail.com";
+        final String password = "Dalhousie123";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            String email_to = GetEmailID(appData);
+            StringBuilder listString = new StringBuilder();
+            listString.append(String.format(
+                    "%s\n %s\n %s\n %s\n %s\n", medName, dosage, startDay, endDay, timeObject));
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(email_to));
+            message.setSubject("Remedaily medicine reminder.");
+            message.setText("Greetings : ,"
+                    + "\n\n" + listString);
+            new SendMailTask().execute(message);
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
+    }
+    //endregion
+
+    //region ASYNC CALL TO SEND EMAILS.
+    @SuppressLint("StaticFieldLeak")
+    private class SendMailTask extends AsyncTask<Message, String, String> {
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = ProgressDialog.show(AddNewMedicineActivity.this, null, "Sending mail", true, false);
+        }
+
+        @Override
+        protected String doInBackground(Message... messages) {
+            try {
+                Transport.send(messages[0]);
+                return "Success";
+            } catch (SendFailedException ee) {
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+                return "error1";
+            } catch (MessagingException e) {
+                if (progressDialog.isShowing())
+                    progressDialog.dismiss();
+                return "error2";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result.equals("Success")) {
+
+                super.onPostExecute(result);
+                progressDialog.dismiss();
+                Toast.makeText(AddNewMedicineActivity.this, "Mail Sent Successfully", Toast.LENGTH_LONG).show();
+
+            } else if (result.equals("error1"))
+                Toast.makeText(AddNewMedicineActivity.this, "Email Failure", Toast.LENGTH_LONG).show();
+            else if (result.equals("error2"))
+                Toast.makeText(AddNewMedicineActivity.this, "Email Sent problem2", Toast.LENGTH_LONG).show();
+
+        }
+    }
+    //endregion
+
 }
 
