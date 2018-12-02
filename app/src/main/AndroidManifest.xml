@@ -82,9 +82,13 @@
         <activity
             android:name=".View.Camera"
             android:label="Camera"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
+
         <activity
-            android:name=".View.Help"
+            android:name=".View.DeleteUser"
+            android:label="Camera"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".View.Help"
             android:label="Help and Support"
             android:screenOrientation="portrait" />
         <activity android:name=".View.About_Us"
