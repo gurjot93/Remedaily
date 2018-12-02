@@ -10,7 +10,7 @@ import com.example.devan.remedaily.R;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.util.FitPolicy;
 
-public class medical_report extends AppCompatActivity {
+public class MedicalReport extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -172,7 +172,7 @@ public class Hamburger extends AppCompatActivity {
                 break;
 
             case 3:
-                intent = new Intent(this, medical_report.class);
+                intent = new Intent(this, MedicalReport.class);
                 startActivity(intent);
                 break;
 
