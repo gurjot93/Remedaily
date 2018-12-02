@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -332,7 +333,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
                         ProgressDialog progressWheelDialog = new ProgressDialog(AddNewMedicineActivity.this);
                         progressWheelDialog.setMessage(spannableString);
-                        progressWheelDialog.show();
+//                        progressWheelDialog.show();
 
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -353,63 +354,40 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             if (sameScheduleSwitchButton.isChecked()) {
                                 tagDaily = 1;
                             }
+                           //Adding data of meds into DB.
                             AddNewMedBusinessLayer.AddMeds(appData, tagDaily, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
-                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy'T'HH:mm");
+
+                            //Parsing data into a particular format.
+                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+
+                            //Calculating the delta between start/endate.
                             int daysToRun = Integer.parseInt(medEndDate.split("/")[1]) -
                                     Integer.parseInt(medStartDate.split("/")[1]);
 
+                            /*This iteration is for adding the numerals to the date in a single month.*/
                             List<String> _lst = new ArrayList<String>();
-//                            String newFormedDate =
                             int incrementDay = Integer.parseInt(medStartDate.split("/")[1]);
-                            for (int i=0;i<daysToRun;i++){
-                                incrementDay++;
-                                _lst.add(medStartDate.replace( medStartDate.substring(4,6),String.valueOf(incrementDay)+"/"));
-//                                _lst.add(medStartDate.replace(medStartDate.split("/")[1],String.valueOf(incrementDay)));
+                            for (int i = 0; i < daysToRun; i++) {
+                                if (incrementDay < 10) {
+                                    /*fetching if the date is unit place or tens place*/
+                                    _lst.add(medStartDate.replace(medStartDate.split("/")[1], "0" + String.valueOf(incrementDay)));
+                                } else {
+                                    _lst.add(medStartDate.replace(medStartDate.split("/")[1], String.valueOf(incrementDay)));
+                                }
+                                incrementDay++;                                /*Increementing dates*/
                             }
-
-
-
-//                            for (int k = 0; k <= daysToRun; k++) {
+                            int count = 0; /*Counter for keeping the _lst values for stationary untill all the timers are alarmed and done.*/
+                            /*This iteration gets the proper parsed formatted DATE. So that timely alarmed notifications can be called.*/
                             for (int k = 0; k <= 6; k++) {
                                 if (medicineSchedule.getWeekSchedule().get(k).size() > 0) {
                                     int git = medicineSchedule.getWeekSchedule().get(k).size();
                                     for (int j = 0; j < git; j++) {
-
-
-                                        Date date = format.parse(_lst.get(j) + "T" + medicineSchedule.getWeekSchedule().get(k).get(j));
-//                                        Date aa = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(git-1));
-
-//                                        long timeInMilliseconds = aa.getTime()- date.getTime();
-
-                                        handleNotification(date.getTime(), 0);
+                                        Date date = format.parse(_lst.get(count) + " " + medicineSchedule.getWeekSchedule().get(k).get(j));
+                                        handleNotification(date.getTime(), medName);
                                     }
+                                    count++;
                                 }
                             }
-                            /*Date StartDate = format.parse(medStartDate);
-                            Date EndDate = format.parse(medEndDate);
-
-                            long diff = Math.round((EndDate.getTime() - StartDate.getTime()) / (double) 86400000);
-
-
-//                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-
-                            for (int i = 0; i < 7; i++) {
-                                if (medicineSchedule.getWeekSchedule().get(i).size() > 0) {
-                                    int git = medicineSchedule.getWeekSchedule().get(i).size();
-                                    for (int j = 0; j < git; j++) {
-
-
-                                        Date date = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(j));
-//                                        Date aa = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(git-1));
-
-//                                        long timeInMilliseconds = aa.getTime()- date.getTime();
-
-                                        handleNotification(date.getTime(), 0);
-                                    }
-                                }
-                            }*/
-//                            }
-
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -617,15 +595,24 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         }
     }
 
-    private void handleNotification(long intmill, long intmilldiff) {
+    //region Handling notifications using receiver broadcast mechanism.
+    private void handleNotification(long intmill, String medname) {
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        alarmIntent.putExtra("medName", medname);
         final int _id = (int) System.currentTimeMillis();
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, _id, alarmIntent,
                 PendingIntent.FLAG_ONE_SHOT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        alarmManager.setExact(AlarmManager.RTC_WAKEUP, intmill, pendingIntent);
-
+        if (Build.VERSION.SDK_INT >= 23) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+                    intmill, pendingIntent);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, intmill, pendingIntent);
+        } else {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, intmill, pendingIntent);
+        }
     }
+    //endregion
 
 }
 
