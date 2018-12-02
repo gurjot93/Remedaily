@@ -37,4 +37,5 @@ public class SettingsDetailsFetch {
         getSharedPreferencesInstance(context);
         return sharedPreferences.getBoolean("notificationsChange", true);
     }
+
 }

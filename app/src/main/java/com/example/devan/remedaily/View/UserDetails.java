@@ -68,7 +68,8 @@ public class UserDetails extends AppCompatActivity {
 
                 if(firstNameValidate && lastNameValidate && ageValidate && emailValidate){ //The data will only be inserted if all of the flags are true. Otherwise it will execute the else part and data will not be inserted.
                     try {
-                        UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
+                        UserDetailsBusinessLayer.InsertRecordsAsync(appData,firstNameEd.getText().
+                                toString(),lastNameEd.getText().toString(),ageEd.getText().toString());
                         Intent intent = new  Intent(getApplicationContext(),Home.class);
                         startActivity(intent);
 

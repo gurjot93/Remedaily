@@ -1,12 +1,11 @@
 package com.example.devan.remedaily.View;
 
 /*
- * Activity to ask User once again to reset the data(Applying Neilson's Heuristics)
+ * Activity to ask User once again to delete the user profile and then deleting the data(Applying Neilson's Heuristics)
  * Created by: Gurjot Singh (B00811724)
- * Created date: November 18, 2018
+ * Created date: December 1, 2018
  * Version: 1
  * */
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,46 +19,46 @@ import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.ResetApplicationLayer;
 import com.example.devan.remedaily.datalayer.AppDatabase;
 
-public class SettingsResetApplication extends AppCompatActivity {
-    Button resetButton;
+public class DeleteUser extends AppCompatActivity {
+    Button deleteUser;
     public AppDatabase appData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.reset_application);
-        resetButton=(Button) findViewById(R.id.resetButton);
+        setContentView(R.layout.delete_user);
+        deleteUser=(Button) findViewById(R.id.deleteUser);
+        /*
+        * back button generation
+        * */
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
 
-
-        //listener for the button resetButton
-        resetButton.setOnClickListener(new View.OnClickListener() {
+        //listener for the button deleteUser
+        deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //method to be called to reset the application
-                System.out.print("Reset Button");
+                //method to be called to delete the user
 
                 /*
-                * Deleting the data by calling the functions of the business layer
-                * */
-                ResetApplicationLayer.resetMedData(appData);
+                 * Deleting the user data by calling the functions of the business layer
+                 * */
                 ResetApplicationLayer.resetUserData(appData);
 
                 /*
-                * Referred from : https://developer.android.com/guide/topics/ui/dialogs
-                * */
-                AlertDialog.Builder builder = new AlertDialog.Builder(SettingsResetApplication.this);
+                 * Referred from : https://developer.android.com/guide/topics/ui/dialogs
+                 * */
+                AlertDialog.Builder builder = new AlertDialog.Builder(DeleteUser.this);
                 builder.setCancelable(true);
-                builder.setMessage("Data Reset Successful");
+                builder.setMessage("User Profile Deleted");
                 builder.setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 /*
-                                * Redirecting the user directly to the homepage
-                                * */
+                                 * Redirecting the user directly to the homepage
+                                 * */
                                 Intent intent = new Intent(getApplicationContext(),Home.class);
                                 startActivity(intent);
                             }
