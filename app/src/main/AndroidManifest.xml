@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.devan.remedaily">
 
+
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,24 +15,84 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen"
-            android:label="Remedaily">
+        <activity
+            android:name=".View.SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:label="Main Activity"/>
-        <activity android:name=".UserDetails"
-            android:label="User Details"></activity>
-        <activity android:name=".Home"
-            android:label="Home"></activity>
+        <activity
+            android:name=".View.AddNewMedicineActivity"
+            android:label="Add Medicine"
+
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".View.MainActivity"
+            android:label="Main Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.UserDetails"
+            android:label="Add Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.Home"
+            android:label="Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.Hamburger"
+            android:label="Main Activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.EditUserDetails"
+            android:label="Edit User Details" />
+        <activity
+            android:name=".View.Calender"
+            android:label="Calender"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SettingsHome"
+            android:label="@string/app_name_settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.SettingsResetApplication"
+            android:label="@string/app_name_settings"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <!--
+        This section configures drug box image saving feature
+        source : https://developer.android.com/training/camera/photobasics
+        -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <activity
+            android:name=".View.Camera"
+            android:label="Camera"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".View.DeleteUser"
+            android:label="Camera"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".View.Help"
+            android:label="Help and Support"
+            android:screenOrientation="portrait" />
+        <activity android:name=".View.About_Us"
+            android:label="About Us"></activity>
     </application>
 
 </manifest>
