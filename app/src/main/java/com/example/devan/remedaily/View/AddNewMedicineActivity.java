@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -50,7 +51,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     public static Button[] weekDayButtons = new Button[7];
     public AppDatabase appData;
-    static int countDays =0;
+    static int countDays = 0;
 
     private final String[] weekDaysArr = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
             "Saturday", "Sunday"};
@@ -304,9 +305,9 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                         medicineSchedule.setName(medicineName);
                         medicineSchedule.setDosage(medicineDosage);
 
-                        if(isDaily){
+                        if (isDaily) {
                             medicineSchedule.setIsDaily(1);
-                        }else{
+                        } else {
                             medicineSchedule.setIsDaily(0);
                         }
 
@@ -349,14 +350,48 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             String medEndDate = medicineSchedule.getEndDate();
                             int tagDaily = 0;
 
-                            if(sameScheduleSwitchButton.isChecked()){
+                            if (sameScheduleSwitchButton.isChecked()) {
                                 tagDaily = 1;
                             }
                             AddNewMedBusinessLayer.AddMeds(appData, tagDaily, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
-
                             SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy'T'HH:mm");
-//                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+                            int daysToRun = Integer.parseInt(medEndDate.split("/")[1]) -
+                                    Integer.parseInt(medStartDate.split("/")[1]);
 
+                            List<String> _lst = new ArrayList<String>();
+//                            String newFormedDate =
+                            int incrementDay = Integer.parseInt(medStartDate.split("/")[1]);
+                            for (int i=0;i<daysToRun;i++){
+                                incrementDay++;
+                                _lst.add(medStartDate.replace( medStartDate.substring(4,6),String.valueOf(incrementDay)+"/"));
+//                                _lst.add(medStartDate.replace(medStartDate.split("/")[1],String.valueOf(incrementDay)));
+                            }
+
+
+
+//                            for (int k = 0; k <= daysToRun; k++) {
+                            for (int k = 0; k <= 6; k++) {
+                                if (medicineSchedule.getWeekSchedule().get(k).size() > 0) {
+                                    int git = medicineSchedule.getWeekSchedule().get(k).size();
+                                    for (int j = 0; j < git; j++) {
+
+
+                                        Date date = format.parse(_lst.get(j) + "T" + medicineSchedule.getWeekSchedule().get(k).get(j));
+//                                        Date aa = format.parse(medStartDate + "T" + medicineSchedule.getWeekSchedule().get(i).get(git-1));
+
+//                                        long timeInMilliseconds = aa.getTime()- date.getTime();
+
+                                        handleNotification(date.getTime(), 0);
+                                    }
+                                }
+                            }
+                            /*Date StartDate = format.parse(medStartDate);
+                            Date EndDate = format.parse(medEndDate);
+
+                            long diff = Math.round((EndDate.getTime() - StartDate.getTime()) / (double) 86400000);
+
+
+//                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 
                             for (int i = 0; i < 7; i++) {
                                 if (medicineSchedule.getWeekSchedule().get(i).size() > 0) {
@@ -372,7 +407,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                                         handleNotification(date.getTime(), 0);
                                     }
                                 }
-                            }
+                            }*/
 //                            }
 
                         } catch (Exception e) {
