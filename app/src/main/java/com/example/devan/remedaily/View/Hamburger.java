@@ -54,6 +54,7 @@ public class Hamburger extends AppCompatActivity {
         navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));*/
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
+        navigationItems.add(new NavigationItem("Medical report", "", R.drawable.report_icon));
         navigationItems.add(new NavigationItem("Help and Support", "", R.drawable.customer_support));
         navigationItems.add(new NavigationItem("About Us", "", R.drawable.about_us_icon));
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
@@ -169,11 +170,17 @@ public class Hamburger extends AppCompatActivity {
                 intent = new Intent(this, SettingsHome.class);
                 startActivity(intent);
                 break;
+
             case 3:
+                intent = new Intent(this, medical_report.class);
+                startActivity(intent);
+                break;
+
+            case 4:
                 intent = new Intent(this, Help.class);
                 startActivity(intent);
                 break;
-            case 4:
+            case 5:
                 intent = new Intent(this, About_Us.class);
                 startActivity(intent);
                 break;
