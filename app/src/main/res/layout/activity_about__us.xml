@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="79dp"
-        android:text="Remedaily	"
+        android:text="@string/remedaily"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="40dp" />
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
-        android:text="© 2018 Remedaily Inc."
+        android:text="@string/copyright"
         android:textColor="@color/white"
         android:textSize="25dp"
         />
@@ -47,7 +47,7 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"
-        android:text="All rights reserved."
+        android:text="@string/rights"
         android:textColor="@color/white" />
 
     <TextView
@@ -57,7 +57,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="133dp"
-        android:text="Group-2"
+        android:text="@string/groupnumber"
         android:textColor="@color/white"
         android:textSize="25dp" />
 
@@ -68,7 +68,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="103dp"
-        android:text="Mobile Computing Project"
+        android:text="@string/mcproject"
         android:textSize="20dp"
         android:textColor="@color/white"/>
 
@@ -79,7 +79,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="75dp"
-        android:text="Dalhousie University"
+        android:text="@string/university"
         android:textColor="@color/white"
         android:textSize="20dp" />
 
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:text="Version 1"
+        android:text="@string/version"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:alpha="0.8"/>
