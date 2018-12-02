@@ -58,7 +58,7 @@ public class EditUserDetails extends AppCompatActivity {
             firstNameEd.setText(ShowEditUserInfo(appData).firstName);
             lastNameEd.setText(ShowEditUserInfo(appData).lastName);
             ageEd.setText(ShowEditUserInfo(appData).age);
-
+            emailEd.setText(ShowEditUserInfo(appData).emailID);
         } catch (Exception e) {
             e.printStackTrace();
         }
