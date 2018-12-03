@@ -43,6 +43,7 @@ public class Hamburger extends AppCompatActivity {
         //setContentView(R.layout.add_new_medicine_activity);
         userName = findViewById(R.id.userName);
 //        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
+
         appData = AppDatabase.getInMemoryDatabase(getApplicationContext());
 
         if (IsUserPresent(appData)) {
@@ -52,6 +53,8 @@ public class Hamburger extends AppCompatActivity {
         }
         /*navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
         navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));*/
+
+        navigationItems.add(new NavigationItem("My Medication", "", R.drawable.pill_icon_white_128));
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
         navigationItems.add(new NavigationItem("Medical report", "", R.drawable.report_icon));
@@ -159,28 +162,35 @@ public class Hamburger extends AppCompatActivity {
                 }
                 break;
             case 1:
-                // third menu item clicked
-                // create appropriate intention
-                intent = new Intent(this, Calender.class);
+                // navigate to my medication screen
+                intent = new Intent(this, MyMedication.class);
                 startActivity(intent);
                 break;
             case 2:
                 // third menu item clicked
                 // create appropriate intention
+                intent = new Intent(this, Calender.class);
+                startActivity(intent);
+                break;
+            case 3:
+                // third menu item clicked
+                // create appropriate intention
                 intent = new Intent(this, SettingsHome.class);
                 startActivity(intent);
                 break;
-
-            case 3:
-                intent = new Intent(this, MedicalReport.class);
-                startActivity(intent);
-                break;
-
             case 4:
-                intent = new Intent(this, Help.class);
+                intent = new Intent(this, SettingsHome.class);
                 startActivity(intent);
                 break;
             case 5:
+                intent = new Intent(this, MedicalReport.class);
+                startActivity(intent);
+                break;
+            case 6:
+                intent = new Intent(this, Help.class);
+                startActivity(intent);
+                break;
+            case 7:
                 intent = new Intent(this, About_Us.class);
                 startActivity(intent);
                 break;

@@ -158,4 +158,10 @@ public class MedicineBusinessLayer {
         return new TreeMap<>(OutputMap);
     }
 
+    public List<Med> getAllMedicine(Context context) {
+        List<Med> medicines = medicineDataObject.getAllNonDailyMedicines(context);
+
+        return medicines;
+    }
+
 }
