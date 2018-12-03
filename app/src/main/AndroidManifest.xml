@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.devan.remedaily">
 
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddNewMedicineActivity"
+            android:name=".View.AddNewMedicineActivity"
             android:label="Add Medicine"
             android:screenOrientation="portrait" />
         <activity
@@ -40,11 +44,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.EditUserDetails"
-            android:label="Edit User Details" />
+            android:label="Edit User Details"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.MyMedication"
-            android:label="My Medication" />
-
+            android:label="My Medication"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.Calender"
             android:label="Calender"
@@ -61,7 +66,8 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <!-- This section configures drug box image saving feature
+        <!--
+        This section configures drug box image saving feature
         source : https://developer.android.com/training/camera/photobasics
         -->
         <provider
@@ -75,13 +81,29 @@
         </provider>
 
         <activity
-            android:name=".Camera"
+            android:name=".View.Camera"
             android:label="Camera"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".View.Help"
+        <activity
+            android:name=".View.DeleteUser"
+            android:label="Camera"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.Help"
             android:label="Help and Support"
             android:screenOrientation="portrait" />
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".View.About_Us"
+            android:label="About Us"
+            android:screenOrientation="portrait" />
+        <activity android:name=".View.MedicalReport"></activity>
     </application>
 
 </manifest>

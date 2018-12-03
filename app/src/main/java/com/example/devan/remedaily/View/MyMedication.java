@@ -13,17 +13,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.example.devan.remedaily.AddNewMedicineActivity;
-import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
 import com.example.devan.remedaily.datalayer.Med;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class MyMedication extends AppCompatActivity {
 
@@ -66,28 +63,29 @@ public class MyMedication extends AppCompatActivity {
         // get the upcoming medicine details
         MedicineBusinessLayer MedicineObj = new MedicineBusinessLayer();
 
-        ArrayList<Medicine> MedicineArrayList = MedicineObj.getAllMedicine();
+        List<Med> MedicineList = MedicineObj.getAllMedicine(mContext);
 
         // sort medicine alphabetically
-        Collections.sort(MedicineArrayList, new Comparator<Medicine>() {
+        Collections.sort(MedicineList, new Comparator<Med>() {
             @Override
-            public int compare(Medicine medicine1, Medicine medicine2) {
-                return medicine1.getMedicineName().compareTo(medicine2.getMedicineName());
+            public int compare(Med medicine1, Med medicine2) {
+                return medicine1.medName.compareTo(medicine2.medName);
+
             }
         });
 
-        if (MedicineArrayList != null) {
-            if (MedicineArrayList.size() != 0) {
-                showMedicineOnScreen(MedicineArrayList, lLinearLayout);
+        if (MedicineList != null) {
+            if (MedicineList.size() != 0) {
+                showMedicineOnScreen(MedicineList, lLinearLayout);
             } else {
-                showNoMedicationAvailable(lLinearLayout, R.string.NoMissedMedicine);
+                showNoMedicationAvailable(lLinearLayout, "NO MEDICAITONS ADDED");
             }
         } else {
-            showNoMedicationAvailable(lLinearLayout, R.string.NoMissedMedicine);
+            showNoMedicationAvailable(lLinearLayout, "NO MEDICAITONS ADDED");
         }
     }
 
-    private void showMedicineOnScreen(ArrayList<Medicine> MedicineArrayList, LinearLayout linearLayout) {
+    private void showMedicineOnScreen(List<Med> MedicineArrayList, LinearLayout linearLayout) {
         for (int i = 0; i < MedicineArrayList.size(); i++) {
 
             // adding cardview programatically
@@ -180,7 +178,7 @@ public class MyMedication extends AppCompatActivity {
             ChildTextView1.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
             // set the text
-            ChildTextView1.setText(MedicineArrayList.get(i).getMedicineName());
+            ChildTextView1.setText(MedicineArrayList.get(i).medName);
 
             // set the background color
             ChildTextView1.setBackgroundColor(getColor(R.color.white));
@@ -203,7 +201,7 @@ public class MyMedication extends AppCompatActivity {
             ChildTextView2.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
             // set the text
-            ChildTextView2.setText(MedicineArrayList.get(i).getMedicineDosage());
+            ChildTextView2.setText(MedicineArrayList.get(i).dosage);
 
             // set the text size
             ChildTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -223,7 +221,7 @@ public class MyMedication extends AppCompatActivity {
             ChildTextView3.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
             // set the text
-            ChildTextView3.setText(MedicineArrayList.get(i).getDateTimeRegistered().toString());
+            ChildTextView3.setText(MedicineArrayList.get(i).startDate.toString());
 
             // set the text size
             ChildTextView3.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -249,7 +247,7 @@ public class MyMedication extends AppCompatActivity {
 
     }
 
-    private void showNoMedicationAvailable(LinearLayout linearLayout, int TextID){
+    private void showNoMedicationAvailable(LinearLayout linearLayout, String TextID){
         TextView ChildTextView2 = new TextView(mContext);
 
         // set the padding
