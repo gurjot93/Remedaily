@@ -47,6 +47,10 @@
             android:label="Edit User Details"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".View.MyMedication"
+            android:label="My Medication"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".View.Calender"
             android:label="Calender"
             android:screenOrientation="portrait" />
@@ -80,6 +84,7 @@
             android:name=".View.Camera"
             android:label="Camera"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".View.DeleteUser"
             android:label="Camera"
