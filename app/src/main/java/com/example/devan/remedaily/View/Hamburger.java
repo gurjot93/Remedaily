@@ -178,19 +178,16 @@ public class Hamburger extends AppCompatActivity {
                 intent = new Intent(this, SettingsHome.class);
                 startActivity(intent);
                 break;
+
             case 4:
-                intent = new Intent(this, SettingsHome.class);
-                startActivity(intent);
-                break;
-            case 5:
                 intent = new Intent(this, MedicalReport.class);
                 startActivity(intent);
                 break;
-            case 6:
+            case 5:
                 intent = new Intent(this, Help.class);
                 startActivity(intent);
                 break;
-            case 7:
+            case 6:
                 intent = new Intent(this, About_Us.class);
                 startActivity(intent);
                 break;
