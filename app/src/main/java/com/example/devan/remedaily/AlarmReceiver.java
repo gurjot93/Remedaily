@@ -13,6 +13,7 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
+import com.example.devan.remedaily.View.DisplayNotification;
 import com.example.devan.remedaily.View.EnableFlashLight;
 import com.example.devan.remedaily.datalayer.AppDatabase;
 import com.example.devan.remedaily.datalayer.Med;
@@ -23,6 +24,9 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Med med = AppDatabase.getInMemoryDatabase(context).medModel().loadMedByName(intent.getStringExtra("medName").toString());
+        DisplayNotification displayNotification= new DisplayNotification(context);
+        displayNotification.createNotification("Medicine: "+med.medName,"Dosage: "+(med.dosage));
+/*
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "Devanshu")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(med.medName)
@@ -50,9 +54,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         // notificationId is a unique int for each notification that you must define
         notificationManager.notify(0, mBuilder.build());
-        /*Call to Create a Flashlight Notification along with the normal notification*/
+        //Call to Create a Flashlight Notification along with the normal notification
         EnableFlashLight enableFlashLight = new EnableFlashLight(context);
         enableFlashLight.enableFlash();
+*/
     }
 
     private void createNotificationChannel() {
