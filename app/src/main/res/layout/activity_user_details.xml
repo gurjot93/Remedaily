@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.UserDetails"
+    android:orientation="vertical"
+    android:background="@color/pearlwhite">
+
+
+    <TextView
+        android:id="@+id/firstNameLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:alpha="1"
+        android:fontFamily="@font/roboto"
+        android:text="@string/fname"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/editTextFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="20sp"
+        android:hint="Enter your first name"
+        android:backgroundTint="@color/DarkBrown"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/firstNameValidateLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/DarkBrown"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/lastNameLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:alpha="1"
+        android:fontFamily="@font/roboto"
+        android:text="@string/lname"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="20sp"
+        android:hint="Enter your last name"
+        android:backgroundTint="@color/DarkBrown"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/lastNameValidateLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/DarkBrown"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/ageLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:alpha="1"
+        android:fontFamily="@font/roboto"
+        android:text="@string/age"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+
+
+    <EditText
+        android:id="@+id/editTextAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="20sp"
+        android:hint="Enter your age"
+        android:inputType="number"
+        android:backgroundTint="@color/DarkBrown"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/ageValidateLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/DarkBrown"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/emailLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:alpha="1"
+        android:fontFamily="@font/roboto"
+        android:text="@string/email"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="20sp"
+        android:hint="Enter your email id"
+        android:backgroundTint="@color/DarkBrown"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:padding="10dp"
+        android:textCursorDrawable="@null"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/emailValidateLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/DarkBrown"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:textSize="25sp"
+            android:layout_margin="5dp"
+            />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:layout_margin="5dp"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+
+</LinearLayout>

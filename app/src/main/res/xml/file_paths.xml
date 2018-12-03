@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Used in drug box image saving feature
+ source : https://developer.android.com/training/camera/photobasics
+ -->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-path name="my_images" path="Android/data/com.example.devan.remedaily/files/Pictures" />
+</paths>
