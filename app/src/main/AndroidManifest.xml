@@ -58,6 +58,10 @@
             android:name=".View.SettingsResetApplication"
             android:label="@string/app_name_settings"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.DeleteMedicine"
+            android:label="DeleteMedicines"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -82,7 +86,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.DeleteUser"
-            android:label="Camera"
+            android:label="DeleteUser"
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.Help"

@@ -47,9 +47,9 @@
         <PreferenceScreen
             android:title="Delete Medication"
             android:key="deletemedicine"
-            android:summary="This will delete a particular medication of the user">
+            android:summary="This will delete all the medications of the user">
             <intent android:targetPackage="com.example.devan.remedaily"
-                android:targetClass="com.example.devan.remedaily.View.Calender"/>
+                android:targetClass="com.example.devan.remedaily.View.DeleteMedicine"/>
         </PreferenceScreen>
     </PreferenceCategory>
 </PreferenceScreen>

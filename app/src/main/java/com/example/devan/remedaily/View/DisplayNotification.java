@@ -85,7 +85,7 @@ public class DisplayNotification extends ContextWrapper {
             Notification notification = new Notification.Builder(getApplicationContext())
                     .setContentTitle(messageDetails)
                     .setContentText(descriptionDetails)
-                    .setSmallIcon(R.drawable.ic_launcher_background).setSound(DEFAULT_NOTIFICATION_URI)
+                    .setSmallIcon(R.drawable.hands).setSound(DEFAULT_NOTIFICATION_URI)
                     .setChannelId(channelId)
                     .setAutoCancel(true)
                     .setSound(mChannel.getSound(), mChannel.getAudioAttributes())
@@ -109,7 +109,7 @@ public class DisplayNotification extends ContextWrapper {
             //Creating the notification
             Notification notification =
                     new NotificationCompat.Builder(this.getApplicationContext())
-                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setSmallIcon(R.drawable.hands)
                             .setContentTitle(messageDetails)
                             .setContentText(descriptionDetails)
                             .setAutoCancel(true)
