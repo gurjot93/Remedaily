@@ -21,7 +21,7 @@
         <activity
             android:name=".AddNewMedicineActivity"
             android:label="Add Medicine"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.MainActivity"
             android:label="Main Activity"
@@ -41,19 +41,22 @@
         <activity
             android:name=".View.EditUserDetails"
             android:label="Edit User Details" />
+        <activity
+            android:name=".View.MyMedication"
+            android:label="My Medication" />
 
         <activity
             android:name=".View.Calender"
             android:label="Calender"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.SettingsHome"
             android:label="@string/app_name_settings"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.SettingsResetApplication"
             android:label="@string/app_name_settings"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
@@ -68,17 +71,17 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
 
         <activity
             android:name=".Camera"
             android:label="Camera"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <activity android:name=".View.Help"
             android:label="Help and Support"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

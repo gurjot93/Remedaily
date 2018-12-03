@@ -45,6 +45,7 @@ public class Hamburger extends AppCompatActivity {
 //        navigationItems.add(new NavigationItem("My Meds", "", R.drawable.pill_icon_white_128));
         navigationItems.add(new NavigationItem("Add User", "", R.drawable.new_user));
         navigationItems.add(new NavigationItem("Edit User", "", R.drawable.user_2));
+        navigationItems.add(new NavigationItem("My Medication", "", R.drawable.pill_icon_white_128));
         navigationItems.add(new NavigationItem("Calender", "", R.drawable.calendar_icon_white_128));
         navigationItems.add(new NavigationItem("Settings", "", R.drawable.settings_icon_white_128));
         navigationItems.add(new NavigationItem("Help and Support", "", R.drawable.customer_support));
@@ -151,16 +152,21 @@ public class Hamburger extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 2:
+                // navigate to my medication screen
+                intent = new Intent(this, com.example.devan.remedaily.View.MyMedication.class);
+                startActivity(intent);
+                break;
+            case 3:
                 // third menu item clicked
                 // create appropriate intention
                 intent = new Intent(this, Calender.class);
                 startActivity(intent);
                 break;
-            case 3:
+            case 4:
                 intent = new Intent(this, SettingsHome.class);
                 startActivity(intent);
                 break;
-            case 4:
+            case 5:
                 intent = new Intent(this, Help.class);
                 startActivity(intent);
                 break;

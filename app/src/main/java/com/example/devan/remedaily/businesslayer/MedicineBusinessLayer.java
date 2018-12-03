@@ -25,6 +25,21 @@ public class MedicineBusinessLayer {
         medicineDataObject = new MedicineDataLayer();
     }
 
+    public ArrayList<Medicine> getAllMedicine() {
+        // set current arraylist of medicines to null
+        ArrayList<Medicine> medicineArrayList = new ArrayList<>();
+
+        // now we need to get the upcoming medicine list from the database
+        ArrayList<Object[]> medicineDAO = medicineDataObject.getCurrentMedicineList();
+
+        // iterate it
+        for (int i = 0; i < medicineDAO.size(); i++) {
+            medicineArrayList.add(new Medicine(Integer.parseInt(medicineDAO.get(i)[0].toString()), medicineDAO.get(i)[1].toString(), medicineDAO.get(i)[2].toString(), medicineDAO.get(i)[4].toString()));
+        }
+
+        return medicineArrayList;
+    }
+
     public ArrayList<Medicine> getUpcomingMedicineList() throws ParseException {
 
         // set current arraylist of medicines to null
