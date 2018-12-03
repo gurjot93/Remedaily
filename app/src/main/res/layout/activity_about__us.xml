@@ -50,13 +50,15 @@
         android:text="@string/rights"
         android:textColor="@color/white" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="133dp"
         android:text="@string/groupnumber"
         android:textColor="@color/white"
         android:textSize="25dp" />
@@ -65,10 +67,9 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="103dp"
         android:text="@string/mcproject"
+        android:layout_below="@id/textView5"
         android:textSize="20dp"
         android:textColor="@color/white"/>
 
@@ -76,12 +77,12 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp"
+        android:layout_below="@id/textView6"
         android:text="@string/university"
         android:textColor="@color/white"
         android:textSize="20dp" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textView8"
