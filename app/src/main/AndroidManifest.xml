@@ -107,7 +107,9 @@
             android:name=".View.About_Us"
             android:label="About Us"
             android:screenOrientation="portrait" />
-        <activity android:name=".View.MedicalReport"></activity>
+        <activity android:name=".View.MedicalReport"
+            android:screenOrientation="portrait"
+            android:label="Medical Report"></activity>
     </application>
 
 </manifest>
