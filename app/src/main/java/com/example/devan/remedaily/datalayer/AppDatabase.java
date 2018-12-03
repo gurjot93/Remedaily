@@ -42,7 +42,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static com.example.devan.remedaily.datalayer.AppDatabase getInMemoryDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.inMemoryDatabaseBuilder(context.getApplicationContext(), com.example.devan.remedaily.datalayer.AppDatabase.class)
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class,"Remedaily")
                     // To simplify the codelab, allow queries on the main thread.
                     .allowMainThreadQueries()
                     .build();
