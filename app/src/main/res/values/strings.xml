@@ -32,7 +32,7 @@
     <string name="help6_label">My Medication</string>
     <string name="help6_desc">This functionality is accessible via the navigation menu. Its main purpose is to display your current inputted medications on a list. You will be able to scroll through all of your medications and even add a new medication from this.Each medication list item, when tapped, will show you the medication details.</string>
     <string name="help7_label">Contact us</string>
-    <string name="help7_desc">Developers: \n\nDevanshu Srivastava\nAditya Gadhvi\nGurjot Singh\nEugene Shishlannikov\nDeep Prakash Singh\nAlex Dunn\n\nEmail:remedaily@gmail.com</string>
+    <string name="help7_desc">Developers: \n\nDevanshu Srivastava\nAditya Gadhvi\nGurjot Singh\nEugene Shishlannikov\nDeep Prakash Singh\nAlex Dunn\n\nEmail: remedaily123@gmail.com</string>
     <string name="txtdailyMedicineActivity">Daily Medicine</string>
     <string name="remedaily">Remedaily</string>
     <string name="copyright">© 2018 Remedaily Inc.</string>

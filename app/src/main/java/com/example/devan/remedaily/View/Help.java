@@ -1,3 +1,4 @@
+/*Creator Aditya Gadhvi*/
 package com.example.devan.remedaily.View;
 
 import android.support.v7.app.AppCompatActivity;
