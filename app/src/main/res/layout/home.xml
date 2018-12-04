@@ -49,22 +49,6 @@
                 android:orientation="vertical">
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="MISSED MEDICINE"
-                android:textColor="@color/radio"
-                android:textSize="18sp" />
-
-
-            <LinearLayout
-                android:id="@+id/linearLayoutMissedMedication"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-            </LinearLayout>
         </LinearLayout>
 
 
