@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Custom XML File for Settings Page-->
+<!-- Created by: Gurjot Singh (B00811724)-->
+<!-- Created date: November 18, 2018-->
+<!-- Version: 1-->
+<!-- Referred from http://www.edumobile.org/android/listpreference-example/ and https://stackoverflow.com/questions/14810393/start-activity-from-preference-screen-intent-defined-in-xml-file-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Application Settings">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="splashScreen"
+            android:summary="Check to allow start screen every time application starts"
+            android:title="Allow Splash Screen" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="notificationsChange"
+            android:summary="Turn On or Off application notifications"
+            android:title="Notifications" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="User Details Settings">
+        <PreferenceScreen
+            android:title="Delete User Profile"
+            android:summary="This will delete the profile of the user">
+
+            <intent android:targetPackage="com.example.devan.remedaily"
+                android:targetClass="com.example.devan.remedaily.View.DeleteUser"/>
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:title="Change User Details"
+            android:summary="This will change the details of the user"
+            >
+
+            <intent android:targetPackage="com.example.devan.remedaily"
+                android:targetClass="com.example.devan.remedaily.View.EditUserDetails" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:title="Reset Settings"
+            android:summary="This will reset the application. Click to Proceed">
+
+            <intent android:targetPackage="com.example.devan.remedaily"
+                android:targetClass="com.example.devan.remedaily.View.SettingsResetApplication"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Medicine Details Settings">
+        <PreferenceScreen
+            android:title="Delete Medication"
+            android:key="deletemedicine"
+            android:summary="This will delete all the medications of the user">
+            <intent android:targetPackage="com.example.devan.remedaily"
+                android:targetClass="com.example.devan.remedaily.View.DeleteMedicine"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+</PreferenceScreen>
