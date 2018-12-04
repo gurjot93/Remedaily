@@ -11,6 +11,9 @@ package com.example.devan.remedaily.View;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -54,7 +57,6 @@ public class Home extends Hamburger {
 //        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
 
         lLinearLayout = findViewById(R.id.upcomingMedicineList);
-        mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);
         addMed = findViewById(R.id.addMed);
         addMed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +67,6 @@ public class Home extends Hamburger {
         });
 
         try {
-            populateMissedMedicine();
             populateUpcomingMedicine();
         } catch (ParseException e) {
             e.printStackTrace();
@@ -78,7 +79,6 @@ public class Home extends Hamburger {
 
         try {
             super.onWindowFocusChanged(hasFocus);
-            populateMissedMedicine();
             populateUpcomingMedicine();
         } catch (ParseException e) {
             e.printStackTrace();
@@ -86,23 +86,6 @@ public class Home extends Hamburger {
     }
 
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void populateMissedMedicine() throws ParseException {
-        // get the upcoming medicine details
-        MedicineBusinessLayer MedicineObj = new MedicineBusinessLayer();
-
-        ArrayList<Med> MedicineArrayList = null;
-
-        if (MedicineArrayList != null) {
-            if (MedicineArrayList.size() != 0) {
-                showMedicineOnScreen(MedicineArrayList, mLinearLayout);
-            } else {
-                showNoMedicationAvailable(mLinearLayout, R.string.NoMissedMedicine);
-            }
-        } else {
-            showNoMedicationAvailable(mLinearLayout, R.string.NoMissedMedicine);
-        }
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void showNoMedicationAvailable(LinearLayout linearLayout, int TextID) {
@@ -138,7 +121,7 @@ public class Home extends Hamburger {
 
             int HeightToSet = 100;
 
-            // set the text
+            // set the height of the card view
             if (MedicineArrayList.get(i).tagDaily == 0) {
                 for (int date = 0; date < MedicineArrayList.get(i).timeObject.size(); date++) {
                     if (MedicineArrayList.get(i).timeObject.get(date).size() > 0) {
@@ -195,11 +178,16 @@ public class Home extends Hamburger {
             // set the padding
             ChildImageObj.setPadding(getDPI(20), getDPI(20), getDPI(10), getDPI(20));
 
-            // set the image ID
-            int ImageID = R.drawable.medicine_pill;
+            if(MedicineArrayList.get(i).imagePath != null){
+                ChildImageObj.setImageURI(Uri.parse(MedicineArrayList.get(i).imagePath));
+            }else{
+                // set the image ID
+                int ImageID = R.drawable.medicine_pill;
 
-            // set the imageID
-            ChildImageObj.setImageResource(ImageID);
+                // set the imageID
+                ChildImageObj.setImageResource(ImageID);
+            }
+
 
             // add the image to the linear layout
             Parent.addView(ChildImageObj);
@@ -277,7 +265,12 @@ public class Home extends Hamburger {
 
             // set the text
             if (MedicineArrayList.get(i).tagDaily == 1) {
-                ChildTextView3.setText("Daily");
+
+                String text = "Daily ";
+                for (String Time : MedicineArrayList.get(i).timeObject.get(0)) {
+                    text += Time + " ";
+                }
+                ChildTextView3.setText(text.trim());
             } else {
                 String time = "";
                 for (int date = 0; date < MedicineArrayList.get(i).timeObject.size(); date++) {
