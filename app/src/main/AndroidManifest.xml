@@ -107,6 +107,10 @@
             android:name=".View.About_Us"
             android:label="About Us"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.NotificationDisplayMedicine"
+            android:label="Medicine Details"
+            android:screenOrientation="portrait" />
         <activity android:name=".View.MedicalReport"
             android:label="Medical Report"
             android:screenOrientation="portrait"/>

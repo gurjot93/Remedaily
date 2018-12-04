@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!-- XML File for Display Current Medicine Details for Notifications-->
+<!-- Created by: Gurjot Singh (B00811724)-->
+<!-- Created date: December 3, 2018-->
+<!-- Version: 1-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/pearlwhite">
 
     <LinearLayout
@@ -35,20 +37,19 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="200sp"
-                android:layout_height="200sp"
+                android:layout_width="150sp"
+                android:layout_height="100sp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="38dp"
                 android:layout_marginTop="31dp"
-                app:srcCompat="@mipmap/ic_launcher_round"
+                android:src="@drawable/pill_icon"
                 />
 
             <TextView
                 android:id="@+id/medicineNameTv"
-                android:layout_width="wrap_content"
+                android:layout_width="221dp"
                 android:layout_height="30dp"
-                android:maxLines="4"
                 android:layout_alignTop="@+id/imageView"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="4dp"
@@ -67,17 +68,9 @@
                 android:text="TextView"
                 android:textSize="20sp"/>
 
-            <TextView
-                android:id="@+id/medicineTimeTv"
-                android:layout_width="218dp"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/medicineNameTv"
-                android:layout_alignBottom="@+id/imageView"
-                android:layout_marginBottom="-1dp"
-                android:text="TextView"
-                android:textSize="20sp"/>
+
         </RelativeLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>

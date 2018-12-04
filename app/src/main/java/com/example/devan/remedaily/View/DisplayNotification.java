@@ -83,8 +83,8 @@ public class DisplayNotification extends ContextWrapper {
 
             // Creating a notification and setting the notification channel.
             Notification notification = new Notification.Builder(getApplicationContext())
-                    .setContentTitle(messageDetails)
-                    .setContentText(descriptionDetails)
+                    .setContentTitle("Medicine: "+messageDetails)
+                    .setContentText(descriptionDetails+". Click to view details")
                     .setSmallIcon(R.drawable.hands).setSound(DEFAULT_NOTIFICATION_URI)
                     .setChannelId(channelId)
                     .setAutoCancel(true)
@@ -95,7 +95,7 @@ public class DisplayNotification extends ContextWrapper {
              * Referred from: https://stackoverflow.com/questions/13716723/open-application-after-clicking-on-notification
              * */
             notification.contentIntent=  PendingIntent.getActivity(this, 0,
-                    new Intent(this, Help.class), PendingIntent.FLAG_CANCEL_CURRENT);
+                    new Intent(this, NotificationDisplayMedicine.class).putExtra("name",messageDetails).putExtra("description",descriptionDetails), PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Issuing the notification.
             mNotificationManager.notify(001, notification);
@@ -110,16 +110,17 @@ public class DisplayNotification extends ContextWrapper {
             Notification notification =
                     new NotificationCompat.Builder(this.getApplicationContext())
                             .setSmallIcon(R.drawable.hands)
-                            .setContentTitle(messageDetails)
-                            .setContentText(descriptionDetails)
+                            .setContentTitle("Medicine: "+messageDetails)
+                            .setContentText(descriptionDetails+". Click to view details")
                             .setAutoCancel(true)
                             .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400})
                             .setSound(DEFAULT_NOTIFICATION_URI)
                             .build();
 
             /*Intent for a new class by clicking the notification */
+            //Intent notificationIntent = new Intent(this, NotificationDisplayMedicine.class);
             notification.contentIntent=  PendingIntent.getActivity(this, 0,
-                    new Intent(this, Help.class), PendingIntent.FLAG_CANCEL_CURRENT);
+                    new Intent(this, NotificationDisplayMedicine.class).putExtra("name",messageDetails).putExtra("description",descriptionDetails), PendingIntent.FLAG_CANCEL_CURRENT);
 
             /* Notification manager to fetch the context and the notification service.
             *  Referred from: https://stackoverflow.com/questions/13716723/open-application-after-clicking-on-notification
