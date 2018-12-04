@@ -159,7 +159,7 @@ public class MedicineBusinessLayer {
     }
 
     public List<Med> getAllMedicine(Context context) {
-        List<Med> medicines = medicineDataObject.getAllNonDailyMedicines(context);
+        List<Med> medicines = medicineDataObject.getAllMedicines(context);
 
         return medicines;
     }
