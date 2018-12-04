@@ -1,154 +1,99 @@
-/*
-    Page Name : Home.java
-    Author : Deep Singh (B00792279)
-    Purpose : Presentation layer for the home page. It feeds the medicine information from the
-    businesslayer/MedicineBusinessLayer.java file
-
- */
-
-
 package com.example.devan.remedaily.View;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.devan.remedaily.Models.Medicine;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
 import com.example.devan.remedaily.datalayer.Med;
 
 import java.text.ParseException;
-import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-public class Home extends Hamburger {
+public class MyMedication extends AppCompatActivity {
 
     public Button userDetailsBtn, addMed;
     private Context mContext;
     private LinearLayout lLinearLayout;
-    private LinearLayout mLinearLayout;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.home);
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_my_medication);
+
+        // view the back button
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // set the context
         mContext = getApplicationContext();
 
-
-        /*running the notification */
-//        DisplayNotification displaynotification = new DisplayNotification(this);
-//        displaynotification.createNotification("Hello There!","Welcome to Remedaily!, Lets Get Started");
-
-        lLinearLayout = findViewById(R.id.upcomingMedicineList);
-        mLinearLayout = findViewById(R.id.linearLayoutMissedMedication);
+        lLinearLayout = findViewById(R.id.medicationList);
         addMed = findViewById(R.id.addMed);
         addMed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home.this, AddNewMedicineActivity.class);
+                Intent intent = new Intent(MyMedication.this, AddNewMedicineActivity.class);
                 startActivity(intent);
             }
         });
 
         try {
-            populateMissedMedicine();
-            populateUpcomingMedicine();
+            populateMedication();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-
-        try {
-            super.onWindowFocusChanged(hasFocus);
-            populateMissedMedicine();
-            populateUpcomingMedicine();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void populateMissedMedicine() throws ParseException {
+    private void populateMedication() throws ParseException {
         // get the upcoming medicine details
         MedicineBusinessLayer MedicineObj = new MedicineBusinessLayer();
 
-        ArrayList<Med> MedicineArrayList = null;
+        List<Med> MedicineList = MedicineObj.getAllMedicine(mContext);
 
-        if (MedicineArrayList != null) {
-            if (MedicineArrayList.size() != 0) {
-                showMedicineOnScreen(MedicineArrayList, mLinearLayout);
+        // sort medicine alphabetically
+        Collections.sort(MedicineList, new Comparator<Med>() {
+            @Override
+            public int compare(Med medicine1, Med medicine2) {
+                return medicine1.medName.compareTo(medicine2.medName);
+
+            }
+        });
+
+        if (MedicineList != null) {
+            if (MedicineList.size() != 0) {
+                showMedicineOnScreen(MedicineList, lLinearLayout);
             } else {
-                showNoMedicationAvailable(mLinearLayout, R.string.NoMissedMedicine);
+                showNoMedicationAvailable(lLinearLayout, "NO MEDICAITONS ADDED");
             }
         } else {
-            showNoMedicationAvailable(mLinearLayout, R.string.NoMissedMedicine);
+            showNoMedicationAvailable(lLinearLayout, "NO MEDICAITONS ADDED");
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void showNoMedicationAvailable(LinearLayout linearLayout, int TextID) {
-        linearLayout.removeAllViews();
-        TextView ChildTextView2 = new TextView(mContext);
-
-        // set the padding
-        ChildTextView2.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
-
-        // set the text
-        ChildTextView2.setText(TextID);
-
-        // set the text size
-        ChildTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
-
-        ChildTextView2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-
-        ChildTextView2.setTextColor(getColor(R.color.Color_Home_Card_Dosage));
-
-        // now since we have all the textview parameters
-        // now add the values to the linearLayout
-        linearLayout.addView(ChildTextView2);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void showMedicineOnScreen(ArrayList<Med> MedicineArrayList, LinearLayout linearLayout) {
-        linearLayout.removeAllViews();
+    private void showMedicineOnScreen(List<Med> MedicineArrayList, LinearLayout linearLayout) {
         for (int i = 0; i < MedicineArrayList.size(); i++) {
 
             // adding cardview programatically
             // Source : https://android--code.blogspot.com/2015/12/android-how-to-create-cardview.html
             CardView CardViewObj = new CardView(mContext);
 
-            int HeightToSet = 100;
-
-            // set the text
-            if (MedicineArrayList.get(i).tagDaily == 0) {
-                for (int date = 0; date < MedicineArrayList.get(i).timeObject.size(); date++) {
-                    if (MedicineArrayList.get(i).timeObject.get(date).size() > 0) {
-                        HeightToSet += 20;
-                    }
-                }
-            }
-
             // set the layout params
-            LinearLayout.LayoutParams ParamsObj = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getDPI(HeightToSet));
+            LinearLayout.LayoutParams ParamsObj = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getDPI(100));
 
             // set the weight
             ParamsObj.weight = 1.0f;
@@ -276,22 +221,7 @@ public class Home extends Hamburger {
             ChildTextView3.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
             // set the text
-            if (MedicineArrayList.get(i).tagDaily == 1) {
-                ChildTextView3.setText("Daily");
-            } else {
-                String time = "";
-                for (int date = 0; date < MedicineArrayList.get(i).timeObject.size(); date++) {
-                    if (MedicineArrayList.get(i).timeObject.get(date).size() > 0) {
-                        time += GetdayOfMonth(date) + " ";
-                        for (String Time : MedicineArrayList.get(i).timeObject.get(date)) {
-                            time += Time + " ";
-                        }
-                        time += "\n";
-                    }
-                }
-                ChildTextView3.setText(time.trim().toString());
-            }
-
+            ChildTextView3.setText(MedicineArrayList.get(i).startDate.toString());
 
             // set the text size
             ChildTextView3.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
@@ -314,50 +244,44 @@ public class Home extends Hamburger {
 
             linearLayout.addView(CardViewObj);
         }
+
     }
 
-    private String GetdayOfMonth(int idx) {
-        switch (idx) {
-            case 0:
-                return "Monday";
-            case 1:
-                return "Tuesday";
-            case 2:
-                return "Wednesday";
-            case 3:
-                return "Thursday";
-            case 4:
-                return "Friday";
-            case 5:
-                return "Saturday";
-            case 6:
-                return "Sunday";
-        }
-        return "Monday";
-    }
+    private void showNoMedicationAvailable(LinearLayout linearLayout, String TextID){
+        TextView ChildTextView2 = new TextView(mContext);
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    private void populateUpcomingMedicine() throws ParseException {
+        // set the padding
+        ChildTextView2.setPadding(getDPI(5), getDPI(5), getDPI(0), getDPI(0));
 
+        // set the text
+        ChildTextView2.setText(TextID);
 
-        // get the upcoming medicine details
-        MedicineBusinessLayer MedicineObj = new MedicineBusinessLayer();
+        // set the text size
+        ChildTextView2.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 12);
 
-        ArrayList<Med> MedicineArrayList = MedicineObj.getUpcomingMedicineList(getApplicationContext());
+        ChildTextView2.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
-        if (MedicineArrayList != null) {
-            if (MedicineArrayList.size() != 0) {
-                showMedicineOnScreen(MedicineArrayList, lLinearLayout);
-            } else {
-                showNoMedicationAvailable(lLinearLayout, R.string.NoUpcomingMedicine);
-            }
-        } else {
-            showNoMedicationAvailable(lLinearLayout, R.string.NoUpcomingMedicine);
-        }
+        ChildTextView2.setTextColor(getColor(R.color.Color_Home_Card_Dosage));
+
+        // now since we have all the textview parameters
+        // now add the values to the linearLayout
+        linearLayout.addView(ChildTextView2);
     }
 
     // Source : https://stackoverflow.com/a/5959914
     public int getDPI(int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
+    }
+
+    // source : https://stackoverflow.com/questions/10108774/how-to-implement-the-android-actionbar-back-button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

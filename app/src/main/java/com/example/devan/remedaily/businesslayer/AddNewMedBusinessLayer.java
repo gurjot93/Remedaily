@@ -1,4 +1,5 @@
 /*Creator : Devanshu Srivastava
+* PURPOSE: to serve as CONTROLLER.
 *Purpose : CONTROLLER so controls the flow of adding of meds and calling out them when required
 * dated: 1/12/2018
 **/
@@ -24,7 +25,6 @@ public class AddNewMedBusinessLayer {
                 AddMeds(db, tagDaily, medName, dosage, imagePath, startDate, endDate, arrTimeItem);
         //created threads so that adding up of medications can be done asynchronously.
         task.execute();
-
     }
 
 
@@ -41,9 +41,7 @@ public class AddNewMedBusinessLayer {
         med.timeObject = arrTimeItem; //arraylist of arraylist<strings>
         db.medModel().insertMeds(med);
         return true;
-
     }
-
     //endregion
 
 
@@ -63,6 +61,7 @@ public class AddNewMedBusinessLayer {
     }
     //endregion
 
+    //endregion
 
     //region ASYNC CLASS
     private static class AddMeds extends AsyncTask<String, String, String> {

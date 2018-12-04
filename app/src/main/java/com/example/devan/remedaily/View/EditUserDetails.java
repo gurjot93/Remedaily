@@ -84,7 +84,12 @@ public class EditUserDetails extends AppCompatActivity {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*TODO*/
+                try {
+                    Intent intent = new  Intent(getApplicationContext(),Home.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.devan.remedaily"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -34,4 +34,6 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+    //using library from github. This library is available at https://github.com/barteksc/AndroidPdfViewer
+    compile 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
 }

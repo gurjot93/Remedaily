@@ -1,12 +1,15 @@
 package com.example.devan.remedaily.View;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -30,6 +33,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.devan.remedaily.AlarmReceiver;
 import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.AddNewMedBusinessLayer;
 import com.example.devan.remedaily.datalayer.AppDatabase;
@@ -38,14 +42,19 @@ import com.example.devan.remedaily.datalayer.User;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.net.PasswordAuthentication;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.SendFailedException;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -60,6 +69,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
     public static Button[] weekDayButtons = new Button[7];
     public AppDatabase appData;
+    static int countDays = 0;
 
     private final String[] weekDaysArr = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
             "Saturday", "Sunday"};
@@ -340,7 +350,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
                         ProgressDialog progressWheelDialog = new ProgressDialog(AddNewMedicineActivity.this);
                         progressWheelDialog.setMessage(spannableString);
-                        progressWheelDialog.show();
+//                        progressWheelDialog.show();
 
                         new Handler().postDelayed(new Runnable() {
                             @Override
@@ -356,14 +366,45 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                             String medImagePath = medicineSchedule.getDrugBoxImagePath();
                             String medStartDate = medicineSchedule.getStartDate();
                             String medEndDate = medicineSchedule.getEndDate();
-
                             int tagDaily = 0;
 
                             if (sameScheduleSwitchButton.isChecked()) {
                                 tagDaily = 1;
                             }
+                            //Adding data of meds into DB.
                             AddNewMedBusinessLayer.AddMeds(appData, tagDaily, medName, medDosage, medImagePath, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
 
+                            //Parsing data into a particular format.
+                            SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+
+                            //Calculating the delta between start/endate.
+                            int daysToRun = Integer.parseInt(medEndDate.split("/")[1]) -
+                                    Integer.parseInt(medStartDate.split("/")[1]);
+
+                            /*This iteration is for adding the numerals to the date in a single month.*/
+                            List<String> _lst = new ArrayList<String>();
+                            int incrementDay = Integer.parseInt(medStartDate.split("/")[1]);
+                            for (int i = 0; i < daysToRun; i++) {
+                                if (incrementDay < 10) {
+                                    /*fetching if the date is unit place or tens place*/
+                                    _lst.add(medStartDate.replace(medStartDate.split("/")[1], "0" + String.valueOf(incrementDay)));
+                                } else {
+                                    _lst.add(medStartDate.replace(medStartDate.split("/")[1], String.valueOf(incrementDay)));
+                                }
+                                incrementDay++;                                /*Increementing dates*/
+                            }
+                            int count = 0; /*Counter for keeping the _lst values for stationary untill all the timers are alarmed and done.*/
+                            /*This iteration gets the proper parsed formatted DATE. So that timely alarmed notifications can be called.*/
+                            for (int k = 0; k <= 6; k++) {
+                                if (medicineSchedule.getWeekSchedule().get(k).size() > 0) {
+                                    int git = medicineSchedule.getWeekSchedule().get(k).size();
+                                    for (int j = 0; j < git; j++) {
+                                        Date date = format.parse(_lst.get(count) + " " + medicineSchedule.getWeekSchedule().get(k).get(j));
+                                        handleNotification(date.getTime(), medName);
+                                    }
+                                    count++;
+                                }
+                            }
                             //This function will send email to the user with the selected medication.
                             SendMail(medName, medDosage, medStartDate, medEndDate, medicineSchedule.getWeekSchedule());
                         } catch (Exception e) {
@@ -573,13 +614,32 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         }
     }
 
+    //region Handling notifications using receiver broadcast mechanism.
+    private void handleNotification(long intmill, String medname) {
+        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        alarmIntent.putExtra("medName", medname);
+        final int _id = (int) System.currentTimeMillis();
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, _id, alarmIntent,
+                PendingIntent.FLAG_ONE_SHOT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        if (Build.VERSION.SDK_INT >= 23) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+                    intmill, pendingIntent);
+        } else if (Build.VERSION.SDK_INT >= 19) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, intmill, pendingIntent);
+        } else {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, intmill, pendingIntent);
+        }
+    }
+
     /*Written by - Devanshu Srivastava
      * Purpose: Creates a thread to send an email to the user.
      * Used libs : https://code.google.com/archive/p/javamail-android/
      * https://stackoverflow.com/questions/6517079/send-email-in-service-without-prompting-user
      * */
     //region SENDING EMAIL.
-    public void SendMail(String medName, String dosage, String startDay, String endDay, ArrayList<ArrayList<String>> timeObject) {
+    public void SendMail(String medName, String dosage, String startDay, String
+            endDay, ArrayList<ArrayList<String>> timeObject) {
         final String username = "remedaily123@gmail.com";
         final String password = "Dalhousie123";
 
@@ -590,8 +650,8 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         props.put("mail.smtp.port", "587");
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
+            protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+                return new javax.mail.PasswordAuthentication(username, password);
             }
         });
 
@@ -657,6 +717,6 @@ public class AddNewMedicineActivity extends AppCompatActivity {
         }*/
     }
     //endregion
-
 }
+
 

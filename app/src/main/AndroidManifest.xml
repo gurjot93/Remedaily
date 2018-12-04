@@ -2,15 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.devan.remedaily">
 
-
     <uses-permission android:name="android.permission.FLASHLIGHT" />
-
-    <uses-permission android:name="android.permission.FLASHLIGHT"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/hands"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -27,9 +25,7 @@
         <activity
             android:name=".View.AddNewMedicineActivity"
             android:label="Add Medicine"
-
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".View.MainActivity"
             android:label="Main Activity"
@@ -48,7 +44,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".View.EditUserDetails"
-            android:label="Edit User Details" />
+            android:label="Edit User Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.MyMedication"
+            android:label="My Medication"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".View.Calender"
             android:label="Calender"
@@ -60,6 +61,10 @@
         <activity
             android:name=".View.SettingsResetApplication"
             android:label="@string/app_name_settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.DeleteMedicine"
+            android:label="DeleteMedicines"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -82,17 +87,29 @@
         <activity
             android:name=".View.Camera"
             android:label="Camera"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".View.DeleteUser"
-            android:label="Camera"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".View.Help"
+            android:label="DeleteUser"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".View.Help"
             android:label="Help and Support"
             android:screenOrientation="portrait" />
-        <activity android:name=".View.About_Us"
-            android:label="About Us"></activity>
+
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".View.About_Us"
+            android:label="About Us"
+            android:screenOrientation="portrait" />
+        <activity android:name=".View.MedicalReport"
+            android:label="Medical Report"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
