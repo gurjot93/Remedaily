@@ -8,11 +8,16 @@ package com.example.devan.remedaily.View;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaCodecList;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.TypedValue;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,6 +32,7 @@ import com.example.devan.remedaily.R;
 import com.example.devan.remedaily.businesslayer.MedicineBusinessLayer;
 import com.example.devan.remedaily.datalayer.Med;
 
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -171,11 +177,15 @@ public class Calender extends AppCompatActivity {
                 // set the padding
                 ChildImageObj.setPadding(getDPI(20), getDPI(20), getDPI(10), getDPI(20));
 
-                // set the image ID
-                int ImageID = R.drawable.medicine_pill;
+                if(MedicineObj.get(i).imagePath != null){
+                    ChildImageObj.setImageURI(Uri.parse(MedicineObj.get(i).imagePath));
+                }else{
+                    // set the image ID
+                    int ImageID = R.drawable.medicine_pill;
 
-                // set the imageID
-                ChildImageObj.setImageResource(ImageID);
+                    // set the imageID
+                    ChildImageObj.setImageResource(ImageID);
+                }
 
                 // add the image to the linear layout
                 Parent.addView(ChildImageObj);
@@ -362,11 +372,16 @@ public class Calender extends AppCompatActivity {
                     // set the padding
                     ChildImageObj.setPadding(getDPI(20), getDPI(20), getDPI(10), getDPI(20));
 
-                    // set the image ID
-                    int ImageID = R.drawable.medicine_pill;
+                    if(MedList.imagePath != null){
+                        Bitmap bm = BitmapFactory.decodeFile(MedList.imagePath);
+                        ChildImageObj.setImageBitmap(bm);
+                    }else{
+                        // set the image ID
+                        int ImageID = R.drawable.medicine_pill;
 
-                    // set the imageID
-                    ChildImageObj.setImageResource(ImageID);
+                        // set the imageID
+                        ChildImageObj.setImageResource(ImageID);
+                    }
 
                     // add the image to the linear layout
                     Parent.addView(ChildImageObj);
@@ -487,6 +502,30 @@ public class Calender extends AppCompatActivity {
 
 
             }
+
+
+        }
+
+        if(MedicineObj.size() == 0 && NonDailyMedicines.size() == 0){
+            // add the text
+            TextView TextViewObj = new TextView(mContext);
+
+            // set the padding
+            TextViewObj.setPadding(getDPI(15), getDPI(15), getDPI(15), getDPI(15));
+
+            TextViewObj.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            // set the text
+            TextViewObj.setText("No medicine available");
+
+            // set the background color
+            TextViewObj.setBackgroundColor(getColor(R.color.white));
+
+            // set the text size
+            TextViewObj.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 18);
+
+            TextViewObj.setTextColor(getColor(R.color.black));
+
+            lLayout.addView(TextViewObj);
         }
         scrollView.addView(lLayout);
 

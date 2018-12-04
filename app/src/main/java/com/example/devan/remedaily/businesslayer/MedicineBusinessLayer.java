@@ -49,7 +49,7 @@ public class MedicineBusinessLayer {
         for(Date DateObj : NonDailyMedicine.keySet()){
             Date CurrentDate = new Date();
             long diff = Math.round((DateObj.getTime() - CurrentDate.getTime()) / (double) 86400000);
-            if(diff > 0){
+            if(diff >= 0){
                 // check if the medicines are upcoming in the coming week
                 if(diff <= 7){
                     for(Med MedObj : NonDailyMedicine.get(DateObj)){
