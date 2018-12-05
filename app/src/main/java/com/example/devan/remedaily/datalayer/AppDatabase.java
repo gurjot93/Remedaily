@@ -23,10 +23,6 @@ import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 
 import com.example.devan.remedaily.businesslayer.Converter;
-import com.example.devan.remedaily.datalayer.Med;
-import com.example.devan.remedaily.datalayer.MedDao;
-import com.example.devan.remedaily.datalayer.User;
-import com.example.devan.remedaily.datalayer.UserDao;
 
 @Database(entities = {Med.class,User.class}, version = 1)
 @TypeConverters(Converter.class) //https://developer.android.com/reference/android/arch/persistence/room/TypeConverter

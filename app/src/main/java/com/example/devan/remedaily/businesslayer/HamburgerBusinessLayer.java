@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import com.example.devan.remedaily.datalayer.AppDatabase;
 import com.example.devan.remedaily.datalayer.User;
-import com.example.devan.remedaily.datalayer.utils.DatabaseInitializer;
 import java.util.List;
 
 public class HamburgerBusinessLayer {
