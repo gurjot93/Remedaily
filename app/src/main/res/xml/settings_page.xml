@@ -12,11 +12,6 @@
             android:summary="Check to allow start screen every time application starts"
             android:title="Allow Splash Screen" />
 
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="notificationsChange"
-            android:summary="Turn On or Off application notifications"
-            android:title="Notifications" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="User Details Settings">

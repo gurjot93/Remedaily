@@ -30,12 +30,6 @@ public class SettingsDetailsFetch {
 
     }
 
-    /*
-     * This will return boolean value for switch - Notifications turn on/off using the key: notificationsChange stored in settings xml
-     * */
-    public static boolean notificationsOnOff(Context context) {
-        getSharedPreferencesInstance(context);
-        return sharedPreferences.getBoolean("notificationsChange", true);
-    }
+
 
 }
